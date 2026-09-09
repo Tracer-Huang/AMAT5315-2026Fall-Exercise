@@ -118,3 +118,17 @@ fn cli_defaults_to_cells_and_keeps_the_naive_flag() {
     }
     fs::remove_dir_all(root).unwrap();
 }
+
+#[test]
+fn cli_records_the_requested_heating_target() {
+    let dir=std::env::temp_dir().join(format!("amat5315-ramp-cli-{}-{}",std::process::id(),SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_nanos()));
+    let result=Command::new(env!("CARGO_BIN_EXE_md"))
+        .args(["run","--temperature","0.2","--ramp-to","1.2","--eq-steps","50","--steps","100","--out"])
+        .arg(&dir).output().unwrap();
+    assert!(result.status.success(),"{}",String::from_utf8_lossy(&result.stderr));
+    let (config,frames)=md::fluid::read_run(&dir).unwrap();
+    assert_eq!(config.ramp_to,Some(1.2));
+    let thermo=2.0*frames.last().unwrap().e_kin/(2*config.n-2) as f64;
+    assert!((thermo-1.2).abs()<1e-12);
+    fs::remove_dir_all(dir).unwrap();
+}

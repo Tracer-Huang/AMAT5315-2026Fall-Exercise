@@ -1,0 +1,20 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.25s
+     Running tests/cli.rs (week2/md/target/release/deps/cli-b0fc5e50876e564e)
+
+running 1 test
+
+thread 'cli_records_the_requested_heating_target' (3178561) panicked at tests/cli.rs:128:5:
+error: unknown flag --ramp-to; use md --help
+
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test cli_records_the_requested_heating_target ... FAILED
+
+failures:
+
+failures:
+    cli_records_the_requested_heating_target
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 4 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test cli`

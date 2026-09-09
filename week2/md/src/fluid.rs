@@ -24,6 +24,8 @@ pub struct RunConfig {
     pub integrator: String,
     #[serde(default)]
     pub force: periodic::ForceMethod,
+    #[serde(default,skip_serializing_if="Option::is_none")]
+    pub ramp_to:Option<f64>,
 }
 
 impl Default for RunConfig {
@@ -40,6 +42,7 @@ impl Default for RunConfig {
             seed: 2026,
             integrator: "velocity-verlet".into(),
             force: periodic::ForceMethod::Cells,
+            ramp_to:None,
         }
     }
 }
@@ -129,6 +132,10 @@ pub fn rescale(system: &mut System, target: f64) -> MdResult<()> {
         }
     }
     Ok(())
+}
+
+pub fn ramp_target(_config:&RunConfig,_step:usize)->MdResult<f64> {
+    todo!("Part 5: linear production heating target")
 }
 
 pub fn simulate(

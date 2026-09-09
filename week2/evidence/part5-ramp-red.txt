@@ -1,0 +1,24 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.86s
+     Running tests/ramp.rs (week2/md/target/release/deps/ramp-ce75e17d9db7fe67)
+
+running 2 tests
+
+thread 'heating_schedule_has_exact_endpoints_and_linear_middle' (3173806) panicked at src/fluid.rs:138:5:
+not yet implemented: Part 5: linear production heating target
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test heating_schedule_has_exact_endpoints_and_linear_middle ... FAILED
+
+thread 'ramp_changes_production_thermostat_and_is_not_an_nve_check' (3173807) panicked at tests/ramp.rs:20:9:
+step 50, temperature 0.16141198010429622 vs 0.7
+test ramp_changes_production_thermostat_and_is_not_an_nve_check ... FAILED
+
+failures:
+
+failures:
+    heating_schedule_has_exact_endpoints_and_linear_middle
+    ramp_changes_production_thermostat_and_is_not_an_nve_check
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test ramp`
