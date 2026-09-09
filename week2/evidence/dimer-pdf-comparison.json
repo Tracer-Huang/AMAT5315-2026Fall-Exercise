@@ -1,0 +1,12 @@
+{
+  "pdf_page": 8,
+  "pdf_right_panel_points": 500,
+  "integration_dt": 0.01,
+  "display_stride_steps": 10,
+  "max_pdf_time_reconstruction_error": 1.0863797150761911e-05,
+  "max_relative_energy_difference_from_pdf": 7.483470122336862e-10,
+  "rms_relative_energy_difference_from_pdf": 2.44545819670743e-10,
+  "full_series_min_relative_error": -0.00032504919745689344,
+  "full_series_max_relative_error": 0.00018214924979430955,
+  "full_series_max_absolute_relative_error": 0.00032504919745689344
+}

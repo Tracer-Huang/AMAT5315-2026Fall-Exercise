@@ -57,6 +57,10 @@ cargo run --manifest-path md/Cargo.toml --example dimer > dimer.csv
 
 ![Dimer integrator comparison](dimer.png)
 
+The plot matches the PDF's display sampling: every 2 integration steps in the left panel and every 10 in the right. All 5000 integration steps remain in the CSV and conservation tests. Connecting every step makes the dense periodic waveform look different from the PDF's coarser, aliased display; it is the same trajectory. An optional full-resolution view is reproducible with `scripts/plot_dimer.py dimer.csv --full-resolution --out evidence/dimer-full-resolution.png` using the environment's Python.
+
+The PDF comparison is documented in `evidence/dimer-pdf-comparison.json`. Its right-hand vector path contains 500 points; converting those points back using the printed axes and comparing with the Rust CSV at steps 10,20,...,5000 gives agreement at approximately 1e-9 in relative energy. The caption's “within +/-3e-4” is approximate: the actual full-series bound is 3.2505e-4, while the sheet's required test threshold is 1e-3. No energies were clipped or rescaled to force the caption's rounded number.
+
 The test and example both route through `advance(&impl Integrator, ...)`, with no integrator-specific experimental setup. Raw development test output is in `evidence/part3-green.txt`. Student verification remains separate.
 
 ## Design and workflow
