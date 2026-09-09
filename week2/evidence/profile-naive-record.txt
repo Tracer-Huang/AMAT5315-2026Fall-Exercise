@@ -1,0 +1,2 @@
+wrote /tmp/md-prof/run.json + traj.jsonl (20 production frames, velocity-verlet, naive)
+All tasks terminated.

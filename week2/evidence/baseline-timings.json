@@ -1,0 +1,120 @@
+{
+  "mode": "baseline",
+  "recorded_at_utc": "20260909T110553Z",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "git_commit": "efda417de6453ce20896d97627f80ad174383d52",
+  "timer": "time.perf_counter around subprocess, wall time including startup and output I/O",
+  "repetitions": 3,
+  "cases": [
+    {
+      "label": "NumPy",
+      "command": [
+        "/tmp/venv/bin/python",
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/week2-sim.py"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/baseline-20260909T110553Z/case-0",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 3.058269665998523,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 3.051785083996947,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 3.047359457996208,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet)\n",
+          "stderr": ""
+        }
+      ],
+      "median_seconds": 3.051785083996947,
+      "min_seconds": 3.047359457996208,
+      "max_seconds": 3.058269665998523
+    },
+    {
+      "label": "Rust debug",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/debug/md",
+        "run",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/baseline-20260909T110553Z/case-1",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 1.2739866660122061,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, naive)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 1.2559896250022575,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788951963799890000-67009\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 1.2797844169981545,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788951965055838000-67011\n"
+        }
+      ],
+      "median_seconds": 1.2739866660122061,
+      "min_seconds": 1.2559896250022575,
+      "max_seconds": 1.2797844169981545
+    },
+    {
+      "label": "Rust release naive",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/baseline-20260909T110553Z/case-2",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.09143741699517705,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, naive)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.0914954170002602,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788951966427403000-67014\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.09159174999513198,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788951966519207000-67015\n"
+        }
+      ],
+      "median_seconds": 0.0914954170002602,
+      "min_seconds": 0.09143741699517705,
+      "max_seconds": 0.09159174999513198
+    }
+  ],
+  "seed_note": "Unmodified supplied NumPy uses seed 42; Rust default uses seed 2026.",
+  "raw_outputs_retained_in": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/baseline-20260909T110553Z",
+  "numpy_version": "2.5.3"
+}

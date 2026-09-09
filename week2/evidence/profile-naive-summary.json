@@ -1,0 +1,16 @@
+{
+  "source": "evidence/profile-naive.json.gz",
+  "symbols": "evidence/profile-naive.json.syms.json",
+  "method": "Count a sample once if any ancestor frame belongs to a force evaluator; elapsed is recorded process lifetime.",
+  "threads": [
+    {
+      "thread": "md",
+      "weighted_samples": 109,
+      "inclusive_force_samples": 105,
+      "force_share_percent": 96.3302752293578,
+      "process_start_ms": 5.498542,
+      "process_end_ms": 116.346542,
+      "elapsed_seconds": 0.110848
+    }
+  ]
+}

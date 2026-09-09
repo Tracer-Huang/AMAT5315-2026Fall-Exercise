@@ -87,20 +87,30 @@ The unchanged supplied viewer is available at `support/week2-viewer.html`; drop 
 
 ## Timing
 
-Pending student-run measurements. Each program must run three times; compare medians and min-max ranges, not the single durations from development test logs.
+Measured before the cell list, at source commit efda417, three runs per program. Each run includes startup, 2000 equilibration + 10000 production steps, and trajectory output. NumPy 2.5.3 uses the unchanged supplied seed-42 program; Rust follows the PDF seed-2026 contract. These are comparable workloads, not identical random trajectories.
 
 | Program | Median (s) | Range: min-max (s) |
 | --- | ---: | ---: |
-| Supplied NumPy week2-sim.py (seed 42) | pending | pending |
-| Rust debug (seed 2026) | pending | pending |
-| Rust release, naive (seed 2026) | pending | pending |
+| Supplied NumPy week2-sim.py (seed 42) | 3.051785 | 3.047359-3.058270 |
+| Rust debug (seed 2026) | 1.273987 | 1.255990-1.279784 |
+| Rust release, naive (seed 2026) | 0.091495 | 0.091437-0.091592 |
+
+The release median is below one third of debug. On this machine release Rust also beat the supplied NumPy baseline; this is measured here, not assumed universally. Full commands, all nine runs, environment and raw output locations are in `evidence/baseline-timings.json`. Reproduce before changing the force implementation with `python3 scripts/benchmark.py baseline --python /tmp/venv/bin/python --out evidence/baseline-new.json`; compile debug/release first.
 
 ## Profile
 
 | Version | Force share (%) | Elapsed time (s) |
 | --- | ---: | ---: |
-| Naive | pending student profile | pending |
+| Naive | 96.3303 | 0.110848 |
 | Cell list | pending implementation | pending |
+
+The naive profile contains 109 weighted samples, 105 with `md::periodic::forces` in their stack (inclusive share). This confirms the >90% force hot spot before optimization. Elapsed time is the sampled process lifetime, excluding samply startup. Actual samply data, its symbol sidecar and the reproducible summary are in `evidence/profile-naive*`; the Firefox Profiler screenshot is still pending browser access.
+
+```sh
+~/.cargo/bin/samply record --save-only --unstable-presymbolicate --output evidence/profile-naive.json.gz md run --n 400 --eq-steps 200 --steps 1000 --out /tmp/md-prof
+python3 scripts/profile_summary.py evidence/profile-naive.json.gz --symbols evidence/profile-naive.json.syms.json --out evidence/profile-naive-summary.json
+~/.cargo/bin/samply load evidence/profile-naive.json.gz
+```
 
 ## Benchmark
 

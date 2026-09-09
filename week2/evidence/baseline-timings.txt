@@ -1,0 +1,10 @@
+NumPy, run 1: 3.058270 s
+NumPy, run 2: 3.051785 s
+NumPy, run 3: 3.047359 s
+Rust debug, run 1: 1.273987 s
+Rust debug, run 2: 1.255990 s
+Rust debug, run 3: 1.279784 s
+Rust release naive, run 1: 0.091437 s
+Rust release naive, run 2: 0.091495 s
+Rust release naive, run 3: 0.091592 s
+saved evidence/baseline-timings.json
