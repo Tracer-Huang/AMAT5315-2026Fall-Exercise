@@ -4,7 +4,7 @@ This is the same course repository as Week 1. All commands below start in `week2
 
 ## Current status
 
-Parts 1-5 are implemented; all 21 release tests and the physics check pass from a fresh GitHub clone. Timing/profile/scaling/heating evidence and the final independent review are complete. The public heating page is live. A 110-second silent browser-screen demonstration has been encoded and checked for release upload. The student delegated terminal verification and requested no narration; execution and capture methods are documented honestly. See [MANUAL-CHECKS.md](MANUAL-CHECKS.md) for reproduction and [REVIEW.md](REVIEW.md) for the resolved findings.
+Parts 1-5 are implemented; all 21 release tests and the physics check pass from a fresh GitHub clone. Timing/profile/scaling/heating evidence and the final independent review are complete. The public heating page and the 110-second silent browser-screen demonstration are published. The student delegated terminal verification and requested no narration; execution and capture methods are documented honestly. See [MANUAL-CHECKS.md](MANUAL-CHECKS.md) for reproduction and [REVIEW.md](REVIEW.md) for the resolved findings.
 
 ## Setup
 
@@ -176,9 +176,11 @@ Actual run-output receipts and the isolated temporary cold/hot data locations us
 
 ## Pages and recording
 
-Public heating viewer: [GitHub Pages](https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/). The site is published from main:/docs and serves the supplied viewer with the 400-atom, 200-frame heating trajectory. Anonymous HTTP access and all four browser panels were verified. Browser-visible cold / near-T=1 / final states are recorded in `evidence/page-verification.json` and actual `page-*.png` screenshots.
+Public heating viewer: [GitHub Pages](https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/) · [Silent screen demonstration, 110 seconds](https://github.com/Tracer-Huang/AMAT5315-2026Fall-Exercise/releases/download/week2-md/week2-silent-screen-demo.mp4) · [GitHub Release](https://github.com/Tracer-Huang/AMAT5315-2026Fall-Exercise/releases/tag/week2-md).
 
-The screen demonstration is silent at the student's request. It shows actual fresh-shell verification output in a read-only browser panel, followed by the public viewer. Captures remain in chronological order and are uniformly time-compressed by about 9.05x to 110 seconds. This capture method is documented in `evidence/screen-demo.json`; it is not described as a native desktop screencast. The MP4 and original captures are retained locally under ignored `recordings/`, and the MP4 is being attached to a GitHub release rather than committed to git.
+The site is published from main:/docs and serves the supplied viewer with the 400-atom, 200-frame heating trajectory. Anonymous HTTP access and all four browser panels were verified. Browser-visible cold / near-T=1 / final states are recorded in `evidence/page-verification.json` and actual `page-*.png` screenshots.
+
+The screen demonstration is silent at the student's request. It shows actual fresh-shell verification output in a read-only browser panel, followed by the public viewer. Captures remain in chronological order and are uniformly time-compressed by about 9.05x to 110 seconds. This capture method is documented in `evidence/screen-demo.json`; it is not described as a native desktop screencast. The MP4 and original captures are retained locally under ignored `recordings/`. The MP4 is attached to the GitHub release and is not committed to git; GitHub's uploaded SHA-256 matches the local file (`evidence/release.json`).
 
 Fresh-clone verification receipts are `evidence/fresh-clone-tests.txt`, `fresh-clone-reproduce.txt`, and `fresh-clone-check.txt`. The code reviewed/tested at 44a49f4 remains unchanged; documentation findings were fixed at 64245ae.
 

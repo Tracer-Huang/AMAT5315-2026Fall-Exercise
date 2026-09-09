@@ -1,0 +1,17 @@
+{
+  "release_id": 385639635,
+  "tag": "week2-md",
+  "release_url": "https://github.com/Tracer-Huang/AMAT5315-2026Fall-Exercise/releases/tag/week2-md",
+  "published_at": "2026-09-09T15:29:46Z",
+  "draft": false,
+  "asset_id": 553041204,
+  "asset_name": "week2-silent-screen-demo.mp4",
+  "asset_url": "https://github.com/Tracer-Huang/AMAT5315-2026Fall-Exercise/releases/download/week2-md/week2-silent-screen-demo.mp4",
+  "state": "uploaded",
+  "size": 1013704,
+  "github_digest": "sha256:1304f04fdff953814de483b97e84cf74e4caf443d7de528dc73ed7609bc5ebed",
+  "local_sha256": "1304f04fdff953814de483b97e84cf74e4caf443d7de528dc73ed7609bc5ebed",
+  "integrity_verified": true,
+  "duration_seconds": 110,
+  "audio": false
+}
