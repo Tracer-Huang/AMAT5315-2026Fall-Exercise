@@ -1,0 +1,22 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.11s
+     Running unittests src/lib.rs (week2/md/target/debug/deps/md-456d877594a48dac)
+
+running 1 test
+test tests::greeting_is_hello_world ... FAILED
+
+failures:
+
+---- tests::greeting_is_hello_world stdout ----
+
+thread 'tests::greeting_is_hello_world' (3031326) panicked at src/lib.rs:4:5:
+not yet implemented: Part 1: implement the shared greeting
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    tests::greeting_is_hello_world
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

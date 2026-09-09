@@ -1,0 +1,12 @@
+[package]
+name = "md"
+version = "0.1.0"
+edition = "2024"
+description = "AMAT5315 Week 2: tested two-dimensional molecular dynamics"
+license = "MIT"
+
+[dependencies]
+
+[profile.release]
+debug = 1
+

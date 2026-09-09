@@ -1,0 +1,4 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running `week2/md/target/debug/md`
+Hello, world!
