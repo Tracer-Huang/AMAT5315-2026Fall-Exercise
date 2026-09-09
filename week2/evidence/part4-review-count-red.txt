@@ -1,0 +1,25 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.20s
+     Running tests/cli.rs (week2/md/target/release/deps/cli-b0fc5e50876e564e)
+
+running 1 test
+
+thread 'cli_rejects_excessive_particle_count_before_allocating' (3097117) panicked at tests/cli.rs:73:5:
+assertion `left == right` failed: invalid input must return an error, not panic: 
+thread 'main' (3097118) panicked at /rustc/59807616e1fa2540724bfbac14d7976d7e4a3860/library/alloc/src/raw_vec/mod.rs:28:5:
+capacity overflow
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+  left: Some(101)
+ right: Some(1)
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test cli_rejects_excessive_particle_count_before_allocating ... FAILED
+
+failures:
+
+failures:
+    cli_rejects_excessive_particle_count_before_allocating
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 2 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test cli`
