@@ -13,7 +13,7 @@ const HELP: &str = "md: AMAT5315 two-dimensional molecular dynamics
 
 md run [--n 100] [--rho 0.8] [--temperature 0.5] [--dt 0.01]
        [--eq-steps 2000] [--steps 10000] [--sample-every 50]
-       [--seed 2026] [--force naive] [--out artifacts]
+       [--seed 2026] [--force cells|naive] [--out artifacts]
 md check <trajectory-directory>
 md video <trajectory-directory> --out <video.mp4>
 
@@ -61,12 +61,7 @@ fn execute() -> MdResult<()> {
                     "--steps" => config.steps = parse(value, name)?,
                     "--sample-every" => config.sample_every = parse(value, name)?,
                     "--seed" => config.seed = parse(value, name)?,
-                    "--force" if value == "naive" => {}
-                    "--force" => {
-                        return Err(
-                            "only --force naive is available before the profiling milestone".into(),
-                        );
-                    }
+                    "--force" => config.force = value.parse()?,
                     "--out" => out = PathBuf::from(value),
                     _ => return Err(format!("unknown flag {name}; use md --help")),
                 }
@@ -76,8 +71,9 @@ fn execute() -> MdResult<()> {
             config.validate()?;
             let count = fluid::write_run(&config, &out)?;
             println!(
-                "wrote {}/run.json + traj.jsonl ({count} production frames, velocity-verlet, naive)",
-                out.display()
+                "wrote {}/run.json + traj.jsonl ({count} production frames, velocity-verlet, {})",
+                out.display(),
+                config.force.as_str()
             );
         }
         "check" => {

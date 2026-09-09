@@ -9,11 +9,18 @@ pub struct System {
     pub accelerations: Vec<Vector>,
     pub potential_energy: f64,
     pub box_size: Option<Vector>,
+    pub force_method: crate::periodic::ForceMethod,
+    cell_list: Option<crate::periodic::CellList>,
 }
 
 impl System {
     pub fn new(positions: Vec<Vector>, velocities: Vec<Vector>) -> MdResult<Self> {
-        Self::construct(positions, velocities, None)
+        Self::construct(
+            positions,
+            velocities,
+            None,
+            crate::periodic::ForceMethod::Naive,
+        )
     }
 
     pub fn periodic(
@@ -22,13 +29,29 @@ impl System {
         box_size: Vector,
     ) -> MdResult<Self> {
         crate::periodic::validate_box(box_size)?;
-        Self::construct(positions, velocities, Some(box_size))
+        Self::periodic_with_method(
+            positions,
+            velocities,
+            box_size,
+            crate::periodic::ForceMethod::Naive,
+        )
+    }
+
+    pub fn periodic_with_method(
+        positions: Vec<Vector>,
+        velocities: Vec<Vector>,
+        box_size: Vector,
+        force_method: crate::periodic::ForceMethod,
+    ) -> MdResult<Self> {
+        crate::periodic::validate_box(box_size)?;
+        Self::construct(positions, velocities, Some(box_size), force_method)
     }
 
     fn construct(
         positions: Vec<Vector>,
         velocities: Vec<Vector>,
         box_size: Option<Vector>,
+        force_method: crate::periodic::ForceMethod,
     ) -> MdResult<Self> {
         if positions.is_empty() || positions.len() != velocities.len() {
             return Err("positions and velocities must have the same nonzero length".into());
@@ -47,6 +70,8 @@ impl System {
             velocities,
             potential_energy: 0.0,
             box_size,
+            force_method,
+            cell_list: None,
         };
         system.update_forces()?;
         Ok(system)
@@ -67,7 +92,20 @@ impl System {
     pub fn update_forces(&mut self) -> MdResult<()> {
         self.potential_energy = match self.box_size {
             None => compute_forces(&self.positions, &mut self.accelerations)?,
-            Some(size) => crate::periodic::forces(&self.positions, size, &mut self.accelerations)?,
+            Some(size) => match self.force_method {
+                crate::periodic::ForceMethod::Naive => {
+                    crate::periodic::forces(&self.positions, size, &mut self.accelerations)?
+                }
+                crate::periodic::ForceMethod::Cells => {
+                    if self.cell_list.as_ref().map(|c| c.box_size) != Some(size) {
+                        self.cell_list = Some(crate::periodic::CellList::new(size)?);
+                    }
+                    self.cell_list
+                        .as_mut()
+                        .expect("cell list initialized")
+                        .forces(&self.positions, &mut self.accelerations)?
+                }
+            },
         };
         Ok(())
     }

@@ -22,6 +22,8 @@ pub struct RunConfig {
     pub sample_every: usize,
     pub seed: u64,
     pub integrator: String,
+    #[serde(default)]
+    pub force: periodic::ForceMethod,
 }
 
 impl Default for RunConfig {
@@ -37,6 +39,7 @@ impl Default for RunConfig {
             sample_every: 50,
             seed: 2026,
             integrator: "velocity-verlet".into(),
+            force: periodic::ForceMethod::Cells,
         }
     }
 }
@@ -109,7 +112,7 @@ fn initialize(config: &RunConfig) -> MdResult<System> {
             v[axis] -= mean[axis];
         }
     }
-    let mut system = System::periodic(positions, velocities, box_size)?;
+    let mut system = System::periodic_with_method(positions, velocities, box_size, config.force)?;
     rescale(&mut system, config.temperature)?;
     Ok(system)
 }
