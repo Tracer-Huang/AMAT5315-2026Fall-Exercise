@@ -1,0 +1,30 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (week2/md/target/debug/deps/md-456d877594a48dac)
+
+running 3 tests
+test tests::greeting_is_hello_world ... ok
+test pair::tests::well_depth ... FAILED
+test pair::tests::force_is_minus_energy_derivative ... FAILED
+
+failures:
+
+---- pair::tests::well_depth stdout ----
+
+thread 'pair::tests::well_depth' (3033627) panicked at src/pair.rs:4:5:
+not yet implemented: Part 2: implement pair energy
+
+---- pair::tests::force_is_minus_energy_derivative stdout ----
+
+thread 'pair::tests::force_is_minus_energy_derivative' (3033626) panicked at src/pair.rs:4:5:
+not yet implemented: Part 2: implement pair energy
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    pair::tests::force_is_minus_energy_derivative
+    pair::tests::well_depth
+
+test result: FAILED. 1 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--lib`

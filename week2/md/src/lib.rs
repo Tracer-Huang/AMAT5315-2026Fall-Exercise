@@ -1,5 +1,7 @@
 //! Physics shared by the executable, experiments, and tests.
 
+pub mod pair;
+
 pub fn greeting() -> &'static str {
     "Hello, world!"
 }
