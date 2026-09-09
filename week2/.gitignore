@@ -4,3 +4,6 @@
 /benchmark-runs/
 __pycache__/
 *.profiler.json
+/field.csv
+/dimer.csv
+/dimer-long.csv
