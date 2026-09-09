@@ -1,7 +1,9 @@
 //! Plain Lennard-Jones pair potential in reduced units.
 
-pub fn energy(_r: f64) -> f64 {
-    todo!("Part 2: implement pair energy")
+pub fn energy(r: f64) -> f64 {
+    assert!(r.is_finite() && r > 0.0, "pair distance must be finite and positive");
+    let inv_r6 = r.recip().powi(6);
+    4.0 * (inv_r6 * inv_r6 - inv_r6)
 }
 
 /// Positive means repulsion; multiply by (x_i - x_j) / r for force on i.
