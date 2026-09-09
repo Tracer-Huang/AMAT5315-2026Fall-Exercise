@@ -1,0 +1,29 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.80s
+     Running tests/cells.rs (week2/md/target/release/deps/cells-a0e3df8cae1e860c)
+
+running 3 tests
+
+thread 'cells_preserve_cutoff_and_periodic_pair_cases' (3161613) panicked at src/periodic.rs:9:9:
+not yet implemented: Part 5: create a deduplicated periodic cell grid
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'two_cell_wide_box_deduplicates_wrapped_neighbour_cells' (3161614) panicked at src/periodic.rs:9:9:
+not yet implemented: Part 5: create a deduplicated periodic cell grid
+
+thread 'cells_and_naive_agree_on_perturbed_lattices_across_boundaries' (3161612) panicked at src/periodic.rs:9:9:
+not yet implemented: Part 5: create a deduplicated periodic cell grid
+test cells_preserve_cutoff_and_periodic_pair_cases ... FAILED
+test two_cell_wide_box_deduplicates_wrapped_neighbour_cells ... FAILED
+test cells_and_naive_agree_on_perturbed_lattices_across_boundaries ... FAILED
+
+failures:
+
+failures:
+    cells_and_naive_agree_on_perturbed_lattices_across_boundaries
+    cells_preserve_cutoff_and_periodic_pair_cases
+    two_cell_wide_box_deduplicates_wrapped_neighbour_cells
+
+test result: FAILED. 0 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test cells`

@@ -1,0 +1,22 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.23s
+     Running tests/cli.rs (week2/md/target/release/deps/cli-b0fc5e50876e564e)
+
+running 1 test
+wrote /var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/amat5315-force-cli-69623-1788953010132374000/cells/run.json + traj.jsonl (2 production frames, velocity-verlet, naive)
+
+thread 'cli_defaults_to_cells_and_keeps_the_naive_flag' (3162982) panicked at tests/cli.rs:96:9:
+assertion `left == right` failed
+  left: Null
+ right: "cells"
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test cli_defaults_to_cells_and_keeps_the_naive_flag ... FAILED
+
+failures:
+
+failures:
+    cli_defaults_to_cells_and_keeps_the_naive_flag
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test cli`

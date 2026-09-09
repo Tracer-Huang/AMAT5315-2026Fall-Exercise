@@ -81,3 +81,19 @@ fn cli_rejects_excessive_particle_count_before_allocating() {
     let stderr = String::from_utf8_lossy(&result.stderr);
     assert!(stderr.contains("error:") && stderr.contains("n is too large"));
 }
+
+#[test]
+fn cli_defaults_to_cells_and_keeps_the_naive_flag() {
+    let root=std::env::temp_dir().join(format!("amat5315-force-cli-{}-{}",std::process::id(),SystemTime::now().duration_since(UNIX_EPOCH).unwrap().as_nanos()));
+    for method in ["cells","naive"] {
+        let dir=root.join(method);
+        let mut command=Command::new(env!("CARGO_BIN_EXE_md"));
+        command.args(["run","--eq-steps","20","--steps","20","--sample-every","10","--out"]).arg(&dir);
+        if method=="naive" { command.args(["--force","naive"]); }
+        let status=command.status().unwrap();
+        assert!(status.success());
+        let metadata:serde_json::Value=serde_json::from_str(&fs::read_to_string(dir.join("run.json")).unwrap()).unwrap();
+        assert_eq!(metadata["force"],method);
+    }
+    fs::remove_dir_all(root).unwrap();
+}

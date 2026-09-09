@@ -1,6 +1,19 @@
 use crate::dynamics::{MdResult, Vector};
 pub const CUTOFF: f64 = 2.5;
 
+#[derive(Clone, Debug)]
+pub struct CellList;
+
+impl CellList {
+    pub fn new(_box_size: Vector) -> MdResult<Self> {
+        todo!("Part 5: create a deduplicated periodic cell grid")
+    }
+
+    pub fn forces(&mut self, _positions: &[Vector], _output: &mut [Vector]) -> MdResult<f64> {
+        todo!("Part 5: evaluate forces with the cell list")
+    }
+}
+
 pub fn lattice(n: usize, rho: f64) -> MdResult<(Vec<Vector>, Vector)> {
     if n > 1_000_000 {
         return Err("n is too large for this teaching simulator".into());
