@@ -8,10 +8,28 @@ pub struct System {
     pub velocities: Vec<Vector>,
     pub accelerations: Vec<Vector>,
     pub potential_energy: f64,
+    pub box_size: Option<Vector>,
 }
 
 impl System {
     pub fn new(positions: Vec<Vector>, velocities: Vec<Vector>) -> MdResult<Self> {
+        Self::construct(positions, velocities, None)
+    }
+
+    pub fn periodic(
+        positions: Vec<Vector>,
+        velocities: Vec<Vector>,
+        box_size: Vector,
+    ) -> MdResult<Self> {
+        crate::periodic::validate_box(box_size)?;
+        Self::construct(positions, velocities, Some(box_size))
+    }
+
+    fn construct(
+        positions: Vec<Vector>,
+        velocities: Vec<Vector>,
+        box_size: Option<Vector>,
+    ) -> MdResult<Self> {
         if positions.is_empty() || positions.len() != velocities.len() {
             return Err("positions and velocities must have the same nonzero length".into());
         }
@@ -28,6 +46,7 @@ impl System {
             positions,
             velocities,
             potential_energy: 0.0,
+            box_size,
         };
         system.update_forces()?;
         Ok(system)
@@ -46,8 +65,21 @@ impl System {
     }
 
     pub fn update_forces(&mut self) -> MdResult<()> {
-        self.potential_energy = compute_forces(&self.positions, &mut self.accelerations)?;
+        self.potential_energy = match self.box_size {
+            None => compute_forces(&self.positions, &mut self.accelerations)?,
+            Some(size) => crate::periodic::forces(&self.positions, size, &mut self.accelerations)?,
+        };
         Ok(())
+    }
+
+    fn wrap_positions(&mut self) {
+        if let Some(size) = self.box_size {
+            for x in &mut self.positions {
+                for axis in 0..2 {
+                    x[axis] = x[axis].rem_euclid(size[axis]);
+                }
+            }
+        }
     }
 }
 
@@ -105,6 +137,7 @@ impl Integrator for ForwardEuler {
                 v[axis] += dt * a[axis];
             }
         }
+        system.wrap_positions();
         system.update_forces()
     }
 }
@@ -122,6 +155,7 @@ impl Integrator for VelocityVerlet {
                 x[axis] += dt * v[axis];
             }
         }
+        system.wrap_positions();
         system.update_forces()?;
         for (v, a) in system.velocities.iter_mut().zip(&system.accelerations) {
             for axis in 0..2 {

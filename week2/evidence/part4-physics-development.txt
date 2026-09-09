@@ -1,0 +1,25 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.76s
+     Running tests/dimer.rs (week2/md/target/release/deps/dimer-659d8b539d6d7e5e)
+
+running 3 tests
+test free_particle_follows_constant_velocity_through_the_trait ... ok
+dimer dt=0.01, 500 steps: Euler final=1.9317762831395575, Verlet max=0.00032504759235677113
+test dimer_same_trait_same_state_distinguishes_euler_and_verlet ... ok
+Verlet 5000-step max absolute relative error=0.00032504919745689344
+test verlet_energy_remains_bounded_for_ten_times_longer ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/fluid.rs (week2/md/target/release/deps/fluid-1edab638b93dbedb)
+
+running 5 tests
+test shifted_potential_is_continuous_just_inside_the_cutoff ... ok
+test periodic_total_internal_force_vanishes ... ok
+test triangular_lattice_has_the_specified_box_and_wrapped_positions ... ok
+test production_saves_exact_steps_without_step_zero ... ok
+default contract development check: CheckReport { secular_drift: 9.82784695383757e-5, t_speed: 0.47705724493829554, chi2_per_dof: 0.7018545454545451, passed: true }
+test default_contract_passes_recomputed_physics_and_rejects_tampering ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+

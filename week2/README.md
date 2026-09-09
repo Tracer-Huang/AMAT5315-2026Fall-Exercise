@@ -4,7 +4,7 @@ This is the same course repository as Week 1. All commands below start in `week2
 
 ## Current status
 
-Work is in progress. Development evidence is separate from the student's independent grey-box checks. Nothing marked pending below is claimed to have passed.
+Parts 1-4 are implemented and development-tested; 14 release tests pass. The student subsequently delegated the verification/timing checklist back to the agent. Agent-executed command receipts will be recorded honestly; they are not represented as student-run checks. Part 5 baseline measurements are next. See [MANUAL-CHECKS.md](MANUAL-CHECKS.md) for reproducible commands. Nothing marked pending below is claimed to have passed.
 
 ## Setup
 
@@ -62,6 +62,53 @@ The plot matches the PDF's display sampling: every 2 integration steps in the le
 The PDF comparison is documented in `evidence/dimer-pdf-comparison.json`. Its right-hand vector path contains 500 points; converting those points back using the printed axes and comparing with the Rust CSV at steps 10,20,...,5000 gives agreement at approximately 1e-9 in relative energy. The caption's “within +/-3e-4” is approximate: the actual full-series bound is 3.2505e-4, while the sheet's required test threshold is 1e-3. No energies were clipped or rescaled to force the caption's rounded number.
 
 The test and example both route through `advance(&impl Integrator, ...)`, with no integrator-specific experimental setup. Raw development test output is in `evidence/part3-green.txt`. Student verification remains separate.
+
+## Part 4: equilibrium CLI
+
+`md run` implements the PDF's default contract: N=100, rho=0.8, T=0.5, dt=0.01, 2000 equilibration steps, 10000 production steps, sample every 50, seed 2026, velocity-Verlet. The initial triangular lattice uses periodic minimum-image separations and the energy-shifted cutoff rc=2.5. The force is unchanged inside the cutoff and zero outside; it is not force-shifted. The isolated dimer retains open boundaries and the plain LJ potential.
+
+Random velocities use the pinned rand_distr Normal sampler and ChaCha8Rng seeded with 2026. They have independent Gaussian components, their centre-of-mass velocity is removed, and velocities are rescaled initially and every 50 equilibration steps using T_thermo=2K/(2N-2). Ordinary production never rescales velocities. Its measured T_speed=<v^2>/2 differs from T_thermo by the finite-size factor (N-1)/N.
+
+```sh
+make reproduce
+cargo run --manifest-path md/Cargo.toml --release -- check artifacts
+cargo run --manifest-path md/Cargo.toml --release -- video artifacts --out fluid.mp4
+```
+
+These commands are for the student's independent check. The default trajectory has 200 frames, steps 50 through 10000. run.json records every required parameter; traj.jsonl records wrapped positions, velocities, times and energies with full JSON floating-point precision. Repeated runs preserve previous run.json/traj.jsonl under the output directory's history/ before installing a completed new run. Failed simulations do not replace the active trajectory.
+
+`md check` validates metadata and frame structure, recomputes forces/energy from positions with the naive path, recomputes kinetic energy and speeds from velocities, and only then cross-checks stored energies. It exits nonzero on malformed files or failed physics. The fixed acceptance bounds are the sheet's unheated T=0.5 contract: early/late 10% mean-energy drift <2e-3; abs(T_speed-0.5)<0.05; chi2/22<2 using 24 equal-predicted-probability bins. They are not a general acceptance test for cold or heated trajectories.
+
+Development values: drift 9.82785e-5, T_speed 0.47705724, chi2/22 0.70185455. An independent NumPy calculation reproduced these quantities and found maximum energy discrepancy 5.12e-13. See `evidence/development-review-parts1-4.md` for its scope and the fixed input-validation finding. These are development results, not student-submitted evidence.
+
+`md video` validates the raw trajectory and renders positions beside g(r), using recent 20-frame averages, one output frame per saved frame. The Python helper is embedded in the installed binary. It uses `MD_PYTHON` if set, otherwise the build workspace's `.venv/bin/python`, then python3. The encoder is `MD_FFMPEG`, ffmpeg on PATH, or the imageio-ffmpeg packaged executable. Default videos use 20 fps and enforce the <2 MB bound.
+
+The unchanged supplied viewer is available at `support/week2-viewer.html`; drop both output files into it. The published heating page is pending Part 5.
+
+## Timing
+
+Pending student-run measurements. Each program must run three times; compare medians and min-max ranges, not the single durations from development test logs.
+
+| Program | Median (s) | Range: min-max (s) |
+| --- | ---: | ---: |
+| Supplied NumPy week2-sim.py (seed 42) | pending | pending |
+| Rust debug (seed 2026) | pending | pending |
+| Rust release, naive (seed 2026) | pending | pending |
+
+## Profile
+
+| Version | Force share (%) | Elapsed time (s) |
+| --- | ---: | ---: |
+| Naive | pending student profile | pending |
+| Cell list | pending implementation | pending |
+
+## Benchmark
+
+The N=100,400,1600 naive/cells measurements and scaling.png follow the baseline profile and cell-list implementation. No speedup is claimed yet.
+
+## Pages and recording
+
+Pending the 400-atom, 200-frame heating experiment. GitHub Pages and the <=2-minute one-take student narration have not yet been published. The recording will be a GitHub release attachment, not a git-tracked file.
 
 ## Design and workflow
 

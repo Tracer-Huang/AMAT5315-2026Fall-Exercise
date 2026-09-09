@@ -68,9 +68,16 @@ fn cli_rejects_unknown_flags_and_invalid_numbers() {
 
 #[test]
 fn cli_rejects_excessive_particle_count_before_allocating() {
-    let result=Command::new(env!("CARGO_BIN_EXE_md"))
-        .args(["run","--n","1000000000000000000"]).output().unwrap();
-    assert_eq!(result.status.code(),Some(1),"invalid input must return an error, not panic: {}",String::from_utf8_lossy(&result.stderr));
-    let stderr=String::from_utf8_lossy(&result.stderr);
+    let result = Command::new(env!("CARGO_BIN_EXE_md"))
+        .args(["run", "--n", "1000000000000000000"])
+        .output()
+        .unwrap();
+    assert_eq!(
+        result.status.code(),
+        Some(1),
+        "invalid input must return an error, not panic: {}",
+        String::from_utf8_lossy(&result.stderr)
+    );
+    let stderr = String::from_utf8_lossy(&result.stderr);
     assert!(stderr.contains("error:") && stderr.contains("n is too large"));
 }

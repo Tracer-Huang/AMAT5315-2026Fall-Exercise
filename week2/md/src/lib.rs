@@ -2,8 +2,8 @@
 
 pub mod dynamics;
 pub mod fluid;
-pub mod periodic;
 pub mod pair;
+pub mod periodic;
 
 pub fn greeting() -> &'static str {
     "Hello, world!"

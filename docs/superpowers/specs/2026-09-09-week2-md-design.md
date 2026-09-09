@@ -38,7 +38,7 @@ Publication destination: `Tracer-Huang/AMAT5315-2026Fall-Exercise`, existing rep
 
 - Parts 1-2 are directly specified implementation. Parts 3-5 design and ordered plans require the student's review before dependent implementation, as requested by PDF pages 7,12,16.
 - Proposed repository instruction change: add only the four PDF-requested upstream Superpowers skills under .agents/skills. Existing AGENTS.md, tutor skill, and global instructions remain authoritative. No expansion of permissions is proposed.
-- User correction on 2026-09-09: all grey-box terminal commands are performed manually by the student after Computer Use refused terminal access. Agent development tests are recorded separately and do not stand in for student verification.
+- User initially chose manual grey-box commands after Computer Use refused terminal access, then explicitly delegated the verification/timing checklist back to the agent ("你替我完成"). Use the available terminal tools and preserve actual command receipts. Do not represent agent execution as student verification; do not circumvent the Computer Use terminal restriction.
 - The supplied baseline is `/Users/joshua/Downloads/week2-sim.py` and has seed 42. Preserve it unchanged, record its provenance, and disclose this difference from the Rust contract seed 2026.
 - Existing authenticated GitHub CLI resolves to Tracer-Huang. The GitHub connector resolves to a different account and must not be used for publication. No login credentials belong in files or commits.
 - Public repository commits/pushes, Pages, and release delivery are authorized by the user's full-chain request. Manual recordings and benchmark/profile observations remain evidence dependencies; do not mark them complete without actual results.
