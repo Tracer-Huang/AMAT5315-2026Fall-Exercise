@@ -40,7 +40,7 @@ cargo run --manifest-path md/Cargo.toml --example field > field.csv
 
 ![Pair energy and force](field.png)
 
-Arrows point outwards inside r0 and inwards outside; the attractive energy well surrounds the repulsive core. Arrow lengths are compressed for visibility.
+Arrows point outwards inside r0 and inwards outside; the attractive negative-energy ring surrounds the repulsive core. All arrows are normalized to the same displayed length (0.17 distance units) and show direction only, not force magnitude. White arrows remain visible inside the repulsive core, dark arrows make the weak outer attraction readable, and a small arrow-free band leaves the zero-force circle visible. The energy heatmap uses a 241×241 grid exported by the Rust functions.
 
 ## Part 3: from force to motion
 
