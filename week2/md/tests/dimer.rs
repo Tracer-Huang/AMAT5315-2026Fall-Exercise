@@ -1,4 +1,4 @@
-use md::dynamics::{advance, ForwardEuler, Integrator, System, VelocityVerlet};
+use md::dynamics::{ForwardEuler, Integrator, System, VelocityVerlet, advance};
 
 fn experiment(method: &impl Integrator, steps: usize) -> (f64, f64) {
     let mut system = System::new(vec![[0.0, 0.0], [1.2, 0.0]], vec![[0.0; 2]; 2]).unwrap();
@@ -17,9 +17,16 @@ fn experiment(method: &impl Integrator, steps: usize) -> (f64, f64) {
 fn dimer_same_trait_same_state_distinguishes_euler_and_verlet() {
     let euler = experiment(&ForwardEuler, 500);
     let verlet = experiment(&VelocityVerlet, 500);
-    println!("dimer dt=0.01, 500 steps: Euler final={}, Verlet max={}", euler.1, verlet.0);
+    println!(
+        "dimer dt=0.01, 500 steps: Euler final={}, Verlet max={}",
+        euler.1, verlet.0
+    );
     assert!(euler.1 > 0.5, "Euler final relative error: {}", euler.1);
-    assert!(verlet.0 < 1e-3, "Verlet max absolute relative error: {}", verlet.0);
+    assert!(
+        verlet.0 < 1e-3,
+        "Verlet max absolute relative error: {}",
+        verlet.0
+    );
 }
 
 #[test]

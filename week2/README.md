@@ -42,6 +42,23 @@ cargo run --manifest-path md/Cargo.toml --example field > field.csv
 
 Arrows point outwards inside r0 and inwards outside; the attractive energy well surrounds the repulsive core. Arrow lengths are compressed for visibility.
 
+## Part 3: from force to motion
+
+`System` owns position, velocity, and acceleration vectors. `total_energy(&self)` only reads them. `Integrator::step(&self, system: &mut System, dt)` borrows the update rule for reading and the particle state exclusively for updates. The generic `advance` driver accepts either `ForwardEuler` or `VelocityVerlet`, so the experiment changes only the integrator value.
+
+Euler updates position from the old velocity and velocity from the old acceleration. Verlet applies a half kick, drift, one force evaluation at the new positions, and a second half kick, retaining the new accelerations. `println!` is a formatting/output macro; `assert!` checks test conditions; `#[test]` is the attribute that registers tests.
+
+For initial positions (0,0),(1.2,0), zero velocities, and dt=0.01, development measurements gave Euler's final relative energy error 1.931776 after 500 steps; Verlet's maximum absolute relative error was 0.000325048. The 5000-step Verlet maximum was 0.000325049, below 1e-3. Small bounded energy oscillations do not mean the numerical trajectory is exact.
+
+```sh
+cargo run --manifest-path md/Cargo.toml --example dimer > dimer.csv
+.venv/bin/python scripts/plot_dimer.py dimer.csv --out dimer.png
+```
+
+![Dimer integrator comparison](dimer.png)
+
+The test and example both route through `advance(&impl Integrator, ...)`, with no integrator-specific experimental setup. Raw development test output is in `evidence/part3-green.txt`. Student verification remains separate.
+
 ## Design and workflow
 
 The student approved the Part 3-5 design and ordered plan on 2026-09-09. They are under `../docs/superpowers/`. The four repository skills come from [obra/superpowers](https://github.com/obra/superpowers), installed with the Codex skill-installer. All four entrypoints were byte-compared against revision `b36e0829c6d0140e93cfef2ca599b1b07d4a7797`; the upstream MIT license is retained in `.agents/skills/SUPERPOWERS-LICENSE` at repository root. Existing repository and host instructions remain controlling.

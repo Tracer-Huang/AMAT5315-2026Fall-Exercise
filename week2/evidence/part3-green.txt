@@ -1,0 +1,34 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s
+     Running unittests src/lib.rs (week2/md/target/debug/deps/md-456d877594a48dac)
+
+running 3 tests
+test pair::tests::force_is_minus_energy_derivative ... ok
+test pair::tests::well_depth ... ok
+test tests::greeting_is_hello_world ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (week2/md/target/debug/deps/md-07ddaf2700892ebb)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/dimer.rs (week2/md/target/debug/deps/dimer-ecde8bf4c0ed4ba4)
+
+running 3 tests
+test free_particle_follows_constant_velocity_through_the_trait ... ok
+dimer dt=0.01, 500 steps: Euler final=1.9317762831395575, Verlet max=0.00032504759235677113
+test dimer_same_trait_same_state_distinguishes_euler_and_verlet ... ok
+Verlet 5000-step max absolute relative error=0.00032504919745689344
+test verlet_energy_remains_bounded_for_ten_times_longer ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests md
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

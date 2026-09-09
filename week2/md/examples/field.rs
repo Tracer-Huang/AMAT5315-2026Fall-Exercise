@@ -13,7 +13,13 @@ fn main() -> io::Result<()> {
                 writeln!(out, "{x},{y},NaN,0,0")?;
             } else {
                 let radial = md::pair::force(r);
-                writeln!(out, "{x},{y},{},{},{}", md::pair::energy(r), radial*x/r, radial*y/r)?;
+                writeln!(
+                    out,
+                    "{x},{y},{},{},{}",
+                    md::pair::energy(r),
+                    radial * x / r,
+                    radial * y / r
+                )?;
             }
         }
     }
