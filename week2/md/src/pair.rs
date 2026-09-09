@@ -7,8 +7,10 @@ pub fn energy(r: f64) -> f64 {
 }
 
 /// Positive means repulsion; multiply by (x_i - x_j) / r for force on i.
-pub fn force(_r: f64) -> f64 {
-    todo!("Part 2: implement analytic radial force")
+pub fn force(r: f64) -> f64 {
+    assert!(r.is_finite() && r > 0.0, "pair distance must be finite and positive");
+    let inv_r6 = r.recip().powi(6);
+    24.0 * (2.0 * inv_r6 * inv_r6 - inv_r6) / r
 }
 
 #[cfg(test)]
