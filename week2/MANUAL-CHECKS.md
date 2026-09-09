@@ -1,8 +1,19 @@
-# Student-run grey-box checks
+# Verification and reproduction commands
 
 The student initially chose to run grey-box commands manually after Computer Use refused terminal access, then explicitly delegated this checklist back to the agent ("你替我完成"). The agent now executes available terminal commands and records their actual outputs. These are NOT represented as student-run checks. This file remains the reproducible command guide.
 
-Current ready scope: Parts 1-4, including corrected field/dimer figures. Part 5 optimization waits for the baseline timings and naive sampling profile below. `md` is installed as a release command with debug symbols.
+Current scope: Parts 1-5, including corrected field/dimer figures, measured cell-list scaling, and heating/cold/hot data. All 21 release tests and the default physics check passed in a fresh GitHub clone. The actual command receipts and raw measurements are in evidence/. The commands below allow independent repetition; their output will vary with machine and timing noise.
+
+Before any bare `md` command, start in this checkout's week2 directory and install its executable:
+
+```sh
+cargo install --path md --locked --force
+export PATH="$HOME/.cargo/bin:$PATH"
+command -v md
+md --version
+```
+
+The release profile retains debug symbols for samply. Install the plotting/video environment using the README's setup commands if it is not already present.
 
 ## 1. Current Part 2-4 checks
 
@@ -44,8 +55,8 @@ Run each of these timing commands **three times** and record each elapsed/real t
 
 ```sh
 (cd /tmp/amat5315-week2-numpy-baseline && time /tmp/venv/bin/python /Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/week2-sim.py)
-time ./md/target/debug/md run --out /tmp/md-debug
-time md run --out /tmp/md-release
+time ./md/target/debug/md run --force naive --out /tmp/md-debug
+time md run --force naive --out /tmp/md-release
 ```
 
 Send the nine elapsed times as text, for example:
@@ -62,14 +73,36 @@ Record the NumPy version too: `/tmp/venv/bin/python -c 'import numpy; print(nump
 
 ```sh
 cargo install samply --locked
-samply record md run --n 400 --eq-steps 200 --steps 1000 --out /tmp/md-prof
+~/.cargo/bin/samply record md run --force naive --n 400 --eq-steps 200 --steps 1000 --out /tmp/md-prof-naive
 ```
 
 In Firefox Profiler's Call Tree, locate `md::periodic::forces`. Record its inclusive sample percentage (the function plus its calls) and the profiled run's elapsed time. Save the screenshot as `week2/profile-naive.png` and send the two numbers as text. The required reference target is a force share above 90%; report the actual number even if it differs.
 
 If `samply` is not on PATH after its Cargo installation, invoke `~/.cargo/bin/samply record ...` or add `~/.cargo/bin` to that terminal's PATH. Do not substitute wall-clock timing for a sampling profile or fill in reference-machine percentages.
 
-The agent will inspect these results, populate the Timing/Profile tables, then implement and test the cell list and heating schedule. The post-optimization profile, heating runs, Pages inspection, fresh-clone acceptance, and narrated recording come after that.
+The original pre-optimization measurements are already recorded in the README, from source efda417. Current-source reruns must explicitly select naive because cells is now the default. To inspect the optimized profile with the same workload, run:
+
+```sh
+~/.cargo/bin/samply record md run --force cells --n 400 --eq-steps 200 --steps 1000 --out /tmp/md-prof-cells
+python3 scripts/benchmark.py scaling --out evidence/scaling-new.json
+```
+
+The saved original profile files and symbol sidecars can be reopened without rerunning the simulation. Record actual sample percentages and elapsed times; do not use the source machine's numbers as new measurements.
+
+## 4. Heating, public page, and fresh-clone acceptance
+
+The complete heating/cold/hot reproduction commands are in the README's Part 5 section. The public page is https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/ . Check its four synchronized panels, 400 atoms, 200 frames, and loss of distant g(r) peaks as temperature rises. A fresh clone can verify the core without any pre-existing installed md:
+
+```sh
+WK2_CHECK_DIR=$(mktemp -d /tmp/amat5315-final-check-XXXXXX)
+gh repo clone Tracer-Huang/AMAT5315-2026Fall-Exercise "$WK2_CHECK_DIR/exercise"
+cd "$WK2_CHECK_DIR/exercise/week2"
+cargo test --manifest-path md/Cargo.toml --release
+make reproduce
+cargo run --manifest-path md/Cargo.toml --release -- check artifacts
+```
+
+The final independent review is recorded in REVIEW.md. The <=2-minute recording must show the check reaching PASS and explain cold/hot g(r); its media file belongs on a GitHub release rather than in git. The narration outline is in RECORDING-SCRIPT.md.
 
 ## Optional: reproduce the exact one-test Part 1 checkpoint
 

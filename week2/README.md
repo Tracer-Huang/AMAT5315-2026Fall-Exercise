@@ -13,7 +13,13 @@ Rust and Cargo are required. Plotting and video dependencies are isolated:
 ```sh
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements.txt
+cargo install --path md --locked --force
+export PATH="$HOME/.cargo/bin:$PATH"
+command -v md
+md --version
 ```
+
+Install from this checkout before using bare `md` in the profiling/heating commands. `--force` replaces a stale installation, and the PATH line selects Cargo's installed command. The commands using `cargo run --manifest-path md/Cargo.toml` already select this checkout explicitly.
 
 `requirements-lock.txt` records the versions used for the supplied figures. It is a dependency record, not a physics acceptance result.
 
@@ -166,7 +172,7 @@ Actual run-output receipts and the isolated temporary cold/hot data locations us
 
 ## Pages and recording
 
-Pending the 400-atom, 200-frame heating experiment. GitHub Pages and the <=2-minute one-take student narration have not yet been published. The recording will be a GitHub release attachment, not a git-tracked file.
+Public heating viewer: [GitHub Pages](https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/). The site is published from main:/docs and serves the supplied viewer with the 400-atom, 200-frame heating trajectory. Browser verification and final recording receipts are being added. The recording will be a GitHub release attachment, not a git-tracked file.
 
 ## Design and workflow
 
