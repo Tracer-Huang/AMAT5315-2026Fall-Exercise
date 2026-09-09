@@ -13,7 +13,7 @@ const HELP: &str = "md: AMAT5315 two-dimensional molecular dynamics
 
 md run [--n 100] [--rho 0.8] [--temperature 0.5] [--dt 0.01]
        [--eq-steps 2000] [--steps 10000] [--sample-every 50]
-       [--seed 2026] [--force cells|naive] [--out artifacts]
+       [--seed 2026] [--force cells|naive] [--ramp-to FINAL_T] [--out artifacts]
 md check <trajectory-directory>
 md video <trajectory-directory> --out <video.mp4>
 
@@ -56,6 +56,7 @@ fn execute() -> MdResult<()> {
                     "--n" => config.n = parse(value, name)?,
                     "--rho" => config.rho = parse(value, name)?,
                     "--temperature" => config.temperature = parse(value, name)?,
+                    "--ramp-to" => config.ramp_to = Some(parse(value, name)?),
                     "--dt" => config.dt = parse(value, name)?,
                     "--eq-steps" => config.eq_steps = parse(value, name)?,
                     "--steps" => config.steps = parse(value, name)?,

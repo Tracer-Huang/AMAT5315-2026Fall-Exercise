@@ -1,0 +1,77 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.90s
+     Running unittests src/lib.rs (week2/md/target/release/deps/md-0a943e2d28ae6fe4)
+
+running 3 tests
+test pair::tests::force_is_minus_energy_derivative ... ok
+test pair::tests::well_depth ... ok
+test tests::greeting_is_hello_world ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (week2/md/target/release/deps/md-141ff47ffb61f86b)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cells.rs (week2/md/target/release/deps/cells-a0e3df8cae1e860c)
+
+running 3 tests
+test cells_preserve_cutoff_and_periodic_pair_cases ... ok
+test two_cell_wide_box_deduplicates_wrapped_neighbour_cells ... ok
+test cells_and_naive_agree_on_perturbed_lattices_across_boundaries ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/cli.rs (week2/md/target/release/deps/cli-b0fc5e50876e564e)
+
+running 5 tests
+test cli_rejects_excessive_particle_count_before_allocating ... ok
+wrote /var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/amat5315-force-cli-71556-1788953362918165000/cells/run.json + traj.jsonl (2 production frames, velocity-verlet, cells)
+test cli_rejects_unknown_flags_and_invalid_numbers ... ok
+wrote /var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/amat5315-cli-71556-1788953362918192000/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)
+test cli_records_the_requested_heating_target ... ok
+wrote /var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/amat5315-force-cli-71556-1788953362918165000/naive/run.json + traj.jsonl (2 production frames, velocity-verlet, naive)
+test cli_defaults_to_cells_and_keeps_the_naive_flag ... ok
+test cli_writes_readable_frames_and_rejects_malformed_input ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+     Running tests/dimer.rs (week2/md/target/release/deps/dimer-659d8b539d6d7e5e)
+
+running 3 tests
+test free_particle_follows_constant_velocity_through_the_trait ... ok
+dimer dt=0.01, 500 steps: Euler final=1.9317762831395575, Verlet max=0.00032504759235677113
+test dimer_same_trait_same_state_distinguishes_euler_and_verlet ... ok
+Verlet 5000-step max absolute relative error=0.00032504919745689344
+test verlet_energy_remains_bounded_for_ten_times_longer ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/fluid.rs (week2/md/target/release/deps/fluid-1edab638b93dbedb)
+
+running 5 tests
+test shifted_potential_is_continuous_just_inside_the_cutoff ... ok
+test triangular_lattice_has_the_specified_box_and_wrapped_positions ... ok
+test periodic_total_internal_force_vanishes ... ok
+test production_saves_exact_steps_without_step_zero ... ok
+default contract development check: CheckReport { secular_drift: 9.82784695383757e-5, t_speed: 0.47705724493829554, chi2_per_dof: 0.7018545454545451, passed: true }
+test default_contract_passes_recomputed_physics_and_rejects_tampering ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+
+     Running tests/ramp.rs (week2/md/target/release/deps/ramp-ce75e17d9db7fe67)
+
+running 2 tests
+test heating_schedule_has_exact_endpoints_and_linear_middle ... ok
+test ramp_changes_production_thermostat_and_is_not_an_nve_check ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests md
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

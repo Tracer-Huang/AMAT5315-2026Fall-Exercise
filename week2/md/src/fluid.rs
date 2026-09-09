@@ -24,8 +24,8 @@ pub struct RunConfig {
     pub integrator: String,
     #[serde(default)]
     pub force: periodic::ForceMethod,
-    #[serde(default,skip_serializing_if="Option::is_none")]
-    pub ramp_to:Option<f64>,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub ramp_to: Option<f64>,
 }
 
 impl Default for RunConfig {
@@ -42,7 +42,7 @@ impl Default for RunConfig {
             seed: 2026,
             integrator: "velocity-verlet".into(),
             force: periodic::ForceMethod::Cells,
-            ramp_to:None,
+            ramp_to: None,
         }
     }
 }
@@ -92,6 +92,7 @@ impl RunConfig {
         if !(self.steps as f64 * self.dt).is_finite() {
             return Err("production duration must be finite".into());
         }
+        ramp_target(self, 0)?;
         if self.integrator != "velocity-verlet" {
             return Err("the equilibrium CLI requires velocity-verlet; Euler remains in the dimer experiment".into());
         }
@@ -134,8 +135,25 @@ pub fn rescale(system: &mut System, target: f64) -> MdResult<()> {
     Ok(())
 }
 
-pub fn ramp_target(_config:&RunConfig,_step:usize)->MdResult<f64> {
-    todo!("Part 5: linear production heating target")
+pub fn ramp_target(config: &RunConfig, step: usize) -> MdResult<f64> {
+    if config.steps == 0 || step > config.steps {
+        return Err("heating step is outside production".into());
+    }
+    let end = config.ramp_to.unwrap_or(config.temperature);
+    if !config.temperature.is_finite()
+        || config.temperature <= 0.0
+        || !end.is_finite()
+        || end < config.temperature
+    {
+        return Err("ramp-to must be finite and at least the positive initial temperature".into());
+    }
+    if step == 0 {
+        return Ok(config.temperature);
+    }
+    if step == config.steps {
+        return Ok(end);
+    }
+    Ok(config.temperature + (end - config.temperature) * step as f64 / config.steps as f64)
 }
 
 pub fn simulate(
@@ -151,9 +169,12 @@ pub fn simulate(
         }
     }
     let mut count = 0;
-    // Thermostat is off throughout ordinary production.
+    // Ordinary production is NVE. An explicit ramp intentionally adds energy.
     for step in 1..=config.steps {
         advance(&VelocityVerlet, &mut system, config.dt)?;
+        if config.ramp_to.is_some() && (step % 50 == 0 || step == config.steps) {
+            rescale(&mut system, ramp_target(config, step)?)?;
+        }
         if step % config.sample_every == 0 {
             let frame = Frame {
                 step,
@@ -256,6 +277,9 @@ pub fn recompute_energies(config: &RunConfig, frames: &[Frame]) -> MdResult<Vec<
 }
 
 pub fn analyze(config: &RunConfig, frames: &[Frame]) -> MdResult<CheckReport> {
+    if config.ramp_to.is_some() {
+        return Err("heated trajectories intentionally exchange energy; use the unheated default run for the contract check".into());
+    }
     let energies = recompute_energies(config, frames)?;
     let initial = energies[0].abs();
     if initial < 1e-12 {
