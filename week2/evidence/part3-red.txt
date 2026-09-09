@@ -1,0 +1,29 @@
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running tests/dimer.rs (week2/md/target/debug/deps/dimer-ecde8bf4c0ed4ba4)
+
+running 3 tests
+
+thread 'dimer_same_trait_same_state_distinguishes_euler_and_verlet' (3039531) panicked at src/dynamics.rs:15:9:
+not yet implemented: Part 3: initialize an isolated system
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'verlet_energy_remains_bounded_for_ten_times_longer' (3039533) panicked at src/dynamics.rs:15:9:
+not yet implemented: Part 3: initialize an isolated system
+
+thread 'free_particle_follows_constant_velocity_through_the_trait' (3039532) panicked at src/dynamics.rs:15:9:
+not yet implemented: Part 3: initialize an isolated system
+test verlet_energy_remains_bounded_for_ten_times_longer ... FAILED
+test dimer_same_trait_same_state_distinguishes_euler_and_verlet ... FAILED
+test free_particle_follows_constant_velocity_through_the_trait ... FAILED
+
+failures:
+
+failures:
+    dimer_same_trait_same_state_distinguishes_euler_and_verlet
+    free_particle_follows_constant_velocity_through_the_trait
+    verlet_energy_remains_bounded_for_ten_times_longer
+
+test result: FAILED. 0 passed; 3 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test dimer`
