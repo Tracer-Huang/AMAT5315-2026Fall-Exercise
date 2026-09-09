@@ -1,6 +1,6 @@
-# Two-minute demonstration outline
+# Silent two-minute screen demonstration
 
-Purpose: show a real fresh-clone physics check reaching PASS, then explain the public heating trajectory near T=0.2 and T=1.0. Use one continuous take; do not replace command execution with fabricated output. If narration is synthetic, label it explicitly as AI narration rather than the student's own voice.
+Purpose: show a real fresh-clone physics check reaching PASS, then show the public heating trajectory near T=0.2 and T=1.0. The student explicitly requested a silent screen demonstration, so no narration is added. The delivered demonstration uses actual chronological browser captures and real fresh-shell output displayed in a read-only panel. Browser capture waits are uniformly time-compressed to 110 seconds; it is not labeled a native desktop screencast.
 
 ## Screen sequence
 
@@ -17,7 +17,7 @@ Purpose: show a real fresh-clone physics check reaching PASS, then explain the p
 
 The viewer's speed histogram averages 20 frames; its g(r) averages up to 10 frames. The current-temperature history label is the relevant instantaneous T for the pause points.
 
-## Suggested Chinese narration (about one minute)
+## Reading notes (not an audio track)
 
 这是 Week 2 的二维 Lennard-Jones 分子动力学程序。我从全新克隆的仓库重新生成轨迹，再从保存的位置和速度重新计算能量、温度和速率分布。这里三个检查都在规定界限内，程序显示 PASS。
 

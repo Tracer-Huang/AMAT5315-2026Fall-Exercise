@@ -1,0 +1,4 @@
+cargo run --manifest-path md/Cargo.toml --release -- run --out artifacts
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.01s
+     Running `md/target/release/md run --out artifacts`
+wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, cells)

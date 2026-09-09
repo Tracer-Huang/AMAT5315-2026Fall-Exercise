@@ -1,0 +1,30 @@
+{
+  "url": "https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/",
+  "access": "anonymous HTTP 200 and unauthenticated isolated browser",
+  "n": 400,
+  "frames": 200,
+  "panels": [
+    "particles",
+    "speed distribution",
+    "pair structure",
+    "temperature and energy histories"
+  ],
+  "observed_states": [
+    {
+      "frame": 0,
+      "T_speed_display": 0.204,
+      "contrast_display": 0.333
+    },
+    {
+      "frame": 159,
+      "T_speed_display": 0.998,
+      "contrast_display": 0.112
+    },
+    {
+      "frame": 199,
+      "T_speed_display": 1.197,
+      "contrast_display": 0.096
+    }
+  ],
+  "screenshots": "page-*.png are unchanged actual viewport captures; narrow viewport uses vertical scrolling."
+}

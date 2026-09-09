@@ -1,0 +1,38 @@
+{
+  "videos": [
+    {
+      "file": "week2/fluid.mp4",
+      "decoded_frames": 200,
+      "fps": 20.0,
+      "duration_seconds": 10.0,
+      "dimensions": [
+        960,
+        450
+      ],
+      "bytes": 924368
+    },
+    {
+      "file": "week2/cold.mp4",
+      "decoded_frames": 200,
+      "fps": 20.0,
+      "duration_seconds": 10.0,
+      "dimensions": [
+        960,
+        450
+      ],
+      "bytes": 935246
+    },
+    {
+      "file": "week2/hot.mp4",
+      "decoded_frames": 200,
+      "fps": 20.0,
+      "duration_seconds": 10.0,
+      "dimensions": [
+        960,
+        450
+      ],
+      "bytes": 918413
+    }
+  ],
+  "visual_checks": "First, middle, and last decoded frames inspected; atoms and g(r) panels remain readable."
+}

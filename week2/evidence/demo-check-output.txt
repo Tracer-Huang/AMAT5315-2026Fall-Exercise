@@ -1,0 +1,17 @@
+Fresh GitHub clone — source commit:
+44a49f4
+
+$ make reproduce
+cargo run --manifest-path md/Cargo.toml --release -- run --out artifacts
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.01s
+     Running `md/target/release/md run --out artifacts`
+preserved previous output in artifacts/history/1788956974274620000-86432
+wrote artifacts/run.json + traj.jsonl (200 production frames, velocity-verlet, cells)
+
+$ cargo run --manifest-path md/Cargo.toml --release -- check artifacts
+    Finished `release` profile [optimized + debuginfo] target(s) in 0.01s
+     Running `md/target/release/md check artifacts`
+secular drift = 9.82784695e-5; limit < 2.0e-3
+T_speed = 0.47705724; |T_speed - 0.5| = 0.02294276; limit < 0.05
+chi2 / 22 = 0.70185455; limit < 2.0
+PASS

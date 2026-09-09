@@ -4,7 +4,7 @@ This is the same course repository as Week 1. All commands below start in `week2
 
 ## Current status
 
-Parts 1-5 are implemented; 21 release tests pass. Baseline timings, naive/cell-list sampling profiles, scaling, and heating/cold/hot trajectories have been measured. The student delegated terminal verification to the agent; the receipts are labeled honestly. Pages publication, final fresh-clone review, and the narrated recording are being completed. See [MANUAL-CHECKS.md](MANUAL-CHECKS.md) for reproducible commands.
+Parts 1-5 are implemented; all 21 release tests and the physics check pass from a fresh GitHub clone. Timing/profile/scaling/heating evidence and the final independent review are complete. The public heating page is live. A 110-second silent browser-screen demonstration has been encoded and checked for release upload. The student delegated terminal verification and requested no narration; execution and capture methods are documented honestly. See [MANUAL-CHECKS.md](MANUAL-CHECKS.md) for reproduction and [REVIEW.md](REVIEW.md) for the resolved findings.
 
 ## Setup
 
@@ -112,6 +112,10 @@ The release median is below one third of debug. On this machine release Rust als
 
 The naive profile contains 109 weighted samples, 105 with `md::periodic::forces` in their stack (inclusive share). This confirms the >90% force hot spot before optimization. Cells contains 77/84 inclusive force samples: 76 in integration and one in initialization. The main-loop Call Tree row rounds 76/84 to 90%, while the table aggregates the same function across all call sites. Elapsed time is the recorded process lifetime, excluding samply startup; the viewer's sampled ranges are about 109 ms and 84 ms. The cell-list process is faster even though force evaluation still accounts for most samples. Actual profiles, symbol sidecars and summaries are under `evidence/profile-*`; screenshots are `profile-naive.png` and `profile-cells.png`.
 
+| Naive profiler | Cell-list profiler |
+| --- | --- |
+| ![Naive call tree](profile-naive.png) | ![Cell-list call tree](profile-cells.png) |
+
 ```sh
 ~/.cargo/bin/samply record --save-only --unstable-presymbolicate --output evidence/profile-naive-new.json.gz md run --force naive --n 400 --eq-steps 200 --steps 1000 --out /tmp/md-prof
 python3 scripts/profile_summary.py evidence/profile-naive-new.json.gz --symbols evidence/profile-naive-new.json.syms.json --out evidence/profile-naive-new-summary.json
@@ -172,7 +176,11 @@ Actual run-output receipts and the isolated temporary cold/hot data locations us
 
 ## Pages and recording
 
-Public heating viewer: [GitHub Pages](https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/). The site is published from main:/docs and serves the supplied viewer with the 400-atom, 200-frame heating trajectory. Browser verification and final recording receipts are being added. The recording will be a GitHub release attachment, not a git-tracked file.
+Public heating viewer: [GitHub Pages](https://tracer-huang.github.io/AMAT5315-2026Fall-Exercise/). The site is published from main:/docs and serves the supplied viewer with the 400-atom, 200-frame heating trajectory. Anonymous HTTP access and all four browser panels were verified. Browser-visible cold / near-T=1 / final states are recorded in `evidence/page-verification.json` and actual `page-*.png` screenshots.
+
+The screen demonstration is silent at the student's request. It shows actual fresh-shell verification output in a read-only browser panel, followed by the public viewer. Captures remain in chronological order and are uniformly time-compressed by about 9.05x to 110 seconds. This capture method is documented in `evidence/screen-demo.json`; it is not described as a native desktop screencast. The MP4 and original captures are retained locally under ignored `recordings/`, and the MP4 is being attached to a GitHub release rather than committed to git.
+
+Fresh-clone verification receipts are `evidence/fresh-clone-tests.txt`, `fresh-clone-reproduce.txt`, and `fresh-clone-check.txt`. The code reviewed/tested at 44a49f4 remains unchanged; documentation findings were fixed at 64245ae.
 
 ## Design and workflow
 
