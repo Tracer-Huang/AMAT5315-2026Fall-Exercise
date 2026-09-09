@@ -1,0 +1,3 @@
+preserved previous output in /tmp/md-prof/history/1788953552991160000-74136
+wrote /tmp/md-prof/run.json + traj.jsonl (20 production frames, velocity-verlet, cells)
+All tasks terminated.

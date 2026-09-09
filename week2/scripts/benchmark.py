@@ -43,8 +43,8 @@ def main():
     cases=[]
     if args.mode=="baseline":
         specs=[("NumPy",[args.python,str(ROOT/"week2-sim.py")]),
-               ("Rust debug",[str(ROOT/"md/target/debug/md"),"run","--out","artifacts"]),
-               ("Rust release naive",[str(ROOT/"md/target/release/md"),"run","--out","artifacts"])]
+               ("Rust debug",[str(ROOT/"md/target/debug/md"),"run","--force","naive","--out","artifacts"]),
+               ("Rust release naive",[str(ROOT/"md/target/release/md"),"run","--force","naive","--out","artifacts"])]
         for index,(label,command) in enumerate(specs):
             cases.append(run_case(label,command,work/f"case-{index}"))
     else:

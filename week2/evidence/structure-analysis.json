@@ -1,0 +1,36 @@
+{
+  "source_directories": {
+    "heating": "../docs",
+    "cold": "/private/tmp/amat5315-week2-9lzh5p1f/cold",
+    "hot": "/private/tmp/amat5315-week2-9lzh5p1f/hot"
+  },
+  "heating": {
+    "n": 400,
+    "frames": 200,
+    "seed": 2026,
+    "first_saved_T_speed": 0.20448749999999996,
+    "last_saved_T_speed": 1.197,
+    "viewer_first_frame_contrast": 0.3329961410247272,
+    "viewer_last_frame_contrast": 0.09600868355667126,
+    "viewer_definition": "48 radial bins up to half the shorter box, RMS(g-1) for bin centres >=2; current window is 1 frame at start and 10 at end.",
+    "frame_nearest_T_1": 160
+  },
+  "fixed_temperature_runs": {
+    "cold": {
+      "n": 100,
+      "frames": 200,
+      "seed": 2026,
+      "mean_speed_temperature": 0.19347328270478467,
+      "mean_squared_displacement": 0.03170415537591376,
+      "time_averaged_gr_contrast_r_gt_2": 0.575850284681282
+    },
+    "hot": {
+      "n": 100,
+      "frames": 200,
+      "seed": 2026,
+      "mean_speed_temperature": 0.9356139677481602,
+      "mean_squared_displacement": 23.32423419839397,
+      "time_averaged_gr_contrast_r_gt_2": 0.19712141691516052
+    }
+  }
+}

@@ -1,0 +1,19 @@
+N=100 naive, run 1: 0.008980 s
+N=100 naive, run 2: 0.009078 s
+N=100 naive, run 3: 0.009442 s
+N=100 cells, run 1: 0.014727 s
+N=100 cells, run 2: 0.015243 s
+N=100 cells, run 3: 0.014629 s
+N=400 naive, run 1: 0.055267 s
+N=400 naive, run 2: 0.056033 s
+N=400 naive, run 3: 0.055338 s
+N=400 cells, run 1: 0.041968 s
+N=400 cells, run 2: 0.041920 s
+N=400 cells, run 3: 0.041496 s
+N=1600 naive, run 1: 0.715145 s
+N=1600 naive, run 2: 0.711777 s
+N=1600 naive, run 3: 0.716171 s
+N=1600 cells, run 1: 0.186157 s
+N=1600 cells, run 2: 0.180998 s
+N=1600 cells, run 3: 0.186715 s
+saved evidence/scaling-timings.json

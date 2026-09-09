@@ -1,0 +1,1 @@
+wrote /private/tmp/amat5315-week2-9lzh5p1f/hot/run.json + traj.jsonl (200 production frames, velocity-verlet, cells)

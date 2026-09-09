@@ -1,0 +1,295 @@
+{
+  "mode": "scaling",
+  "recorded_at_utc": "20260909T113216Z",
+  "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "git_commit": "175ef6e41ab48b2d9161a7e1ce55ccf5216cbae3",
+  "timer": "time.perf_counter around subprocess, wall time including startup and output I/O",
+  "repetitions": 3,
+  "cases": [
+    {
+      "label": "N=100 naive",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--force",
+        "naive",
+        "--n",
+        "100",
+        "--steps",
+        "500",
+        "--eq-steps",
+        "100",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z/n-100-naive",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.00898037500155624,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.009078374991076998,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953536822953000-73746\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.009441832997254096,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953536832022000-73747\n"
+        }
+      ],
+      "median_seconds": 0.009078374991076998,
+      "min_seconds": 0.00898037500155624,
+      "max_seconds": 0.009441832997254096,
+      "n": 100,
+      "force": "naive",
+      "total_steps": 600
+    },
+    {
+      "label": "N=100 cells",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--force",
+        "cells",
+        "--n",
+        "100",
+        "--steps",
+        "500",
+        "--eq-steps",
+        "100",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z/n-100-cells",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.014727250003488734,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.015243082991219126,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953536856767000-73749\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.014628834003815427,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953536871237000-73751\n"
+        }
+      ],
+      "median_seconds": 0.014727250003488734,
+      "min_seconds": 0.014628834003815427,
+      "max_seconds": 0.015243082991219126,
+      "n": 100,
+      "force": "cells",
+      "total_steps": 600
+    },
+    {
+      "label": "N=400 naive",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--force",
+        "naive",
+        "--n",
+        "400",
+        "--steps",
+        "500",
+        "--eq-steps",
+        "100",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z/n-400-naive",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.05526704099611379,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.05603258298651781,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953536941386000-73753\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.05533829100022558,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953536997573000-73754\n"
+        }
+      ],
+      "median_seconds": 0.05533829100022558,
+      "min_seconds": 0.05526704099611379,
+      "max_seconds": 0.05603258298651781,
+      "n": 400,
+      "force": "naive",
+      "total_steps": 600
+    },
+    {
+      "label": "N=400 cells",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--force",
+        "cells",
+        "--n",
+        "400",
+        "--steps",
+        "500",
+        "--eq-steps",
+        "100",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z/n-400-cells",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.0419682919891784,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.04191983399505261,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953537094952000-73756\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.04149649999453686,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953537136820000-73757\n"
+        }
+      ],
+      "median_seconds": 0.04191983399505261,
+      "min_seconds": 0.04149649999453686,
+      "max_seconds": 0.0419682919891784,
+      "n": 400,
+      "force": "cells",
+      "total_steps": 600
+    },
+    {
+      "label": "N=1600 naive",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--force",
+        "naive",
+        "--n",
+        "1600",
+        "--steps",
+        "500",
+        "--eq-steps",
+        "100",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z/n-1600-naive",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.7151448340009665,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.711777415999677,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953537893804000-73761\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.7161712920060381,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, naive)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953538605826000-73765\n"
+        }
+      ],
+      "median_seconds": 0.7151448340009665,
+      "min_seconds": 0.711777415999677,
+      "max_seconds": 0.7161712920060381,
+      "n": 1600,
+      "force": "naive",
+      "total_steps": 600
+    },
+    {
+      "label": "N=1600 cells",
+      "command": [
+        "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md/target/release/md",
+        "run",
+        "--force",
+        "cells",
+        "--n",
+        "1600",
+        "--steps",
+        "500",
+        "--eq-steps",
+        "100",
+        "--out",
+        "artifacts"
+      ],
+      "cwd": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z/n-1600-cells",
+      "runs": [
+        {
+          "trial": 1,
+          "elapsed_seconds": 0.18615729101293255,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": ""
+        },
+        {
+          "trial": 2,
+          "elapsed_seconds": 0.18099804100347683,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953539508191000-73767\n"
+        },
+        {
+          "trial": 3,
+          "elapsed_seconds": 0.1867147080047289,
+          "returncode": 0,
+          "stdout": "wrote artifacts/run.json + traj.jsonl (10 production frames, velocity-verlet, cells)\n",
+          "stderr": "preserved previous output in artifacts/history/1788953539689174000-73768\n"
+        }
+      ],
+      "median_seconds": 0.18615729101293255,
+      "min_seconds": 0.18099804100347683,
+      "max_seconds": 0.1867147080047289,
+      "n": 1600,
+      "force": "cells",
+      "total_steps": 600
+    }
+  ],
+  "seed_note": "Unmodified supplied NumPy uses seed 42; Rust default uses seed 2026.",
+  "raw_outputs_retained_in": "/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/benchmark-runs/scaling-20260909T113216Z"
+}
