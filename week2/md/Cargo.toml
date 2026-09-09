@@ -6,7 +6,11 @@ description = "AMAT5315 Week 2: tested two-dimensional molecular dynamics"
 license = "MIT"
 
 [dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rand = "0.8"
+rand_chacha = "0.3"
+rand_distr = "0.4"
 
 [profile.release]
 debug = 1
-

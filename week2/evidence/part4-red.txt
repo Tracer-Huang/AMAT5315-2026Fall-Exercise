@@ -1,0 +1,88 @@
+   Compiling libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling zerocopy v0.8.57
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling cfg-if v1.0.4
+   Compiling libm v0.2.16
+   Compiling autocfg v1.5.1
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling serde_json v1.0.151
+   Compiling serde v1.0.229
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling num-traits v0.2.19
+   Compiling getrandom v0.2.17
+   Compiling rand_core v0.6.4
+   Compiling syn v3.0.5
+   Compiling serde_derive v1.0.229
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.8
+   Compiling rand_distr v0.4.3
+   Compiling md v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week2/md)
+    Finished `release` profile [optimized + debuginfo] target(s) in 2.69s
+     Running tests/cli.rs (week2/md/target/release/deps/cli-b0fc5e50876e564e)
+
+running 2 tests
+Hello, world!
+
+thread 'cli_rejects_unknown_flags_and_invalid_numbers' (3062411) panicked at tests/cli.rs:27:9:
+assertion failed: !result.status.success()
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+test cli_rejects_unknown_flags_and_invalid_numbers ... FAILED
+
+thread 'cli_writes_readable_frames_and_rejects_malformed_input' (3062412) panicked at tests/cli.rs:8:97:
+binary must write run.json: Os { code: 2, kind: NotFound, message: "No such file or directory" }
+test cli_writes_readable_frames_and_rejects_malformed_input ... FAILED
+
+failures:
+
+failures:
+    cli_rejects_unknown_flags_and_invalid_numbers
+    cli_writes_readable_frames_and_rejects_malformed_input
+
+test result: FAILED. 0 passed; 2 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test cli`
+     Running tests/fluid.rs (week2/md/target/release/deps/fluid-1edab638b93dbedb)
+
+running 5 tests
+
+thread 'default_contract_passes_recomputed_physics_and_rejects_tampering' (3062416) panicked at src/fluid.rs:49:5:
+not yet implemented: Part 4: simulate equilibrium fluid
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+thread 'production_saves_exact_steps_without_step_zero' (3062418) panicked at src/fluid.rs:49:5:
+not yet implemented: Part 4: simulate equilibrium fluid
+
+thread 'periodic_total_internal_force_vanishes' (3062417) panicked at src/periodic.rs:5:5:
+not yet implemented: Part 4: periodic triangular lattice
+
+thread 'triangular_lattice_has_the_specified_box_and_wrapped_positions' (3062420) panicked at src/periodic.rs:5:5:
+not yet implemented: Part 4: periodic triangular lattice
+
+thread 'shifted_potential_is_continuous_just_inside_the_cutoff' (3062419) panicked at src/periodic.rs:11:5:
+not yet implemented: Part 4: periodic shifted-cutoff forces
+test shifted_potential_is_continuous_just_inside_the_cutoff ... FAILED
+test default_contract_passes_recomputed_physics_and_rejects_tampering ... FAILED
+test triangular_lattice_has_the_specified_box_and_wrapped_positions ... FAILED
+test periodic_total_internal_force_vanishes ... FAILED
+test production_saves_exact_steps_without_step_zero ... FAILED
+
+failures:
+
+failures:
+    default_contract_passes_recomputed_physics_and_rejects_tampering
+    periodic_total_internal_force_vanishes
+    production_saves_exact_steps_without_step_zero
+    shifted_potential_is_continuous_just_inside_the_cutoff
+    triangular_lattice_has_the_specified_box_and_wrapped_positions
+
+test result: FAILED. 0 passed; 5 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test fluid`
+error: 2 targets failed:
+    `--test cli`
+    `--test fluid`

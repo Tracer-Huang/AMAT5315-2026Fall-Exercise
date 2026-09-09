@@ -1,6 +1,8 @@
 //! Physics shared by the executable, experiments, and tests.
 
 pub mod dynamics;
+pub mod fluid;
+pub mod periodic;
 pub mod pair;
 
 pub fn greeting() -> &'static str {
