@@ -33,11 +33,11 @@ def main():
 
     def call(*items):
         result = subprocess.run(
-            cli + list(items), cwd=ROOT, text=True, capture_output=True, check=True
+            cli + list(items), cwd=ROOT, text=True, capture_output=True, check=False
         )
-        logs.append(result.stdout)
-        if "### Error" in result.stdout:
-            raise RuntimeError(result.stdout)
+        logs.append(result.stdout + result.stderr)
+        if result.returncode != 0 or "### Error" in result.stdout:
+            raise RuntimeError(result.stdout + result.stderr)
 
     try:
         if args.verify_public:
@@ -47,7 +47,7 @@ def main():
                 const raw=RAW;
                 await page.goto(COURSE+'?src='+encodeURIComponent(raw));
                 await page.waitForFunction(() => document.querySelector('#src').textContent.includes('410 frames'),null,{timeout:60000});
-                await page.context().grantPermissions(['clipboard-read','clipboard-write'],{origin:new URL(COURSE).origin});
+                await page.context().grantPermissions(['clipboard-read','clipboard-write'],{origin:'https://giggleliu.github.io'});
                 const checked=[];
                 for (const t of ['1.8','2.3','3.0']) {
                     await page.locator('#temperature').selectOption(t);
@@ -61,7 +61,7 @@ def main():
                         const box=document.querySelector('#share-link');
                         return box.hidden ? await navigator.clipboard.readText() : box.value;
                     });
-                    if (new URL(url).searchParams.get('src')!==raw) throw new Error('wrong copied source');
+                    if (await page.evaluate(link => new URL(link).searchParams.get('src'),url)!==raw) throw new Error('wrong copied source');
                     const context=await page.context().browser().newContext();
                     try {
                         if ((await context.cookies()).length) throw new Error('context not fresh');
