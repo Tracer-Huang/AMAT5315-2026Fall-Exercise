@@ -1,51 +1,83 @@
-use week4_fluid::{flow::*, io::*};
-fn run() -> Result<()> {
-    let mut args = std::env::args().skip(1);
-    let case = args
-        .next()
-        .ok_or("usage: field {taylor-green|random} --n N [--seed S --k-min A --k-max B]")?;
-    if case == "--help" {
-        println!("field taylor-green --n N\nfield random --n N --seed S --k-min A --k-max B");
-        return Ok(());
-    }
-    let allowed = match case.as_str() {
-        "taylor-green" => vec!["--n"],
-        "random" => vec!["--n", "--seed", "--k-min", "--k-max"],
-        _ => return Err("unknown field case".into()),
-    };
-    let map = flags(args, &allowed)?;
-    let n = required(&map, "--n")?;
-    valid_n(n)?;
-    let (u, v, seed, k_band) = if case == "random" {
-        let seed = required(&map, "--seed")?;
-        let lo: usize = required(&map, "--k-min")?;
-        let hi: usize = required(&map, "--k-max")?;
-        if lo < 1 || lo > hi || hi > n / 3 {
-            return Err("require 1 <= k-min <= k-max <= floor(n/3)".into());
-        }
-        let (u, v) = random_field(n, seed, lo, hi);
-        (u, v, Some(seed), Some([lo, hi]))
-    } else {
-        let (u, v) = taylor_green(n);
-        (u, v, None, None)
-    };
-    serde_json::to_writer(
-        std::io::stdout().lock(),
-        &Initial {
-            case,
-            n,
-            seed,
-            k_band,
-            u,
-            v,
-        },
-    )?;
-    println!();
-    Ok(())
+use std::f64::consts::PI;
+use std::process::exit;
+use week4::field_io::field_json;
+use week4::fluid::random_velocity;
+
+fn usage_error(message: &str) -> ! {
+    eprintln!("error: {message}");
+    exit(2);
 }
+
+fn option(args: &[String], name: &str) -> Option<String> {
+    args.windows(2)
+        .find(|pair| pair[0] == name)
+        .map(|pair| pair[1].clone())
+}
+
+fn required<T: std::str::FromStr>(args: &[String], name: &str) -> T {
+    option(args, name)
+        .unwrap_or_else(|| usage_error(&format!("missing required option {name}")))
+        .parse()
+        .unwrap_or_else(|_| usage_error(&format!("invalid value for {name}")))
+}
+
 fn main() {
-    if let Err(e) = run() {
-        eprintln!("field: {e}");
-        std::process::exit(1);
+    let args: Vec<_> = std::env::args().collect();
+    if args.len() < 3 {
+        usage_error("usage is field taylor-green ... or field random ...");
     }
+    let case = args[1].as_str();
+    let n: usize = required(&args, "--n");
+    if n < 4 || !n.is_power_of_two() {
+        usage_error("n must be a power of two at least 4");
+    }
+    let (u, v, seed, k_band, case_name) = match case {
+        "taylor-green" => {
+            let time: f64 = option(&args, "--t")
+                .map(|value| {
+                    value
+                        .parse()
+                        .unwrap_or_else(|_| usage_error("invalid value for --t"))
+                })
+                .unwrap_or(0.0);
+            let nu: f64 = option(&args, "--nu")
+                .map(|value| {
+                    value
+                        .parse()
+                        .unwrap_or_else(|_| usage_error("invalid value for --nu"))
+                })
+                .unwrap_or(0.0);
+            if time > 0.0 && option(&args, "--nu").is_none() {
+                usage_error("--nu is required when --t is positive");
+            }
+            if !time.is_finite() || !nu.is_finite() || time < 0.0 {
+                usage_error("t and nu must be finite and non-negative");
+            }
+            let decay = (-2.0 * nu * time).exp();
+            let mut u = Vec::with_capacity(n * n);
+            let mut v = Vec::with_capacity(n * n);
+            for l in 0..n {
+                for j in 0..n {
+                    let x = 2.0 * PI * j as f64 / n as f64;
+                    let y = 2.0 * PI * l as f64 / n as f64;
+                    u.push(x.cos() * y.sin() * decay);
+                    v.push(-x.sin() * y.cos() * decay);
+                }
+            }
+            (u, v, 0, "null".to_owned(), "taylor-green".to_owned())
+        }
+        "random" => {
+            let seed: u64 = required(&args, "--seed");
+            let k_min: usize = required(&args, "--k-min");
+            let k_max: usize = required(&args, "--k-max");
+            if k_min == 0 || k_min > k_max || k_max > n / 3 {
+                usage_error("require 0 < k-min <= k-max <= n/3");
+            }
+            let (u, v) = random_velocity(n, seed, k_min, k_max);
+            let k_band = format!("{{\"k_min\":{k_min},\"k_max\":{k_max}}}");
+            (u, v, seed, k_band, "random".to_owned())
+        }
+        _ => usage_error("case must be taylor-green or random"),
+    };
+    println!("{}", field_json(&case_name, n, seed, &k_band, &u, &v));
 }

@@ -1,25 +1,17 @@
-usage       = "field taylor-green --n 64 | fluid --nu 0.1 --dt 0.01 --t-end 1 --every 0.1 --out artifacts/taylor-green"
-description = "integrate the field on stdin, record frames; no unstated defaults"
+usage       = "field taylor-green --n 64 | fluid --method rk4 --nu 0.1 --dt 0.01 --t-end 1 --every 0.1 --out artifacts/taylor-green"
+description = "integrate the field on stdin with a chosen time integrator, record frames; no unstated defaults"
 
 [args]
-nu    = "kinematic viscosity"
-dt    = "time step"
-t-end = "final integration time"
+method = "time integrator: euler, rk2, or rk4"
+nu     = "kinematic viscosity"
+dt     = "time step"
+t-end  = "final integration time"
 
-every = "time between stored snapshots, including t = 0 and t = t-end"
+every = "time between snapshots; save at step 0 and every round(every/dt) steps after that; a step is never shortened to land on a snapshot"
 out   = "output folder"
 
 [writes]
-stdout = "a header, then one tab-separated line per snapshot: t, E, Z"
+stdout = "a header, then one tab-separated line per snapshot: t, E (energy), Z (enstrophy); the run stops at the first non-finite energy, prints that line, and exits 1"
 
-"<out>/run.json"     = "case, n, seed, k_band as piped; nu, dt, t_end, snapshot_every"
-"<out>/fields.jsonl" = "per snapshot: t, step, u, v, omega as n*n arrays, 6 decimals"
-
-[args.tracers]
-tracers      = "tracers advected by the fluid velocity; 0, the default, records none"
-tracer-seed  = "seed of their uniform initial positions; required if tracers > 0"
-tracer-every = "store one in this many stored snapshots, from t = 0; default 1"
-
-[writes.tracers]
-"<out>/tracers.jsonl" = "per retained snapshot: t, x, y in [0, 2*pi), 6 decimals"
-
+"<out>/run.json"     = "case, n, seed, k_band as piped; method, nu, dt, t_end, snapshot_every"
+"<out>/fields.jsonl" = "per snapshot stored before the run stopped: t, step, u, v, omega as n*n arrays, 6 decimals"

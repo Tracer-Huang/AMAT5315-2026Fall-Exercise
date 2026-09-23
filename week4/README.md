@@ -1,76 +1,196 @@
-# Week 4 — two-dimensional incompressible flow
+# Week 4: Continuum Fluid Dynamics
 
-A Rust crate with `field` and `fluid` binaries solves the periodic vorticity equation using Fourier pseudospectral derivatives, a coordinate-wise two-thirds dealiasing mask and classical RK4. Particles use periodic bilinear interpolation and the same RK4 stages. This directory contains the Week 4 deliverables and only the source files needed to test and regenerate them. The Challenge and separately labelled Extensions are outside the required final checklist.
+## Overview
 
-## Setup from a clean clone
+This week implements reusable Forward Euler, explicit midpoint, and classical RK4 time integrators; a one-dimensional periodic advection-diffusion solver with Fourier and centered finite-difference derivatives; RK stability and temporal-order validation; and a two-dimensional incompressible vorticity-streamfunction solver.
 
-Run from `week4/`. The supplied course checker is kept outside this repository in the Week 4 resources package.
+The two-dimensional solver uses Fourier pseudospectral differentiation, streamfunction-based velocity recovery, and two-thirds dealiasing. The validation studies cover Taylor-Green flow, a seeded random flow, diffusive and advective stability limits, sensitivity to initial conditions, RK4 temporal convergence, and Richardson time-step selection.
 
-```sh
-cargo install --path . --locked
-export PATH="$HOME/.cargo/bin:$PATH"
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-npm ci
-npx playwright install chromium
-cargo test --release --locked
+The optional Week 4 Challenge is not included.
+
+The implementation was adapted from the peer reference archive
+`week4-jmj.zip` supplied by the user. Its Rust and plotting code was checked
+against the revised learning sheet, then repaired for the revised `run.json`
+contract, the required order-run path, preservation of existing raw runs,
+variable seeds and macOS fonts. The images and measurements in this repository
+were regenerated from the adapted source, not copied from that archive.
+
+## Requirements
+
+- Rust and Cargo
+- Python 3
+- Pillow (`PIL`), used by the plotting scripts
+
+Install the pinned Python plotting dependency with
+`python3 -m pip install -r requirements.txt`.
+
+The numerical solvers are Rust binaries. The Python scripts use only the standard library and Pillow for orchestration, analysis, and rendering.
+
+## Build and Install
+
+From the repository root:
+
+```text
+cd week4
+cargo build --release
+cargo install --path . --force --locked --quiet
+mkdir -p artifacts evidence
 ```
 
-`field.design.toml` and `fluid.design.toml` match the supplied references byte-for-byte. `field` writes one JSON object to stdout; `fluid` reads it from stdin. All required physical parameters are explicit. Raw runs go under ignored `artifacts/`; use a clean clone or a fresh output directory for complete regeneration.
+`artifacts/` is intentionally ignored by Git. The committed figures and JSON evidence remain in `evidence/`. The convenience command `make reproduce PYTHON=python3 SEED=2026` runs the commands below in order; it refuses to replace existing raw runs.
 
-## Two simulations
+## Command-Line Tools
 
-```sh
-mkdir -p evidence
-field taylor-green --n 64 | fluid --nu 0.1 --dt 0.01 --t-end 1 \
-  --every 0.1 --out artifacts/taylor-green | tee evidence/taylor-green.txt
-field random --n 128 --seed 2026 --k-min 2 --k-max 6 | fluid \
-  --nu 0.004 --dt 0.01 --t-end 10 --every 0.1 --out artifacts/random \
-  | tee evidence/decay.txt
+`field` writes one JSON field object to standard output. It supports the exact Taylor-Green field and a deterministic seeded random field.
+
+`fluid` reads a field object from standard input, integrates vorticity with Euler, midpoint, or RK4, prints snapshot diagnostics, and writes `run.json` and `fields.jsonl` under the requested output directory.
+
+Taylor-Green example:
+
+```text
+field taylor-green --n 64 |
+  fluid --method rk4 --nu 0.1 --dt 0.01 --t-end 1 \
+  --every 0.1 --out artifacts/taylor-green \
+  > artifacts/taylor-green.tsv
 ```
 
-The first recording has 11 frames; the second has 101. `run.json` records the parameters and `fields.jsonl` stores `t`, `step`, `u`, `v`, `omega` as row-major arrays with six decimal places. At `t=1`, Taylor–Green energy is `0.167580`. For seed 2026, random energy falls from `0.5` to `0.295129` and enstrophy from `6.634685` to `0.879173`.
+Random-flow example:
 
-After the random run, add the 4000 tracers as the sheet specifies:
-
-```sh
-field random --n 128 --seed 2026 --k-min 2 --k-max 6 | fluid \
-  --nu 0.004 --dt 0.01 --t-end 10 --every 0.1 --tracers 4000 \
-  --tracer-seed 7 --tracer-every 2 --out artifacts/random > /dev/null
+```text
+field random --n 128 --seed 2026 --k-min 2 --k-max 6 |
+  fluid --method rk4 --nu 0.004 --dt 0.01 --t-end 10 \
+  --every 0.1 --out artifacts/random \
+  > artifacts/random.tsv
 ```
 
-The repeated run verifies that every saved field matches the existing recording before adding particle positions. It preserves the original field and backs up its first `run.json` as `run.before-tracers.json`. Changed parameters or fields are rejected. The particle file has 51 frames and each position is in `[0,2π)`.
+## Reproducing the Evidence
 
-## Evidence generation, in order
+Run these commands from `week4/` in the listed order. They do not assume any pre-existing local `artifacts/` directory.
 
-Run these commands after the two simulations. Each row names **every file committed under `evidence/`**; intermediate JSON/PNG previews stay local.
+```text
+mkdir -p artifacts evidence
 
-| Committed evidence file | Command that produces it |
-|---|---|
-| `taylor-green.txt` | Taylor–Green pipeline above |
-| `decay.txt` | Random pipeline above, before adding tracers |
-| `physics.txt` | `.venv/bin/python scripts/analyze.py` |
-| `tracers.txt` | `.venv/bin/python scripts/histogram.py` |
-| `spectrum.html`, `budget.html` | `.venv/bin/python scripts/analyze.py` then `.venv/bin/python scripts/plots.py` |
-| `convergence.html` | `.venv/bin/python scripts/refinement.py` then `.venv/bin/python scripts/plots.py` |
-| `viewer-taylor-green.png`, `viewer-t0.png`, `viewer-t2.png`, `viewer-t5.png`, `viewer-t10.png`, `viewer-tracers-t10.png` | `node scripts/export_viewer.cjs` after the two viewer recordings below are made |
+field taylor-green --n 64 |
+  fluid --method rk4 --nu 0.1 --dt 0.01 --t-end 1 \
+  --every 0.1 --out artifacts/taylor-green \
+  > artifacts/taylor-green.tsv
+field taylor-green --n 64 --nu 0.1 --t 1 \
+  > artifacts/taylor-green/exact-t1.json
 
-Before exporting viewer images:
+python3 scripts/compare_derivatives.py
+python3 scripts/plot_line_stability.py
+python3 scripts/plot_line_accuracy.py
+python3 scripts/plot_taylor_green.py
 
-```sh
-.venv/bin/python scripts/viewer_copy.py
-cp artifacts/random/tracers.jsonl tracers.jsonl
-.venv/bin/python scripts/histogram.py
-.venv/bin/python scripts/analyze.py
-.venv/bin/python scripts/refinement.py
-.venv/bin/python scripts/plots.py
-node scripts/export_viewer.cjs
+python3 scripts/run_part3.py
+python3 scripts/plot_part3.py
+
+python3 scripts/run_part4.py
+python3 scripts/plot_part4.py
 ```
 
-`viewer_copy.py` samples every second point of the actual `N=128` simulation and writes `fields.jsonl` at `64×64` with `t`, `step`, `omega` only; it does **not** run a second `N=64` simulation. `tracers.jsonl` is copied from the 4000 real trajectories. The unmodified supplied viewer is included as `viewer.html` so its Save PNG button can generate the six stamped images locally. The reduced viewer file cannot show energy; use the full `u,v` recording for energy. `scripts/export_viewer.cjs` uses Playwright; its unstaged `viewer-export.json` log and PNG previews are local diagnostics.
+The committed evidence files are regenerated as follows:
 
-`analyze.py` recomputes energy, enstrophy, curl and divergence from the saved velocities. It compares the random endpoint with pure diffusion and integrates the energy budget by the trapezoid rule. `refinement.py` uses the installed `field` and `fluid` binaries for the following `t=2` study: grid `N=32,64,128` at `dt=.01` against `N=256,dt=.0025`; time steps `.02,.0125,.01` at `N=128` against a same-grid `dt=.0025` reference. The initial modes and phases are identical across resolutions. Error is `sqrt(sum((ω−ω_ref)²)/sum(ω_ref²))` at coincident points; the temporal slope is fitted on log-log axes. `plots.py` embeds the measured source rows and generating command in each standalone HTML chart.
+| File | Producing command or prerequisite |
+| --- | --- |
+| `evidence/line-stability.png` | `python3 scripts/plot_line_stability.py` |
+| `evidence/line-accuracy.png` | `python3 scripts/plot_line_accuracy.py` |
+| `evidence/taylor-green.png` | Taylor-Green commands above, then `python3 scripts/plot_taylor_green.py` |
+| `evidence/random.png` | `python3 scripts/run_part3.py`, then `python3 scripts/plot_part3.py` |
+| `evidence/blowup.png` | `python3 scripts/run_part3.py`, then `python3 scripts/plot_part3.py` |
+| `evidence/sensitivity.png` | `python3 scripts/run_part3.py`, then `python3 scripts/plot_part3.py` |
+| `evidence/order.png` | `python3 scripts/run_part4.py`, then `python3 scripts/plot_part4.py` |
+| `evidence/convergence.png` | `python3 scripts/run_part4.py`, then `python3 scripts/plot_part4.py` |
+| `evidence/convergence.json` | `python3 scripts/run_part4.py` |
 
-The supplied course checker can be run from this directory as `SEED=2026 python /path/to/week4-resources/week4/checker/check .`. It recomputes all physical gates from the raw saved fields. On the specified runs its six checks pass: consistency `2.102412e-5`, divergence `1.349601e-5`, Taylor–Green field `7.038587e-7`, Taylor–Green energy `9.565108e-8`, random energy budget `3.014893e-5`, transfer `0.569218`. Grid error reductions are `4.457×` and `17.112×` (required `≥3×`, `≥10×`); RK4 slope is `4.042427` (required `3.7–4.3`); tracer `χ²/255` is `0.953224` (required `<2`). These measurements use seed 2026 and may change for other seeds.
+`run_part3.py` generates the random run, Taylor-Green stability scans, random-flow stability scans, and both sensitivity pairs. `run_part4.py` generates the Taylor-Green order study under `artifacts/order/`, the random-flow self-convergence study, `artifacts/part4/order.json`, and `evidence/convergence.json`. The plotting scripts read those Rust-generated artifacts; they do not replace the Rust solver. Set `SEED` to use the same random seed throughout the runs and the independent course checker.
 
-In the course viewer, inspect `t=0,2,5,10`, the Taylor–Green checkerboard decay and the particle overlay at `t=10`. The six included PNGs were generated using that viewer. The course's student-operated terminal and browser verification remains for the student to perform; generated evidence does not impersonate it.
+With the Week 4 resource package extracted, independently check the raw
+artifacts using `make check PYTHON=python3 SEED=2026
+CHECKER=/path/to/week4-resources/week4/checker/check`.
+
+## Validation Results
+
+Part 1:
+
+```text
+RK4 line stability limit: 0.049386063870
+
+Euler                 1.032742
+midpoint              2.005486
+RK4                   4.003965
+equal-weight 4-stage 2.002533
+```
+
+Part 2:
+
+```text
+Fourier derivative errors: below 1e-10
+Centered finite-difference N=32/N=64 error ratios: approximately 4
+
+Taylor-Green E(0) = 0.250000
+Taylor-Green Z(0) = 0.500000
+Taylor-Green E(1) = 0.167580
+Taylor-Green Z(1) = 0.335160
+Velocity relative error = 7.03858653e-07
+```
+
+Part 3:
+
+```text
+Random reference E(0)  = 0.50000000
+Random reference Z(0)  = 6.63468483
+Random reference E(10) = 0.28419699
+Random reference Z(10) = 1.02502471
+
+Taylor-Green predicted diffusive limit = 0.031575963719
+Taylor-Green measured bracket: 0.032 stable, 0.033 unstable
+Random initial Umax = 2.306233859809
+Predicted random advective bound = 0.020659452271
+Random RK4 measured bracket: 0.035 stable, 0.038 unstable
+Random sensitivity growth = 68.4486584
+```
+
+Part 4:
+
+```text
+Taylor-Green RK4 order = 4.10440618
+Random temporal convergence order = 4.03858956
+Richardson selected dt = 0.0125
+Predicted error = 3.426060666100e-06
+Measured error = 3.344346869443e-06
+Acceptance threshold = 5e-6
+```
+
+The random-flow values use this implementation's deterministic seeded phase generator. They are measurements from seed 2026, not universal constants.
+
+## Generated Artifacts
+
+`week4/artifacts/` contains regenerable simulation output and is intentionally ignored by Git. It is not required to be copied into a clean clone.
+
+Committed evidence is stored in `week4/evidence/`.
+
+## Tests
+
+From `week4/`, run:
+
+```text
+cargo fmt --check
+cargo test
+cargo clippy --all-targets --all-features -- -D warnings
+```
+
+The Rust test suite covers the integrators, one-dimensional derivatives, periodic wrapping, Nyquist handling, two-dimensional derivatives, streamfunction recovery, dealiasing, Taylor-Green identities, and random-field resolution consistency.
+
+## Repository Layout
+
+```text
+Cargo.toml              Rust crate and binary definitions
+Cargo.lock              Locked Rust dependency state
+field.design.toml       field command contract
+fluid.design.toml       fluid command contract
+src/                    reusable solver library and binaries
+scripts/                reproducible run, comparison, and plotting scripts
+evidence/               committed figures and numerical evidence JSON
+artifacts/              ignored regenerable simulation output
+```

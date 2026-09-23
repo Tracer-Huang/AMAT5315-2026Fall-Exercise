@@ -1,6 +1,0 @@
-{
-  "name": "amat5315-week4-viewer-export",
-  "private": true,
-  "scripts": { "export-viewer": "node scripts/export_viewer.cjs" },
-  "devDependencies": { "playwright": "1.62.1" }
-}
