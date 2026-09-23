@@ -1,0 +1,25 @@
+usage       = "field taylor-green --n 64 | fluid --nu 0.1 --dt 0.01 --t-end 1 --every 0.1 --out artifacts/taylor-green"
+description = "integrate the field on stdin, record frames; no unstated defaults"
+
+[args]
+nu    = "kinematic viscosity"
+dt    = "time step"
+t-end = "final integration time"
+
+every = "time between stored snapshots, including t = 0 and t = t-end"
+out   = "output folder"
+
+[writes]
+stdout = "a header, then one tab-separated line per snapshot: t, E, Z"
+
+"<out>/run.json"     = "case, n, seed, k_band as piped; nu, dt, t_end, snapshot_every"
+"<out>/fields.jsonl" = "per snapshot: t, step, u, v, omega as n*n arrays, 6 decimals"
+
+[args.tracers]
+tracers      = "tracers advected by the fluid velocity; 0, the default, records none"
+tracer-seed  = "seed of their uniform initial positions; required if tracers > 0"
+tracer-every = "store one in this many stored snapshots, from t = 0; default 1"
+
+[writes.tracers]
+"<out>/tracers.jsonl" = "per retained snapshot: t, x, y in [0, 2*pi), 6 decimals"
+

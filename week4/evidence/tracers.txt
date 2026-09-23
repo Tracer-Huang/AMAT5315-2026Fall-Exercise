@@ -1,0 +1,6 @@
+source = artifacts/random/tracers.jsonl
+fluid seed = 2026; tracer seed = 7
+frames = 51; tracers = 4000; t = 10.0
+bins = 16 x 16; expected count = 15.625; dof = 255
+chi2/dof = 0.953223529 (required < 2): PASS
+This tests uniform density, not correctness of all trajectories.

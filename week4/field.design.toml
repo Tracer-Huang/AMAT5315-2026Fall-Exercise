@@ -1,0 +1,22 @@
+usage       = "field taylor-green --n 64"
+description = "write an initial velocity field to stdout; no unstated defaults"
+
+[args]
+n = "grid points per side"
+
+[writes]
+stdout = "one JSON object: case, n, seed, k_band, then u and v as n*n arrays"
+
+[taylor-green]
+usage       = "field taylor-green --n 64"
+description = "u = cos(x)*sin(y), v = -sin(x)*cos(y)"
+
+[random]
+usage       = "field random --n 128 --seed 2026 --k-min 2 --k-max 6"
+description = "a band-limited random field with E(0) = 0.5"
+
+[random.args]
+seed  = "seed of the phases, uniform in [0, 2*pi), drawn in an order independent of n"
+k-min = "lowest wavenumber magnitude kept, inclusive; modes outside the band are zero"
+k-max = "highest wavenumber magnitude kept, inclusive"
+

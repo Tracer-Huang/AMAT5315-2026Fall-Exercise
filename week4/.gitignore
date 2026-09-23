@@ -1,0 +1,7 @@
+/target/
+/artifacts/
+/.venv/
+/__pycache__/
+**/__pycache__/
+/evidence/.staging/
+/node_modules/
