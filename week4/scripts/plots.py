@@ -15,7 +15,6 @@ def save(fig,name,title,caption,source,command):
     stream=io.StringIO(); fig.savefig(stream,format="svg",bbox_inches="tight")
     svg=stream.getvalue(); svg=svg[svg.index("<svg"):]
     svg="\n".join(line.rstrip() for line in svg.splitlines())
-    fig.savefig(OUT/f"{name}.png",dpi=130,bbox_inches="tight")
     page=f'''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{html.escape(title)}</title>
 <style>body{{font:16px/1.65 system-ui,sans-serif;color:#25344a;background:#f6f8fb;margin:0}}main{{max-width:1100px;margin:auto;padding:32px 24px}}h1{{font-size:28px;line-height:1.25}}figure{{margin:24px 0;background:white;padding:16px;border:1px solid #e4e9ef}}svg{{width:100%;height:auto}}figcaption{{font-size:14px;color:#526176}}pre{{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px}}a{{color:#2463a5}}</style>
 <main><a href="../README.md">← Week 4 instructions</a><h1>{html.escape(title)}</h1><figure>{svg}<figcaption>{html.escape(caption)}</figcaption></figure><p>Generate: <code>{html.escape(command)}</code></p><details><summary>Source data and method</summary><pre>{html.escape(json.dumps(source,indent=2))}</pre></details></main></html>'''
@@ -51,5 +50,5 @@ def main():
     axes[1].set(xlabel="Time step Δt",ylabel="Relative L2 vorticity error at t = 2",title="Time refinement · fixed N = 128")
     axes[1].xaxis.set_major_locator(FixedLocator(sorted(dt))); axes[1].xaxis.set_major_formatter(FixedFormatter([f"{v:g}" for v in sorted(dt)])); axes[1].minorticks_off(); axes[1].legend(frameon=False,fontsize=9)
     save(fig,"convergence","Spatial and temporal self-convergence",f"Grid series: dt=0.01, reference N=256 / dt=0.0025, coincident grid points. Time series: N=128, same-grid reference dt=0.0025. All runs use seed {c['seed']}, band 2–6, ν=0.004, t=2. Acceptance: grid ratios ≥3 and ≥10; time slope 3.7–4.3.",c,"python scripts/refinement.py && python scripts/plots.py")
-    print("Wrote spectrum.html, budget.html, convergence.html and PNG previews.")
+    print("Wrote spectrum.html, budget.html, convergence.html.")
 if __name__=="__main__": main()
