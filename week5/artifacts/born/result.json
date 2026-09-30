@@ -1,0 +1,85 @@
+{
+  "dt": 0.2,
+  "dx": 1.0,
+  "experiment": "reflector",
+  "implementation": "Rust; genuine Enzyme timestep JVP/VJP; nightly-2026-09-05",
+  "mode": "born",
+  "nx": 41,
+  "nz": 41,
+  "receivers": [
+    [
+      7,
+      8
+    ],
+    [
+      9,
+      8
+    ],
+    [
+      11,
+      8
+    ],
+    [
+      13,
+      8
+    ],
+    [
+      15,
+      8
+    ],
+    [
+      17,
+      8
+    ],
+    [
+      19,
+      8
+    ],
+    [
+      21,
+      8
+    ],
+    [
+      23,
+      8
+    ],
+    [
+      25,
+      8
+    ],
+    [
+      27,
+      8
+    ],
+    [
+      29,
+      8
+    ],
+    [
+      31,
+      8
+    ],
+    [
+      33,
+      8
+    ]
+  ],
+  "schema": "week5-born-rtm-v2",
+  "seconds": 0.005396209,
+  "shots": [
+    [
+      10.0,
+      8.0
+    ],
+    [
+      20.0,
+      8.0
+    ],
+    [
+      30.0,
+      8.0
+    ]
+  ],
+  "statistics": null,
+  "steps": 240
+}

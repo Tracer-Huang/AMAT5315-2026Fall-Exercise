@@ -1,0 +1,4 @@
+  Installing seismic v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week5)
+    Finished `release` profile [optimized] target(s) in 0.04s
+  Installing /Users/joshua/.cargo/bin/seismic
+   Installed package `seismic v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week5)` (executable `seismic`)

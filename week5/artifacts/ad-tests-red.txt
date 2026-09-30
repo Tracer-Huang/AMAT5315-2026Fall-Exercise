@@ -1,0 +1,40 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____________________ test_manual_passes_and_shared_adjoint _____________________
+
+    def test_manual_passes_and_shared_adjoint():
+>       out=ad.manual(1.3)
+            ^^^^^^^^^^^^^^
+
+week5/tests/test_ad.py:9: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+r = 1.3
+
+    def manual(r):
+>       raise NotImplementedError('manual passes not implemented')
+E       NotImplementedError: manual passes not implemented
+
+week5/scripts/ad.py:13: NotImplementedError
+_______________________ test_sampled_analytic_derivative _______________________
+
+    def test_sampled_analytic_derivative():
+        rs=np.linspace(.95,2.5,601)
+        for r in rs:
+>           out=ad.manual(r)
+                ^^^^^^^^^^^^
+
+week5/tests/test_ad.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+r = np.float64(0.95)
+
+    def manual(r):
+>       raise NotImplementedError('manual passes not implemented')
+E       NotImplementedError: manual passes not implemented
+
+week5/scripts/ad.py:13: NotImplementedError
+=========================== short test summary info ============================
+FAILED week5/tests/test_ad.py::test_manual_passes_and_shared_adjoint - NotImp...
+FAILED week5/tests/test_ad.py::test_sampled_analytic_derivative - NotImplemen...
+2 failed in 0.25s

@@ -1,0 +1,10 @@
+{
+  "scratch": "/tmp/week5-strict-audit/runs-1c66kb55",
+  "installed_forward_and_born_match_saved_arrays": true,
+  "independent_numpy_forward_relative_error": 0.0,
+  "trajectory_born_finite_difference_relative_errors": {
+    "0.001": 1.1689719562128567e-08,
+    "0.0001": 3.4082224885373303e-10
+  },
+  "random_weight_transpose_relative_error": 1.1140405532426159e-14
+}

@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Week 5 · Seeing underground</title>
+<style>
+:root { color-scheme: dark; --bg:#0f1420; --panel:#171d2b; --ink:#e8edf6; --muted:#a5b2c8; --line:#35405a; --accent:#6ea8ff; }
+* { box-sizing:border-box; }
+body { margin:0; background:var(--bg); color:var(--ink); font:15px/1.5 system-ui,sans-serif; }
+header { padding:20px max(20px,calc((100vw - 1100px)/2)); border-bottom:1px solid var(--line); }
+h1 { font-size:1.5rem; margin:0; } p { margin:5px 0; color:var(--muted); }
+main { max-width:1100px; margin:22px auto; padding:0 18px; }
+.card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:18px; }
+.controls { display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin:12px 0; }
+button,input,select { font:inherit; } button,select { background:#26334a; color:var(--ink); border:1px solid var(--line); border-radius:5px; padding:7px 12px; }
+button { cursor:pointer; } button:disabled { opacity:.45; cursor:default; }
+:focus-visible { outline:3px solid var(--accent); outline-offset:3px; }
+label { display:inline-flex; align-items:center; gap:8px; }
+input[type=range] { accent-color:var(--accent); } #scrub { width:100%; }
+canvas { display:block; width:100%; height:auto; background:var(--bg); border-radius:5px; }
+#status { min-height:1.5em; overflow-wrap:anywhere; } #status.error { color:#ffb1a8; }
+#readout { color:var(--ink); font-variant-numeric:tabular-nums; }
+.hint { font-size:.85rem; } #drop { display:none; position:fixed; inset:12px; border:3px dashed var(--accent); background:#0f1420ec; place-content:center; font-size:1.5rem; pointer-events:none; }
+#drop.active { display:grid; } #file { max-width:100%; min-width:0; } label[for=file] { display:flex; flex-wrap:wrap; }
+@media(max-width:500px) { .card { padding:10px; } header { padding:16px; } .controls { gap:10px; } }
+</style>
+</head>
+<body>
+<header><h1>Seeing underground</h1><p>AMAT5315 · Week 5 · Acoustic wave propagation</p></header>
+<main><section class="card" aria-label="Wavefield viewer">
+<label for="file">Load wavefield.npy and run.json <input id="file" type="file" multiple accept=".npy,.json,application/json"></label>
+<p id="status" role="status" aria-live="polite">Choose both files together, drop them (or their folder) anywhere on this page, or add <code>?src=</code> with the address of a published wavefield.npy; run.json is read from the same folder.</p>
+<canvas id="wave" width="1100" height="850" role="img" aria-label="Load a wavefield to see wave propagation, source, and receivers"></canvas>
+<div class="controls">
+<button id="play" disabled aria-pressed="false">Play</button>
+<label>Frames per second <input id="fps" type="range" min="1" max="30" value="12"><output id="fpsval">12</output></label>
+<label><input id="loop" type="checkbox" checked>Loop</label>
+<label><input id="medium" type="checkbox" checked disabled>Show velocity</label>
+<button id="savepng" disabled>Save PNG</button>
+</div>
+<label for="scrub">Frame</label><input id="scrub" type="range" min="0" max="0" value="0" disabled>
+<p id="readout">No data loaded.</p>
+<p class="hint">Blue: negative wave amplitude. Red: positive. The amplitude scale stays fixed across frames. Yellow cross: source. White triangles: receivers.</p>
+<p class="hint">Space plays or pauses; arrow keys step through frames; S saves the current view with its file and numerical readouts. File controls also work with the keyboard.</p>
+</section></main>
+<div id="drop" aria-hidden="true">Drop wavefield.npy and run.json</div>
+<script>
+"use strict";
+const $ = id => document.getElementById(id);
+const canvas = $("wave"), ctx = canvas.getContext("2d");
+let run = null, current = 0, playing = false, timer = null, fileName = "", loadVersion = 0;
+function requireValue(ok, message) { if (!ok) throw new Error(message); }
+// NumPy .npy format 1.0-3.0: magic, version, header length, Python-dict header, data.
+function parseNpy(buffer) {
+  const bytes = new Uint8Array(buffer);
+  requireValue(bytes.length >= 10 && bytes[0] === 0x93 && String.fromCharCode(...bytes.slice(1, 6)) === "NUMPY", "wavefield.npy is not a NumPy .npy file.");
+  const view = new DataView(buffer), major = bytes[6];
+  requireValue(major >= 1 && major <= 3, "Unsupported .npy version.");
+  const start = major === 1 ? 10 : 12, length = major === 1 ? view.getUint16(8, true) : view.getUint32(8, true);
+  const header = new TextDecoder().decode(bytes.slice(start, start + length));
+  requireValue(/'descr':\s*'<f4'/.test(header), "wavefield.npy must be float32 ('<f4').");
+  requireValue(/'fortran_order':\s*False/.test(header), "wavefield.npy must be in C order.");
+  const match = header.match(/'shape':\s*\(([^)]*)\)/);
+  requireValue(match, "wavefield.npy header has no shape.");
+  const shape = match[1].split(",").map(s => s.trim()).filter(Boolean).map(Number);
+  requireValue(shape.length === 3 && shape.every(n => Number.isSafeInteger(n) && n > 0), "wavefield.npy must have shape [frame, z, x].");
+  const count = shape[0] * shape[1] * shape[2], offset = start + length;
+  requireValue(buffer.byteLength - offset === 4 * count, "wavefield.npy data length does not match its shape.");
+  // Copy so the Float32Array is 4-byte aligned whatever the header length.
+  return {shape, data: new Float32Array(buffer.slice(offset))};
+}
+// Combine the float32 frames with run.json: experiment (grid, units, speed, shots,
+// receivers) and recording (step and time of each frame).
+function parseWavefield(npy, manifest) {
+  const e = manifest && manifest.experiment, rec = manifest && manifest.recording;
+  requireValue(e && typeof e === "object", "run.json must contain the experiment.");
+  requireValue(rec && Array.isArray(rec.steps) && Array.isArray(rec.times), "run.json has no recording; run with --every N.");
+  const h = {nx:e.nx, nz:e.nz, dx:e.dx, dt:e.dt, length_unit_m:e.length_unit_m, time_unit_s:e.time_unit_s,
+    receivers:e.receivers, source:Array.isArray(e.shots) && Array.isArray(e.shots[0]) ? e.shots[0].map(v => v * e.dx) : null,
+    speed:Array.isArray(e.background) ? e.background.flat() : undefined};
+  for (const key of ["nx", "nz"]) requireValue(Number.isSafeInteger(h[key]) && h[key] >= 2, `${key} must be an integer at least 2.`);
+  const cells = h.nx * h.nz;
+  requireValue(Number.isSafeInteger(cells), "Grid dimensions are too large.");
+  for (const key of ["dx", "dt", "length_unit_m", "time_unit_s"]) requireValue(Number.isFinite(h[key]) && h[key] > 0, `${key} must be positive and finite.`);
+  if (h.speed !== undefined) {
+    requireValue(h.speed.length === cells && h.speed.every(Number.isFinite), `speed must contain ${cells} finite numbers.`);
+    requireValue(h.speed.every(x => x > 0), "Every speed must be positive.");
+  }
+  function point(p, name, spacing) {
+    requireValue(Array.isArray(p) && p.length === 2 && p.every(Number.isFinite) &&
+      p[0] >= 0 && p[1] >= 0 && p[0] <= (h.nx - 1) * spacing && p[1] <= (h.nz - 1) * spacing,
+      `${name} must be a finite [x,z] point inside the grid.`);
+  }
+  point(h.source, "source", h.dx);
+  requireValue(Array.isArray(h.receivers) && h.receivers.length > 0, "receivers must be a nonempty array.");
+  h.receivers.forEach(p => { point(p, "receiver", 1); requireValue(p.every(Number.isInteger), "Receiver coordinates must be grid indices."); });
+  const [count, nz, nx] = npy.shape;
+  requireValue(nz === h.nz && nx === h.nx, `wavefield.npy frames are ${nz} × ${nx}; run.json says ${h.nz} × ${h.nx}.`);
+  requireValue(count === rec.steps.length && count === rec.times.length, `wavefield.npy has ${count} frames; run.json lists ${rec.steps.length} steps.`);
+  const rows = [];
+  let previous = null, direction = 0, amplitude = 0;
+  for (let i = 0; i < count; i++) {
+    const frame = {step: rec.steps[i], time: rec.times[i], field: npy.data.subarray(i * cells, (i + 1) * cells)};
+    requireValue(Number.isSafeInteger(frame.step) && frame.step >= 0, `Frame ${i}: step must be a nonnegative integer.`);
+    if (previous !== null) {
+      const change = Math.sign(frame.step - previous);
+      requireValue(change !== 0 && (direction === 0 || change === direction), `Frame ${i}: steps must strictly increase or strictly decrease throughout the recording.`);
+      direction = change;
+    }
+    requireValue(Number.isFinite(frame.time) && frame.time >= 0 && Math.abs(frame.time - frame.step * h.dt) <= 1e-6 * Math.max(1, frame.time), `Frame ${i}: time must equal step × dt.`);
+    for (const value of frame.field) {
+      requireValue(Number.isFinite(value), `Frame ${i} field must contain ${cells} finite numbers.`);
+      amplitude = Math.max(amplitude, Math.abs(value));
+    }
+    rows.push(frame);
+    previous = frame.step;
+  }
+  let speedMin = Infinity, speedMax = -Infinity;
+  if (h.speed) for (const value of h.speed) { speedMin = Math.min(speedMin, value); speedMax = Math.max(speedMax, value); }
+  return {header:h, frames:rows, amplitude, speedMin, speedMax};
+}
+function setPlaying(on) {
+  clearInterval(timer);
+  playing = Boolean(on && run);
+  $("play").textContent = playing ? "Pause" : "Play";
+  $("play").setAttribute("aria-pressed", String(playing));
+  if (playing) timer = setInterval(() => {
+    if (current === run.frames.length - 1 && !$("loop").checked) { setPlaying(false); return; }
+    current = (current + 1) % run.frames.length;
+    render();
+  }, 1000 / Number($("fps").value));
+}
+function render() {
+  if (!run) return;
+  const h = run.header, f = run.frames[current], medium = $("medium").checked && h.speed;
+  ctx.fillStyle = "#0f1420"; ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#e8edf6"; ctx.font = "600 26px system-ui";
+  ctx.fillText("Acoustic wavefield", 40, 42);
+  ctx.font = "17px system-ui"; ctx.fillStyle = "#a5b2c8";
+  ctx.fillText(`t = ${(f.time * h.time_unit_s).toFixed(3)} s · step ${f.step} · frame ${current + 1}/${run.frames.length}`, 40, 70);
+  const cell = Math.min(720 / h.nx, 590 / h.nz), w = cell * h.nx, height = cell * h.nz;
+  const left = 100 + (720 - w) / 2, top = 104;
+  const px = x => left + (x + .5) * cell, pz = z => top + (z + .5) * cell;
+  const color = value => value >= 0 ? [237,85,74] : [62,132,237];
+  for (let z = 0; z < h.nz; z++) for (let x = 0; x < h.nx; x++) {
+    const i = z * h.nx + x;
+    const grey = medium ? 225 - 95 * (h.speed[i] - run.speedMin) / (run.speedMax - run.speedMin || 1) : 226;
+    const a = Math.abs(f.field[i]) / (run.amplitude || 1), c = color(f.field[i]);
+    ctx.fillStyle = `rgb(${c.map(v => Math.round(grey * (1 - a) + v * a)).join(",")})`;
+    ctx.fillRect(left + x * cell, top + z * cell, cell + .3, cell + .3);
+  }
+  ctx.strokeStyle = "#586a89"; ctx.strokeRect(left, top, w, height);
+  ctx.fillStyle = "#a5b2c8"; ctx.font = "16px system-ui";
+  ctx.textAlign = "center";
+  for (let j = 0; j <= 4; j++) {
+    const x = j * (h.nx - 1) / 4, z = j * (h.nz - 1) / 4;
+    ctx.fillText((x * h.dx * h.length_unit_m / 1000).toFixed(2), px(x), top + height + 25);
+    ctx.textAlign = "right"; ctx.fillText((z * h.dx * h.length_unit_m / 1000).toFixed(2), left - 12, pz(z) + 6); ctx.textAlign = "center";
+  }
+  ctx.fillText("x (km)", left + w / 2, top + height + 52);
+  ctx.save(); ctx.translate(left - 67, top + height / 2); ctx.rotate(-Math.PI / 2); ctx.fillText("depth z (km)", 0, 0); ctx.restore();
+  ctx.lineWidth = 2;
+  for (const [x,z] of h.receivers) {
+    ctx.beginPath(); ctx.moveTo(px(x), pz(z) + 6); ctx.lineTo(px(x) - 5, pz(z) - 5); ctx.lineTo(px(x) + 5, pz(z) - 5); ctx.closePath();
+    ctx.fillStyle = "white"; ctx.fill(); ctx.strokeStyle = "#26334a"; ctx.stroke();
+  }
+  const sx = px(h.source[0] / h.dx), sz = pz(h.source[1] / h.dx);
+  ctx.strokeStyle = "#171d2b"; ctx.lineWidth = 7;
+  for (const width of [7,3]) { ctx.lineWidth = width; ctx.beginPath(); ctx.moveTo(sx - 9,sz); ctx.lineTo(sx + 9,sz); ctx.moveTo(sx,sz - 9); ctx.lineTo(sx,sz + 9); ctx.stroke(); ctx.strokeStyle = "#ffe16e"; }
+  ctx.textAlign = "left"; ctx.font = "16px system-ui"; ctx.fillStyle = "#e8edf6";
+  ctx.fillText("Wave amplitude u", 870, 115); ctx.fillText("reduced units", 870, 140);
+  for (let j = 0; j < 160; j++) {
+    const value = 1 - 2 * j / 159, c = color(value), a = Math.abs(value);
+    ctx.fillStyle = `rgb(${c.map(v => Math.round(226 * (1 - a) + v * a)).join(",")})`; ctx.fillRect(875,160 + j,22,1);
+  }
+  ctx.fillStyle = "#a5b2c8";
+  ctx.fillText(run.amplitude.toExponential(2), 908, 172); ctx.fillText("0", 908, 246); ctx.fillText((-run.amplitude).toExponential(2), 908, 320);
+  ctx.fillText("Fixed for all frames", 870, 352);
+  if (medium) {
+    const scale = h.length_unit_m / h.time_unit_s;
+    ctx.fillStyle = "#e8edf6"; ctx.fillText("Velocity c (m/s)", 870, 402);
+    const gradient = ctx.createLinearGradient(875,420,875,535); gradient.addColorStop(0,"rgb(225,225,225)"); gradient.addColorStop(1,"rgb(130,130,130)");
+    ctx.fillStyle = gradient; ctx.fillRect(875,420,22,115); ctx.fillStyle = "#a5b2c8";
+    ctx.fillText((run.speedMin * scale).toFixed(0),908,432); ctx.fillText((run.speedMax * scale).toFixed(0),908,535);
+  }
+  ctx.fillStyle = "#a5b2c8"; ctx.fillText("+ Source", 870, 590); ctx.fillText("△ Receivers", 870, 616);
+  const peak = f.field.reduce((a,v) => Math.max(a,Math.abs(v)),0);
+  const lines = [
+    `${fileName} · frame ${current + 1}/${run.frames.length} · step ${f.step} · t = ${(f.time * h.time_unit_s).toFixed(3)} s`,
+    `${h.nx} × ${h.nz} grid · spacing ${(h.dx * h.length_unit_m).toFixed(2)} m · Δt ${(h.dt * h.time_unit_s).toFixed(4)} s · max |u| ${peak.toExponential(4)}`,
+    `Source (${h.source.map(v => (v * h.length_unit_m / 1000).toFixed(2)).join(", ")}) km · ${h.receivers.length} receivers · velocity ${medium ? "shown" : "hidden"}`
+  ];
+  ctx.font = "17px system-ui";
+  lines.forEach((line,i) => ctx.fillText(line, 40, 775 + 27 * i, 1020));
+  $("scrub").value = String(current);
+  $("readout").textContent = lines.join(" · ");
+  canvas.setAttribute("aria-label", `Wavefield at ${(f.time * h.time_unit_s).toFixed(3)} seconds, frame ${current + 1} of ${run.frames.length}. Source and ${h.receivers.length} receiver positions are marked.`);
+}
+// files: {name, arrayBuffer()} objects; one .npy recording and its run.json.
+async function loadFiles(files) {
+  const version = ++loadVersion;
+  setPlaying(false); $("status").className = ""; $("status").textContent = "Reading files…";
+  try {
+    const npyFile = files.find(f => f.name.endsWith(".npy"));
+    const runFile = files.find(f => f.name === "run.json") || files.find(f => f.name.endsWith(".json"));
+    requireValue(npyFile && runFile, "Choose both wavefield.npy and its run.json.");
+    const npy = parseNpy(await npyFile.arrayBuffer());
+    let manifest;
+    try { manifest = JSON.parse(new TextDecoder().decode(await runFile.arrayBuffer())); }
+    catch { throw new Error(`${runFile.name}: invalid JSON.`); }
+    const loaded = parseWavefield(npy, manifest);
+    if (version !== loadVersion) return;
+    run = loaded; fileName = npyFile.name; current = 0;
+    for (const id of ["play","scrub","savepng"]) $(id).disabled = false;
+    $("medium").disabled = !run.header.speed; $("scrub").max = run.frames.length - 1;
+    $("status").textContent = `${fileName} · ${run.frames.length} frames loaded. Nothing is uploaded.`;
+    render();
+  } catch (error) {
+    if (version !== loadVersion) return;
+    run = null;
+    for (const id of ["play","scrub","savepng","medium"]) $(id).disabled = true;
+    ctx.clearRect(0,0,canvas.width,canvas.height); $("readout").textContent = "No valid data loaded.";
+    $("status").className = "error"; $("status").textContent = error.message;
+  }
+}
+window.composeProofPNG = () => run ? canvas.toDataURL("image/png") : null;
+function savePNG() {
+  if (!run) return;
+  const a = document.createElement("a"); a.href = window.composeProofPNG(); a.download = `week5-wavefield-step${run.frames[current].step}.png`; a.click();
+}
+$("file").addEventListener("change", e => { if (e.target.files.length) loadFiles([...e.target.files]); });
+$("play").addEventListener("click", () => setPlaying(!playing));
+$("fps").addEventListener("input", () => { $("fpsval").value = $("fps").value; if (playing) setPlaying(true); });
+$("scrub").addEventListener("input", () => { setPlaying(false); current = Number($("scrub").value); render(); });
+$("medium").addEventListener("change", render); $("savepng").addEventListener("click", savePNG);
+let dragDepth = 0;
+window.addEventListener("dragenter", e => { e.preventDefault(); dragDepth++; $("drop").classList.add("active"); });
+window.addEventListener("dragover", e => e.preventDefault());
+window.addEventListener("dragleave", e => { e.preventDefault(); if (--dragDepth <= 0) $("drop").classList.remove("active"); });
+// A dropped folder contributes its top-level files.
+async function droppedFiles(transfer) {
+  const entries = [...transfer.items].map(item => item.webkitGetAsEntry && item.webkitGetAsEntry()).filter(Boolean);
+  if (!entries.some(entry => entry.isDirectory)) return [...transfer.files];
+  const file = entry => new Promise((ok, fail) => entry.file(ok, fail));
+  const files = [];
+  for (const entry of entries) {
+    if (entry.isFile) files.push(await file(entry));
+    else {
+      const children = await new Promise((ok, fail) => entry.createReader().readEntries(ok, fail));
+      for (const child of children) if (child.isFile) files.push(await file(child));
+    }
+  }
+  return files;
+}
+window.addEventListener("drop", e => {
+  e.preventDefault(); dragDepth = 0; $("drop").classList.remove("active");
+  droppedFiles(e.dataTransfer).then(files => { if (files.length) loadFiles(files); });
+});
+// Fetch a recording and the run.json beside it; name each as the loader expects.
+async function fetchPair(src) {
+  const manifest = new URL("run.json", new URL(src, location.href)).href;
+  const [data, json] = await Promise.all([src, manifest].map(async url => {
+    const r = await fetch(url);
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+    return r.arrayBuffer();
+  }));
+  const name = src.split("?")[0].split("/").pop() || "wavefield.npy";
+  return [{name: name.endsWith(".npy") ? name : "wavefield.npy", arrayBuffer: () => Promise.resolve(data)},
+          {name: "run.json", arrayBuffer: () => Promise.resolve(json)}];
+}
+function loadURL(src) {
+  setPlaying(false); $("status").className = ""; $("status").textContent = `Loading ${src}\u2026`;
+  fetchPair(src).then(loadFiles).catch(() => {
+    $("status").className = "error";
+    $("status").textContent = `Could not load ${src} and the run.json beside it. Are both committed, and is the address exact?`;
+  });
+}
+function tryFetch() {
+  const src = new URLSearchParams(location.search).get("src");
+  if (src) { loadURL(src); return; }
+  fetchPair("./wavefield.npy").then(loadFiles).catch(() => {});
+}
+window.addEventListener("keydown", e => {
+  if (!run || e.target.closest("input,button,select,a") || e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.code === "Space") { e.preventDefault(); setPlaying(!playing); }
+  else if (["ArrowLeft","ArrowRight"].includes(e.key)) { e.preventDefault(); setPlaying(false); current = Math.max(0,Math.min(run.frames.length - 1,current + (e.key === "ArrowRight" ? 1 : -1))); render(); }
+  else if (e.key.toLowerCase() === "s") savePNG();
+});
+tryFetch();
+</script>
+</body>
+</html>

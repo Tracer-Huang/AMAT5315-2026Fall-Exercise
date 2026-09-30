@@ -1,0 +1,134 @@
+{
+  "1": {
+    "relative_l2_error": 0.0,
+    "peak_saved_states": 2,
+    "shots": [
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 28680,
+        "peak_saved_states": 2
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 28680,
+        "peak_saved_states": 2
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 28680,
+        "peak_saved_states": 2
+      }
+    ]
+  },
+  "3": {
+    "relative_l2_error": 0.0,
+    "peak_saved_states": 4,
+    "shots": [
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 1695,
+        "peak_saved_states": 4
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 1695,
+        "peak_saved_states": 4
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 1695,
+        "peak_saved_states": 4
+      }
+    ]
+  },
+  "5": {
+    "relative_l2_error": 0.0,
+    "peak_saved_states": 6,
+    "shots": [
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 990,
+        "peak_saved_states": 6
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 990,
+        "peak_saved_states": 6
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 990,
+        "peak_saved_states": 6
+      }
+    ]
+  },
+  "10": {
+    "relative_l2_error": 0.0,
+    "peak_saved_states": 11,
+    "shots": [
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 642,
+        "peak_saved_states": 11
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 642,
+        "peak_saved_states": 11
+      },
+      {
+        "missing_reverse_steps": 0,
+        "duplicated_reverse_steps": 0,
+        "reverse_steps_out_of_order": 0,
+        "invalid_restores": 0,
+        "budget_overruns": 0,
+        "forward_calls": 642,
+        "peak_saved_states": 11
+      }
+    ]
+  }
+}

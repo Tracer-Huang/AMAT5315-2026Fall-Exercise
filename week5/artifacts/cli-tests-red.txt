@@ -1,0 +1,29 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+____________________ test_missing_required_options_rejected ____________________
+
+    def test_missing_required_options_rejected():
+>    assert run().returncode != 0
+E    AssertionError: assert 0 != 0
+E     +  where 0 = CompletedProcess(args=['/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week5/target/release/seismic'], returncode=0, stdout='', stderr='').returncode
+E     +    where CompletedProcess(args=['/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week5/target/release/seismic'], returncode=0, stdout='', stderr='') = run()
+
+week5/tests/test_cli.py:8: AssertionError
+_________________ test_forward_reference_and_refuse_overwrite __________________
+
+tmp_path = PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-25/test_forward_reference_and_ref0')
+
+    def test_forward_reference_and_refuse_overwrite(tmp_path):
+     dest=tmp_path/'forward'
+     r=run('--experiment',ROOT/'inputs/reflector.json','--mode','forward','--every','3','--out',dest)
+     assert r.returncode==0,r.stderr
+>    assert (dest/'traces.npy').exists()
+E    AssertionError: assert False
+E     +  where False = exists()
+E     +    where exists = (PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-25/test_forward_reference_and_ref0/forward') / 'traces.npy').exists
+
+week5/tests/test_cli.py:14: AssertionError
+=========================== short test summary info ============================
+FAILED week5/tests/test_cli.py::test_missing_required_options_rejected - Asse...
+FAILED week5/tests/test_cli.py::test_forward_reference_and_refuse_overwrite
+2 failed in 0.06s

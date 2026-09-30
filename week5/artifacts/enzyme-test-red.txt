@@ -1,0 +1,30 @@
+   Compiling seismic v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week5)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.18s
+     Running unittests src/lib.rs (week5/target/debug/deps/seismic-27d0dd41cf2f9751)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (week5/target/debug/deps/core-2059fd7a68652c86)
+
+running 1 test
+test real_enzyme_cube_forward_and_reverse ... FAILED
+
+failures:
+
+---- real_enzyme_cube_forward_and_reverse stdout ----
+
+thread 'real_enzyme_cube_forward_and_reverse' (5504733) panicked at tests/core.rs:33:44:
+assertion `left == right` failed
+  left: [0.0, 0.0, 0.0]
+ right: [8.0, 12.0, 12.0]
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    real_enzyme_cube_forward_and_reverse
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+error: test failed, to rerun pass `--test core`

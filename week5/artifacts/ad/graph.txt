@@ -1,0 +1,6 @@
+{ lambda ; a:f64[]. let
+    b:f64[] = integer_pow[y=-6] a
+    c:f64[] = integer_pow[y=2] b
+    d:f64[] = sub c b
+    e:f64[] = mul 4.0:f64[] d
+  in (e,) }

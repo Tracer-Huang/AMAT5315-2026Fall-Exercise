@@ -1,0 +1,202 @@
+#!/usr/bin/env python3
+"""Evaluate the numerical checks stated in the Week 5 learning sheet."""
+import json
+from pathlib import Path
+import sys
+from types import SimpleNamespace
+
+import numpy as np
+
+ROOT = Path(__file__).resolve().parents[2]
+
+
+def load(path):
+    return json.loads(Path(path).read_text())
+
+
+def check(name, value, limit):
+    passed = np.isfinite(value) and value < limit
+    print(f'{name}: measured={value:.9g}, required < {limit:g}: {"PASS" if passed else "FAIL"}')
+    if not passed:
+        raise AssertionError(name)
+
+
+def array(path, shape):
+    """A finite float64 .npy array of the given shape (NumPy format, no pickles)."""
+    a = np.load(path, allow_pickle=False)
+    if a.dtype != np.float64 or a.shape != shape or not np.isfinite(a).all():
+        raise ValueError(f'{path}: expected finite float64 {shape}, got {a.dtype} {a.shape}')
+    return a
+
+
+def relative(actual, expected):
+    return float(np.linalg.norm(actual-expected)/max(np.linalg.norm(expected), 1e-30))
+
+
+def validate_actions(actions, steps, delta):
+    """Replay availability and time indices, without comparing optimal schedules."""
+    available, working = {0}, None
+    reverse, peak, calls = [], 1, 0
+    for event in actions:
+        action, step = event['action'], event['step']
+        if not isinstance(step, int) or not 0 <= step <= steps:
+            raise ValueError('invalid action timestep')
+        if action == 'restore':
+            assert step in available, 'restore unavailable state'
+            working = step
+        elif action == 'call':
+            assert working == step and step < steps, 'replay starts from wrong time'
+            working = step+1
+            calls += 1
+        elif action == 'store':
+            assert working == step and step not in available, 'invalid save'
+            available.add(step)
+            peak = max(peak, len(available))
+            assert len(available) <= delta+1, 'checkpoint budget exceeded'
+        elif action == 'grad':
+            assert step in available, 'reverse requires a saved complete input state'
+            reverse.append(step)
+        elif action == 'fetch':
+            assert step in available and step != 0, 'invalid checkpoint discard'
+            available.remove(step)
+        else:
+            raise ValueError('unknown checkpoint action '+str(action))
+        assert event['saved_states'] == len(available), 'incorrect stored-state counter'
+    assert reverse == list(range(steps-1, -1, -1)), 'each reverse step must occur once in descending order'
+    assert available == {0}, 'leaked checkpoints'
+    return calls, peak
+
+
+def checkpoint_stats(result, experiment, delta, directory):
+    stats = result['statistics']
+    assert stats['storage'] == 'treeverse' and stats['checkpoints'] == delta
+    assert stats['state_wavefields'] == 2, 'complete state requires two wavefields'
+    state_bytes = 2*experiment.nx*experiment.nz*8
+    assert stats['saved_state_bytes'] == state_bytes, 'incorrect complete-state byte size'
+    per_shot = stats['per_shot']
+    assert len(per_shot) == len(experiment.data['shots']), 'one action trace per shot required'
+    calls, reverse, peaks = 0, 0, []
+    for run in per_shot:
+        action_path = Path(run['actions_file'])
+        if action_path.is_absolute() or '..' in action_path.parts:
+            raise ValueError('actions_file must be relative to its result directory')
+        count, peak = validate_actions(load(directory/action_path), experiment.steps, delta)
+        assert run['reverse_calls'] == experiment.steps, 'incorrect reverse-call counter'
+        # Schedule work only: the forward step recomputed inside each reverse call is excluded.
+        assert run['scheduler_forward_calls'] == count, 'scheduler forward calls differ from call actions'
+        assert run['peak_saved_states'] == peak, 'saved-state peak differs from events'
+        calls += count
+        reverse += experiment.steps
+        peaks.append(peak)
+    assert stats['scheduler_forward_calls'] == calls, 'scheduler forward calls must sum over shots'
+    assert stats['reverse_calls'] == reverse
+    assert stats['peak_saved_states'] == max(peaks) == delta+1, 'expected checkpoint slots plus initial state'
+    assert stats['peak_saved_bytes'] == max(peaks)*state_bytes
+    print(f'checkpoint-actions-delta{delta}: {reverse} reverse calls, {calls} replay calls, {max(peaks)} saved states: PASS')
+
+
+def full_history_stats(result, experiment):
+    stats = result['statistics']
+    assert stats['storage'] == 'full'
+    assert stats['state_wavefields'] == 2
+    state_bytes = 2*experiment.nx*experiment.nz*8
+    assert stats['saved_state_bytes'] == state_bytes
+    assert stats['peak_saved_states'] == experiment.steps+1
+    assert stats['peak_saved_bytes'] == (experiment.steps+1)*state_bytes
+    assert len(stats['per_shot']) == len(experiment.data['shots'])
+    reverse = 0
+    for run in stats['per_shot']:
+        assert run['reverse_calls'] == experiment.steps
+        assert run['peak_saved_states'] == experiment.steps+1
+        assert run['scheduler_forward_calls'] == experiment.steps, 'full history runs each step forward once'
+        reverse += experiment.steps
+    assert stats['reverse_calls'] == reverse
+    assert stats['scheduler_forward_calls'] == reverse, 'scheduler forward calls must sum over shots'
+    print(f'full-history-storage: {experiment.steps+1} complete saved states: PASS')
+
+
+def main(repo):
+    artifacts = Path(repo)/'artifacts'
+    def result(folder, mode, experiment):
+        data = load(artifacts/folder/'result.json')
+        if data['schema'] != 'week5-born-rtm-v2' or data['mode'] != mode:
+            raise ValueError(f'{folder}: incorrect result schema or mode')
+        for key, expected in [('nx', experiment.nx), ('nz', experiment.nz),
+                              ('steps', experiment.steps), ('dt', experiment.dt),
+                              ('dx', experiment.dx), ('shots', experiment.data['shots']),
+                              ('receivers', experiment.data['receivers'])]:
+            if data[key] != expected:
+                raise ValueError(f'{folder}: {key} does not match the published experiment')
+        data['folder'] = artifacts/folder
+        return data
+    def experiment(name):
+        data = load(ROOT/'week5/inputs'/f'{name}.json')
+        return SimpleNamespace(data=data, m=np.asarray(data['perturbation'], dtype=float),
+                               **{key: data[key] for key in ('nx', 'nz', 'steps', 'dt', 'dx')})
+    def traces_shape(e):
+        return len(e.data['shots']), e.steps, len(e.data['receivers'])
+
+    ad = load(artifacts/'ad/derivatives.json')
+    r = float(ad['r'])
+    if not np.isfinite(r) or abs(r-1.3) > 1e-12:
+        raise ValueError('AD probe requires r=1.3')
+    exact = 24*(r**-7-2*r**-13)
+    check('AD-energy', abs(float(ad['energy'])-4*(r**-12-r**-6)), 1e-12)
+    check('AD-hand-forward', abs(float(ad['tangents']['U'])-exact), 1e-12)
+    check('AD-hand-reverse', abs(float(ad['adjoints']['r'])-exact), 1e-12)
+    check('AD-jax-grad', abs(float(ad['jax_grad'])-exact), 1e-12)
+    # The shared value a collects two terms, 2a*b_bar - c_bar = 8a - 4.
+    check('AD-shared-adjoint', abs(float(ad['adjoints']['a'])-(8*r**-6-4)), 1e-12)
+
+    e = experiment('reflector')
+    forward = array(result('forward', 'forward', e)['folder']/'traces.npy', traces_shape(e))
+    check('forward-trace-norm', relative(np.linalg.norm(forward), 11.574770), 1e-4)
+    for shot, expected in enumerate((0.60809514, 0.59271397, 0.60809514)):
+        step, receiver = np.unravel_index(np.argmax(np.abs(forward[shot])), forward[shot].shape)
+        check(f'forward-shot{shot}-peak', relative(abs(forward[shot, step, receiver]), expected), 1e-4)
+        assert step == 83, f'shot {shot}: largest pressure must occur at trace index 83'
+        displacement = np.asarray(e.data['receivers'][receiver])-e.data['shots'][shot]
+        assert np.dot(displacement, displacement) == 1, f'shot {shot}: peak receiver must be one grid cell from source'
+        print(f'forward-shot{shot}-arrival: step={step}, receiver={receiver}, distance=1 cell: PASS')
+
+    born = array(result('born', 'born', e)['folder']/'born_data.npy', traces_shape(e))
+    check('Born-data-norm', relative(np.linalg.norm(born), 0.18667590), 1e-4)
+    full_result = result('adjoint', 'adjoint', e)
+    full = array(full_result['folder']/'image.npy', (e.nz, e.nx))
+    # Transpose identity with the Born data as weights: <Jm, Jm> = <m, J^T Jm>.
+    lhs, rhs = float(np.sum(born*born)), float(np.sum(e.m*full))
+    check('Born-adjoint-dot-product', abs(lhs-rhs)/max(abs(lhs), abs(rhs), 1e-30), 1e-9)
+    full_history_stats(full_result, e)
+    peak_depth = 10+int(np.argmax(np.linalg.norm(full[10:34, 7:34], axis=1)))
+    assert abs(peak_depth-21) <= 1, 'reflector image peak must locate depth 21 within one cell'
+    print(f'reflector-depth-profile: peak z={peak_depth}, required 20..22: PASS')
+    for delta in (1, 3, 5, 10):
+        checkpoint = result(f'checkpoint-{delta}', 'adjoint', e)
+        image = array(checkpoint['folder']/'image.npy', full.shape)
+        check(f'checkpoint-image-delta{delta}', relative(image, full), 1e-9)
+        checkpoint_stats(checkpoint, e, delta, artifacts/f'checkpoint-{delta}')
+
+    # The sheet states a norm and storage target. Geological features are judged
+    # visually; the gate neither reads a private image nor runs a private solver.
+    m = experiment('marmousi')
+    migrated = result('marmousi-image', 'adjoint', m)
+    image = array(migrated['folder']/'image.npy', (m.nz, m.nx))
+    check('Marmousi-image-norm', relative(np.linalg.norm(image), 6.7037741e-4), 1e-4)
+    checkpoint_stats(migrated, m, 5, artifacts/'marmousi-image')
+    assert migrated['statistics']['peak_saved_bytes'] == 20_788_320, 'Marmousi six-state byte target'
+    for name in ('result.json', 'image.npy'):
+        assert (artifacts/'marmousi-image'/name).stat().st_size < 5_000_000, 'Marmousi image evidence must be under 5 MB'
+    print('PASS: Week 5 visible numerical checks and checkpoint evidence')
+
+
+if __name__ == '__main__':
+    try:
+        if len(sys.argv) != 2:
+            raise ValueError('usage: check REPO')
+        main(sys.argv[1])
+    except (OSError, KeyError, TypeError, ValueError, IndexError) as error:
+        print(f'FAIL: schema: {error}')
+        sys.exit(2)
+    except AssertionError as error:
+        print(f'FAIL: {error}')
+        sys.exit(1)

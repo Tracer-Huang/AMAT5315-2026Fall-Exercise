@@ -1,0 +1,25 @@
+   Compiling seismic v0.1.0 (/Users/joshua/Downloads/amat5315/Repositorie/AMAT5315-2026Fall-Exercise/week5)
+    Finished `release` profile [optimized] target(s) in 3.99s
+     Running unittests src/lib.rs (target/release/build/seismic/db9a32e076e81c5e/out/seismic-db9a32e076e81c5e)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/core.rs (target/release/build/seismic/8bf4c17bec48a71f/out/core-8bf4c17bec48a71f)
+
+running 5 tests
+test real_enzyme_cube_forward_and_reverse ... ok
+test enzyme_timestep_jvp_finite_difference_and_vjp_transpose ... ok
+test update_matches_centered_damped_equation_and_zero_boundary ... ok
+test prescribed_treeverse_work_counts ... ok
+test treeverse_independent_schedule_invariants ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests seismic
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

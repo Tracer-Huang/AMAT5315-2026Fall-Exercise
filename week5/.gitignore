@@ -1,0 +1,11 @@
+/inputs/
+*.npy
+/target/
+/.venv/
+/.toolchains/
+/.cargo-home/
+__pycache__/
+.pytest_cache/
+
+# Preserved pre-repair versions are local recovery material.
+/audit/**/before/

@@ -1,0 +1,90 @@
+{
+  "image_l2_norm": 0.0006703774060378305,
+  "relative_norm_error": 5.9103564264972874e-09,
+  "peak_saved_states": 6,
+  "peak_saved_bytes": 20788320,
+  "full_history_bytes_per_shot": 4161128720,
+  "shots": [
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    },
+    {
+      "missing_reverse_steps": 0,
+      "duplicated_reverse_steps": 0,
+      "reverse_steps_out_of_order": 0,
+      "invalid_restores": 0,
+      "budget_overruns": 0,
+      "forward_calls": 7884,
+      "peak_saved_states": 6
+    }
+  ]
+}

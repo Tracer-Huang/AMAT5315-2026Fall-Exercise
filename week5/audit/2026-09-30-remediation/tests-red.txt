@@ -1,0 +1,48 @@
+FFF                                                                      [100%]
+=================================== FAILURES ===================================
+_____________ test_wave_check_rejects_inconsistent_recorded_times ______________
+
+evidence = PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-29/test_wave_check_rejects_incons0')
+
+    def test_wave_check_rejects_inconsistent_recorded_times(evidence):
+        p=evidence/'forward/run.json';r=json.loads(p.read_text());r['recording']['times'][35]+=1;p.write_text(json.dumps(r))
+>       with pytest.raises(ValueError,match='recording'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+tests/test_figure_evidence.py:22: Failed
+----------------------------- Captured stdout call -----------------------------
+{'trace_norm': 11.574769503614014, 'trace_peaks': [{'shot': 0, 'trace_index': 83, 'receiver': 1, 'absolute_pressure': 0.60809514342744}, {'shot': 1, 'trace_index': 83, 'receiver': 6, 'absolute_pressure': 0.5927139734671293}, {'shot': 2, 'trace_index': 83, 'receiver': 12, 'absolute_pressure': 0.60809514342744}], 'wave_peak_distances_km': [0.8485281374238572, 2.121320343559643], 'elapsed_s': 0.72, 'displacement_km': 1.2727922061357857, 'born_norm': 0.18667589618149358, 'dot_left': 0.03484789021516377, 'dot_right': 0.034847890215163775, 'dot_relative_error': 1.9911948359180222e-16, 'image_peak_depth_km': 2.1}
+_____________________ test_full_history_baseline_is_loaded _____________________
+
+evidence = PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-29/test_full_history_baseline_is_0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10ce9a780>
+
+    def test_full_history_baseline_is_loaded(evidence,monkeypatch):
+        seen=[];original=figures.load
+        def tracked(path):seen.append(Path(path));return original(path)
+        monkeypatch.setattr(figures,'load',tracked)
+        figures.checkpoints()
+>       assert evidence/'adjoint/result.json' in seen
+E       AssertionError: assert (PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-29/test_full_history_baseline_is_0') / 'adjoint/result.json') in [PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-29/test_full_history_base...6fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-29/test_full_history_baseline_is_0/checkpoint-3/actions-0.json'), ...]
+
+tests/test_figure_evidence.py:30: AssertionError
+----------------------------- Captured stdout call -----------------------------
+Checkpoint audit passed for every shot and budget
+__________________ test_required_numerical_fields_are_printed __________________
+
+evidence = PosixPath('/private/var/folders/dy/29z6kl096fxc0gpbzn7vmc040000gn/T/pytest-of-joshua/pytest-29/test_required_numerical_fields0')
+capsys = <_pytest.capture.CaptureFixture object at 0x10d1ef8c0>
+
+    def test_required_numerical_fields_are_printed(evidence,capsys):
+        figures.small();figures.checkpoints();text=capsys.readouterr().out
+        for key in ['depth_difference_km','relative_l2_error','peak_saved_states','missing_reverse_steps','duplicated_reverse_steps','reverse_steps_out_of_order','invalid_restores','budget_overruns']:
+>           assert key in text
+E           assert 'depth_difference_km' in "{'trace_norm': 11.574769503614014, 'trace_peaks': [{'shot': 0, 'trace_index': 83, 'receiver': 1, 'absolute_pressure':...ative_error': 1.9911948359180222e-16, 'image_peak_depth_km': 2.1}\nCheckpoint audit passed for every shot and budget\n"
+
+tests/test_figure_evidence.py:35: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_figure_evidence.py::test_wave_check_rejects_inconsistent_recorded_times
+FAILED tests/test_figure_evidence.py::test_full_history_baseline_is_loaded - ...
+FAILED tests/test_figure_evidence.py::test_required_numerical_fields_are_printed
+3 failed in 0.43s

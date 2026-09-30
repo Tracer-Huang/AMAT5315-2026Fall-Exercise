@@ -1,0 +1,27 @@
+AD-energy: measured=1.11022302e-16, required < 1e-12: PASS
+AD-hand-forward: measured=4.4408921e-16, required < 1e-12: PASS
+AD-hand-reverse: measured=0, required < 1e-12: PASS
+AD-jax-grad: measured=0, required < 1e-12: PASS
+AD-shared-adjoint: measured=0, required < 1e-12: PASS
+forward-trace-norm: measured=4.28851705e-08, required < 0.0001: PASS
+forward-shot0-peak: measured=5.63635486e-09, required < 0.0001: PASS
+forward-shot0-arrival: step=83, receiver=1, distance=1 cell: PASS
+forward-shot1-peak: measured=5.84958247e-09, required < 0.0001: PASS
+forward-shot1-arrival: step=83, receiver=6, distance=1 cell: PASS
+forward-shot2-peak: measured=5.63635486e-09, required < 0.0001: PASS
+forward-shot2-arrival: step=83, receiver=12, distance=1 cell: PASS
+Born-data-norm: measured=2.04552726e-08, required < 0.0001: PASS
+Born-adjoint-dot-product: measured=1.99119484e-16, required < 1e-09: PASS
+full-history-storage: 241 complete saved states: PASS
+reflector-depth-profile: peak z=21, required 20..22: PASS
+checkpoint-image-delta1: measured=0, required < 1e-09: PASS
+checkpoint-actions-delta1: 720 reverse calls, 86040 replay calls, 2 saved states: PASS
+checkpoint-image-delta3: measured=0, required < 1e-09: PASS
+checkpoint-actions-delta3: 720 reverse calls, 5085 replay calls, 4 saved states: PASS
+checkpoint-image-delta5: measured=0, required < 1e-09: PASS
+checkpoint-actions-delta5: 720 reverse calls, 2970 replay calls, 6 saved states: PASS
+checkpoint-image-delta10: measured=0, required < 1e-09: PASS
+checkpoint-actions-delta10: 720 reverse calls, 1926 replay calls, 11 saved states: PASS
+Marmousi-image-norm: measured=5.91035647e-09, required < 0.0001: PASS
+checkpoint-actions-delta5: 10800 reverse calls, 70956 replay calls, 6 saved states: PASS
+PASS: Week 5 visible numerical checks and checkpoint evidence

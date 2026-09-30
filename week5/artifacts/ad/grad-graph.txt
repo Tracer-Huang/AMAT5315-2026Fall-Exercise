@@ -1,0 +1,14 @@
+{ lambda ; a:f64[]. let
+    b:f64[] = integer_pow[y=-6] a
+    c:f64[] = integer_pow[y=-7] a
+    d:f64[] = mul -6.0:f64[] c
+    e:f64[] = integer_pow[y=2] b
+    f:f64[] = mul 2.0:f64[] b
+    g:f64[] = sub e b
+    _:f64[] = mul 4.0:f64[] g
+    h:f64[] = mul 4.0:f64[] 1.0:f64[]
+    i:f64[] = neg h
+    j:f64[] = mul h f
+    k:f64[] = add_any i j
+    l:f64[] = mul k d
+  in (l,) }

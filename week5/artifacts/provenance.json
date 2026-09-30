@@ -1,0 +1,47 @@
+{
+  "source": "https://giggleliu.github.io/AMAT5315-2026Fall/",
+  "download_date": "2026-09-30",
+  "input_sha256": {
+    "reflector.json": "22b84948e28e8e13e958f47b2d4bf9a70a3d0c8ee6ffcaab3cdeb8003b9902a6",
+    "standing-81.json": "3bc42c4697ad37c2bb66223c00f437b5ee66703c8052d85b3374d95cd3cbf19d",
+    "marmousi.json": "67beabdee96d8e3f6433c2f897b3b24b0c744e7808784148bb06310665d888b0",
+    "weights.json": "78bd34f235f58118dedea264eea3805b5205821b710e0a9265d9ca2b53ea47fa",
+    "standing-21.json": "79a16906bc7ea6d1583cf2ca85d69fc595970d91865eca85e3bf0a019818a85c",
+    "standing-41.json": "47868e9c30f500dc41d109cc4b19ef56ff184a8b31163ab9cb6c61060ece03df"
+  },
+  "toolchain": [
+    {
+      "component": "rustc",
+      "url": "https://static.rust-lang.org/dist/2026-09-05/rustc-nightly-aarch64-apple-darwin.tar.xz",
+      "sha256": "5e2a301ca27b9fbdcf594e783218bca64fb1bea4b489be0961c4430c836bf13e"
+    },
+    {
+      "component": "cargo",
+      "url": "https://static.rust-lang.org/dist/2026-09-05/cargo-nightly-aarch64-apple-darwin.tar.xz",
+      "sha256": "e40e7afa2834bb08aab6670a134ad01f3c46cab8c4f9120ae5939fbf2b3e5c77"
+    },
+    {
+      "component": "rust-std",
+      "url": "https://static.rust-lang.org/dist/2026-09-05/rust-std-nightly-aarch64-apple-darwin.tar.xz",
+      "sha256": "c10d5018274e8b0aced496eecd58c6295b2d52226655628108ec6fd76c78e5c2"
+    },
+    {
+      "component": "enzyme-preview",
+      "url": "https://static.rust-lang.org/dist/2026-09-05/enzyme-nightly-aarch64-apple-darwin.tar.xz",
+      "sha256": "55f94c801c8900978c52d91350b54beb0a625c8031d85d71ac4fccafd9ff31e3"
+    }
+  ],
+  "viewer_exports": {
+    "forward": {
+      "step": 144,
+      "seconds": 2.88,
+      "file": "artifacts/forward/wavefield.png"
+    },
+    "adjoint": {
+      "step": 132,
+      "seconds": 2.64,
+      "file": "artifacts/adjoint/wavefield.png"
+    }
+  },
+  "git_submission": "withheld until user review"
+}
