@@ -1,0 +1,362 @@
+{
+  "Ps": [
+    3,
+    10,
+    30,
+    100,
+    300,
+    1000
+  ],
+  "betas": [
+    0.001,
+    0.003,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "queries": 100,
+  "seed_rule": "6640+P_index, recall adds 1000",
+  "nearest_tie_rule": "argmax first stored index; a duplicate at an earlier index counts as failure",
+  "attention_max_abs_difference": 1.7285346984863281e-06,
+  "runtime_seconds": 7.859999540960416,
+  "records": [
+    {
+      "P": 3,
+      "beta": 0.001,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.1920928955078125e-07,
+      "seed": 6640
+    },
+    {
+      "P": 3,
+      "beta": 0.003,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.1920928955078125e-07,
+      "seed": 6640
+    },
+    {
+      "P": 3,
+      "beta": 0.01,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.7881393432617188e-07,
+      "seed": 6640
+    },
+    {
+      "P": 3,
+      "beta": 0.03,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.7881393432617188e-07,
+      "seed": 6640
+    },
+    {
+      "P": 3,
+      "beta": 0.1,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.7881393432617188e-07,
+      "seed": 6640
+    },
+    {
+      "P": 3,
+      "beta": 0.3,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6640
+    },
+    {
+      "P": 3,
+      "beta": 1.0,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6640
+    },
+    {
+      "P": 10,
+      "beta": 0.001,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.7881393432617188e-07,
+      "seed": 6641
+    },
+    {
+      "P": 10,
+      "beta": 0.003,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.7881393432617188e-07,
+      "seed": 6641
+    },
+    {
+      "P": 10,
+      "beta": 0.01,
+      "modern_success": 0.1,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 2.980232238769531e-07,
+      "seed": 6641
+    },
+    {
+      "P": 10,
+      "beta": 0.03,
+      "modern_success": 0.99,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 3.46451997756958e-07,
+      "seed": 6641
+    },
+    {
+      "P": 10,
+      "beta": 0.1,
+      "modern_success": 0.99,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.2516975402832031e-06,
+      "seed": 6641
+    },
+    {
+      "P": 10,
+      "beta": 0.3,
+      "modern_success": 0.99,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.7285346984863281e-06,
+      "seed": 6641
+    },
+    {
+      "P": 10,
+      "beta": 1.0,
+      "modern_success": 0.99,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6641
+    },
+    {
+      "P": 30,
+      "beta": 0.001,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 2.980232238769531e-07,
+      "seed": 6642
+    },
+    {
+      "P": 30,
+      "beta": 0.003,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 4.172325134277344e-07,
+      "seed": 6642
+    },
+    {
+      "P": 30,
+      "beta": 0.01,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 3.5762786865234375e-07,
+      "seed": 6642
+    },
+    {
+      "P": 30,
+      "beta": 0.03,
+      "modern_success": 0.83,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 6.556510925292969e-07,
+      "seed": 6642
+    },
+    {
+      "P": 30,
+      "beta": 0.1,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.1175870895385742e-06,
+      "seed": 6642
+    },
+    {
+      "P": 30,
+      "beta": 0.3,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 1.0728836059570312e-06,
+      "seed": 6642
+    },
+    {
+      "P": 30,
+      "beta": 1.0,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6642
+    },
+    {
+      "P": 100,
+      "beta": 0.001,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 100,
+      "beta": 0.003,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 100,
+      "beta": 0.01,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 100,
+      "beta": 0.03,
+      "modern_success": 0.22,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 100,
+      "beta": 0.1,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 100,
+      "beta": 0.3,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 100,
+      "beta": 1.0,
+      "modern_success": 1.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6643
+    },
+    {
+      "P": 300,
+      "beta": 0.001,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 300,
+      "beta": 0.003,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 300,
+      "beta": 0.01,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 300,
+      "beta": 0.03,
+      "modern_success": 0.02,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 300,
+      "beta": 0.1,
+      "modern_success": 0.96,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 300,
+      "beta": 0.3,
+      "modern_success": 0.95,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 300,
+      "beta": 1.0,
+      "modern_success": 0.95,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6644
+    },
+    {
+      "P": 1000,
+      "beta": 0.001,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    },
+    {
+      "P": 1000,
+      "beta": 0.003,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    },
+    {
+      "P": 1000,
+      "beta": 0.01,
+      "modern_success": 0.0,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    },
+    {
+      "P": 1000,
+      "beta": 0.03,
+      "modern_success": 0.01,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    },
+    {
+      "P": 1000,
+      "beta": 0.1,
+      "modern_success": 0.88,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    },
+    {
+      "P": 1000,
+      "beta": 0.3,
+      "modern_success": 0.95,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    },
+    {
+      "P": 1000,
+      "beta": 1.0,
+      "modern_success": 0.96,
+      "classical_success": 0.0,
+      "attention_max_abs_difference": 0.0,
+      "seed": 6645
+    }
+  ]
+}
