@@ -1,0 +1,189 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "PDF p4-5: every prescribed training setting",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5: initialization/evaluation/completion settings",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p2: provenance URLs and original byte identities",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p3-4: MNIST train full labels and native shape",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p3-4: MNIST test full labels and native shape",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p3-4: CIFAR-10 train full labels and native shape",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p3-4: CIFAR-10 test full labels and native shape",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5: training-only bias initialization and exact weight seed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5: CD-1 all 20 checkpoints",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p8-9: CD-1 fixed-seed reconstruction at all states",
+      "passed": true,
+      "detail": "max independent Hamming discrepancy=3.35e-09"
+    },
+    {
+      "check": "PDF p9: CD-1 stored steps and held-out reconstruction starts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p9: CD-1 exact replay of generation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p9: CD-1 exact replay of reconstruction",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5/10: CD-1 wrong-upper next-different-label rule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p10: CD-1 independently recomputed missing-half Dice/SE",
+      "passed": true,
+      "detail": "1000-step true/wrong=[0.3884377181529999, 0.2115640491247177]"
+    },
+    {
+      "check": "PDF p10: CD-1 1024 chains and all stored observed halves exact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p10: CD-1 exact clamped trajectory replay",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5: CD-10 all 20 checkpoints",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p8-9: CD-10 fixed-seed reconstruction at all states",
+      "passed": true,
+      "detail": "max independent Hamming discrepancy=3.5e-09"
+    },
+    {
+      "check": "PDF p9: CD-10 stored steps and held-out reconstruction starts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p9: CD-10 exact replay of generation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p9: CD-10 exact replay of reconstruction",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5/10: CD-10 wrong-upper next-different-label rule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p10: CD-10 independently recomputed missing-half Dice/SE",
+      "passed": true,
+      "detail": "1000-step true/wrong=[0.5087137222290039, 0.2566101849079132]"
+    },
+    {
+      "check": "PDF p10: CD-10 1024 chains and all stored observed halves exact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p10: CD-10 exact clamped trajectory replay",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p9: matched fair generation starts across CD models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p5: completion start/randomness matched across CD models",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p11-13: all 1680 sets recomputed, stable and nonincreasing energy",
+      "passed": true,
+      "detail": "max summary discrepancy=1.23e-07; max sweeps=71"
+    },
+    {
+      "check": "PDF p13-14: P=3 original-order patterns and paired half-erased queries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p13-14: P=10 original-order patterns and paired half-erased queries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p13-14: P=30 original-order patterns and paired half-erased queries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p13-14: P=100 original-order patterns and paired half-erased queries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p13-14: P=300 original-order patterns and paired half-erased queries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p13-14: P=1000 original-order patterns and paired half-erased queries",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "PDF p15: independent NumPy softmax and actual JAX attention",
+      "passed": true,
+      "detail": "NumPy discrepancy=6.10384447e-06; attention max=1.7285347e-06"
+    }
+  ],
+  "runtime_seconds": 13.920988957979716,
+  "scope": "PDF exact settings, original inputs, every saved epoch evaluation, all RBM sampling/completion frames, all 1680 Hopfield sets, all modern outputs; independent NumPy statistics and formulas",
+  "optional_AIS": "Explicit optional extension, excluded from required tasks",
+  "remaining_personal_activity": "Reading, oral explanation and Week7 presentation by the student are not claimed as completed"
+}

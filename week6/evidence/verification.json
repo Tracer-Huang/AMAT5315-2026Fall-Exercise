@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "check": "Original train/test split sizes",
+      "passed": true,
+      "detail": "MNIST 60000/10000; CIFAR10 50000/10000, original storage order"
+    },
+    {
+      "check": "Full-label distributions",
+      "passed": true,
+      "detail": "MNIST 1 most/5 least; CIFAR each class .1"
+    },
+    {
+      "check": "Full prescribed RBM budget",
+      "passed": true,
+      "detail": "60000 images, 20 epochs, batch 100, 128 hidden, SGD .1, float32"
+    },
+    {
+      "check": "CD-1 full history and reconstruction",
+      "passed": true,
+      "detail": "initial=0.17175542; final=0.04639668; threshold=0.08587771"
+    },
+    {
+      "check": "CD-1 uses observed upper half",
+      "passed": true,
+      "detail": "true-minus-wrong lower-half Dice=0.17687367"
+    },
+    {
+      "check": "CD-1 completion budget and exact clamps",
+      "passed": true,
+      "detail": "64 digits x 8 chains x 2 controls, steps [0, 1, 10, 100, 1000], upper half exact"
+    },
+    {
+      "check": "CD-1 binary sampling",
+      "passed": true,
+      "detail": "sampled bits, never thresholded probabilities"
+    },
+    {
+      "check": "CD-10 full history and reconstruction",
+      "passed": true,
+      "detail": "initial=0.17175542; final=0.04757254; threshold=0.08587771"
+    },
+    {
+      "check": "CD-10 uses observed upper half",
+      "passed": true,
+      "detail": "true-minus-wrong lower-half Dice=0.25210354"
+    },
+    {
+      "check": "CD-10 completion budget and exact clamps",
+      "passed": true,
+      "detail": "64 digits x 8 chains x 2 controls, steps [0, 1, 10, 100, 1000], upper half exact"
+    },
+    {
+      "check": "CD-10 binary sampling",
+      "passed": true,
+      "detail": "sampled bits, never thresholded probabilities"
+    },
+    {
+      "check": "Matched generation/reconstruction starts",
+      "passed": true,
+      "detail": "Matched starts across CD1/CD10; eval key reset every epoch"
+    },
+    {
+      "check": "Full Hopfield sweep",
+      "passed": true,
+      "detail": "4 sizes x 21 loads x 20 independent sets; first min(10,P) patterns, random asynchronous sweeps"
+    },
+    {
+      "check": "Recall crossings",
+      "passed": true,
+      "detail": "{'100': 0.18539266767360288, '200': 0.17496735872723326, '400': 0.15553937768240342, '800': 0.14652022452535665}"
+    },
+    {
+      "check": "Crosstalk at N800 alpha .2",
+      "passed": true,
+      "detail": "observed=0.0123547; large-N prediction=0.0126737; SE=0.0001268"
+    },
+    {
+      "check": "Actual JAX attention equivalence",
+      "passed": true,
+      "detail": "max over all P/beta/queries=1.7285347e-06"
+    },
+    {
+      "check": "Full modern/classical experiment",
+      "passed": true,
+      "detail": "6 P x 7 beta x 100 queries; same targets and starts within each P"
+    },
+    {
+      "check": "Modern retrieval and classical failure",
+      "passed": true,
+      "detail": "{3: 1.0, 10: 0.99, 30: 1.0, 100: 1.0, 300: 0.95, 1000: 0.95}"
+    },
+    {
+      "check": "Required evidence figures",
+      "passed": true,
+      "detail": "19 named figures cover all required VERIFY blocks"
+    }
+  ],
+  "optional_AIS": "Not run: explicitly optional in course PDF p11",
+  "submission": "User authorized Git publication after strict checks on 2026-10-14; course PDF requires no portal submission"
+}
