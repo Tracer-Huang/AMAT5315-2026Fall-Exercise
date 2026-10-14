@@ -1,0 +1,356 @@
+{
+  "settings": {
+    "training": {
+      "images": 60000,
+      "epochs": 20,
+      "batch_size": 100,
+      "shuffle_each_epoch": true,
+      "optimizer": "SGD",
+      "learning_rate": 0.1,
+      "momentum": 0.0,
+      "weight_decay": 0.0,
+      "precision": "float32",
+      "seed": 6602
+    },
+    "initialization": {
+      "weight_std": 0.01,
+      "hidden_bias": 0.0,
+      "visible_bias": "logit(clipped training pixel frequency)",
+      "pixel_frequency_clip": [
+        0.01,
+        0.99
+      ],
+      "seed": 6601
+    },
+    "evaluation": {
+      "test_images": 64,
+      "seed": 6606,
+      "reconstruction_at": "initialization and each epoch",
+      "surrogate": "epoch mean of batch surrogates before updates"
+    },
+    "completion": {
+      "test_images": 64,
+      "chains": 8,
+      "steps": [
+        1,
+        10,
+        100,
+        1000
+      ],
+      "seed": 6607,
+      "wrong_upper": "next evaluation image with a different label, wrapping within the 64 images"
+    }
+  },
+  "random_streams": "split training seed 6602 into shuffle and Gibbs roots; fold in epoch; reset roots per model",
+  "hidden_units": 128,
+  "training": {
+    "1": {
+      "history": [
+        {
+          "epoch": 0,
+          "surrogate": null,
+          "reconstruction_error": 0.17175541818141937
+        },
+        {
+          "epoch": 1,
+          "surrogate": -17.36760902404785,
+          "reconstruction_error": 0.08709342777729034
+        },
+        {
+          "epoch": 2,
+          "surrogate": -15.716561317443848,
+          "reconstruction_error": 0.07386001199483871
+        },
+        {
+          "epoch": 3,
+          "surrogate": -13.760248184204102,
+          "reconstruction_error": 0.06804049760103226
+        },
+        {
+          "epoch": 4,
+          "surrogate": -12.44103717803955,
+          "reconstruction_error": 0.06307796388864517
+        },
+        {
+          "epoch": 5,
+          "surrogate": -11.580293655395508,
+          "reconstruction_error": 0.060467153787612915
+        },
+        {
+          "epoch": 6,
+          "surrogate": -10.973198890686035,
+          "reconstruction_error": 0.0584542416036129
+        },
+        {
+          "epoch": 7,
+          "surrogate": -10.554841041564941,
+          "reconstruction_error": 0.057816483080387115
+        },
+        {
+          "epoch": 8,
+          "surrogate": -10.15186595916748,
+          "reconstruction_error": 0.05512595549225807
+        },
+        {
+          "epoch": 9,
+          "surrogate": -9.714376449584961,
+          "reconstruction_error": 0.05428890138864517
+        },
+        {
+          "epoch": 10,
+          "surrogate": -9.380107879638672,
+          "reconstruction_error": 0.05213647708296776
+        },
+        {
+          "epoch": 11,
+          "surrogate": -9.01375675201416,
+          "reconstruction_error": 0.05115991458296776
+        },
+        {
+          "epoch": 12,
+          "surrogate": -8.561233520507812,
+          "reconstruction_error": 0.050542090088129044
+        },
+        {
+          "epoch": 13,
+          "surrogate": -8.192158699035645,
+          "reconstruction_error": 0.050143495202064514
+        },
+        {
+          "epoch": 14,
+          "surrogate": -7.853376865386963,
+          "reconstruction_error": 0.04908721148967743
+        },
+        {
+          "epoch": 15,
+          "surrogate": -7.401313781738281,
+          "reconstruction_error": 0.04842952638864517
+        },
+        {
+          "epoch": 16,
+          "surrogate": -7.116106986999512,
+          "reconstruction_error": 0.04783163219690323
+        },
+        {
+          "epoch": 17,
+          "surrogate": -6.707876682281494,
+          "reconstruction_error": 0.046954717487096786
+        },
+        {
+          "epoch": 18,
+          "surrogate": -6.410933017730713,
+          "reconstruction_error": 0.04717394709587097
+        },
+        {
+          "epoch": 19,
+          "surrogate": -6.179574489593506,
+          "reconstruction_error": 0.04649633169174194
+        },
+        {
+          "epoch": 20,
+          "surrogate": -5.9058098793029785,
+          "reconstruction_error": 0.046396683901548386
+        }
+      ],
+      "training_seconds": 15.379333791905083
+    },
+    "10": {
+      "history": [
+        {
+          "epoch": 0,
+          "surrogate": null,
+          "reconstruction_error": 0.17175541818141937
+        },
+        {
+          "epoch": 1,
+          "surrogate": -14.288612365722656,
+          "reconstruction_error": 0.08922592550516129
+        },
+        {
+          "epoch": 2,
+          "surrogate": -15.190465927124023,
+          "reconstruction_error": 0.07559391111135483
+        },
+        {
+          "epoch": 3,
+          "surrogate": -13.01026725769043,
+          "reconstruction_error": 0.06885761767625809
+        },
+        {
+          "epoch": 4,
+          "surrogate": -11.81008529663086,
+          "reconstruction_error": 0.0647321417927742
+        },
+        {
+          "epoch": 5,
+          "surrogate": -11.12582015991211,
+          "reconstruction_error": 0.06066645309329033
+        },
+        {
+          "epoch": 6,
+          "surrogate": -10.627059936523438,
+          "reconstruction_error": 0.05925143510103226
+        },
+        {
+          "epoch": 7,
+          "surrogate": -10.13580322265625,
+          "reconstruction_error": 0.057378027588129044
+        },
+        {
+          "epoch": 8,
+          "surrogate": -9.507238388061523,
+          "reconstruction_error": 0.05588328838348389
+        },
+        {
+          "epoch": 9,
+          "surrogate": -8.934937477111816,
+          "reconstruction_error": 0.05402981489896774
+        },
+        {
+          "epoch": 10,
+          "surrogate": -8.172975540161133,
+          "reconstruction_error": 0.052933670580387115
+        },
+        {
+          "epoch": 11,
+          "surrogate": -7.61475133895874,
+          "reconstruction_error": 0.05227598920464516
+        },
+        {
+          "epoch": 12,
+          "surrogate": -7.110947608947754,
+          "reconstruction_error": 0.05123963579535484
+        },
+        {
+          "epoch": 13,
+          "surrogate": -6.660701751708984,
+          "reconstruction_error": 0.050980545580387115
+        },
+        {
+          "epoch": 14,
+          "surrogate": -6.350244522094727,
+          "reconstruction_error": 0.05012356489896774
+        },
+        {
+          "epoch": 15,
+          "surrogate": -6.121026515960693,
+          "reconstruction_error": 0.04990433529019356
+        },
+        {
+          "epoch": 16,
+          "surrogate": -5.830794334411621,
+          "reconstruction_error": 0.04968510568141937
+        },
+        {
+          "epoch": 17,
+          "surrogate": -5.619742393493652,
+          "reconstruction_error": 0.04836973920464516
+        },
+        {
+          "epoch": 18,
+          "surrogate": -5.393265724182129,
+          "reconstruction_error": 0.04817043989896774
+        },
+        {
+          "epoch": 19,
+          "surrogate": -5.190407752990723,
+          "reconstruction_error": 0.04753268510103226
+        },
+        {
+          "epoch": 20,
+          "surrogate": -5.067716598510742,
+          "reconstruction_error": 0.0475725419819355
+        }
+      ],
+      "training_seconds": 92.69581599999219
+    }
+  },
+  "completion": {
+    "1": {
+      "mean": [
+        [
+          0.25825822353363037,
+          0.22822876274585724
+        ],
+        [
+          0.31790098547935486,
+          0.22307489812374115
+        ],
+        [
+          0.3687904477119446,
+          0.22522184252738953
+        ],
+        [
+          0.3884377181529999,
+          0.2115640491247177
+        ]
+      ],
+      "se": [
+        [
+          0.011441069655120373,
+          0.00937902182340622
+        ],
+        [
+          0.01443549245595932,
+          0.010035308077931404
+        ],
+        [
+          0.02077941969037056,
+          0.012144604697823524
+        ],
+        [
+          0.023965394124388695,
+          0.015333720482885838
+        ]
+      ],
+      "advantage_at_1000": 0.17687366902828217
+    },
+    "10": {
+      "mean": [
+        [
+          0.2568751573562622,
+          0.24388669431209564
+        ],
+        [
+          0.322028785943985,
+          0.23673312366008759
+        ],
+        [
+          0.42220425605773926,
+          0.25882768630981445
+        ],
+        [
+          0.5087137222290039,
+          0.2566101849079132
+        ]
+      ],
+      "se": [
+        [
+          0.009011683985590935,
+          0.008025337010622025
+        ],
+        [
+          0.012925294227898121,
+          0.009514322504401207
+        ],
+        [
+          0.016505567356944084,
+          0.012170103378593922
+        ],
+        [
+          0.019408132880926132,
+          0.015497289597988129
+        ]
+      ],
+      "advantage_at_1000": 0.2521035373210907
+    }
+  },
+  "completion_seconds": 8.079160165973008,
+  "se_unit": "64 digits; average eight chains within each digit first",
+  "environment": {
+    "python": "3.14.7",
+    "jax": "0.11.2",
+    "numpy": "2.5.3",
+    "devices": "[CpuDevice(id=0)]"
+  }
+}
