@@ -1,0 +1,10 @@
+.venv/
+.bootstrap/
+inputs/
+artifacts/
+__pycache__/
+.pytest_cache/
+
+.reference/
+
+/TASK.md

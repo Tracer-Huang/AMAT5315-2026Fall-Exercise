@@ -1,0 +1,32 @@
+{
+  "source_sha256": {
+    "run_toy.py": "69f94ac8a0bfbfbbf15a0aa72fbcae9c5dc4e4900bc36373f6940bb2ad50d78f",
+    "plotting.py": "6ae2fd0fa9f7dee95c73cfcf2f5b93e8823ad9b006939270da05b3c1681563e4"
+  },
+  "stages": [
+    0,
+    1,
+    4,
+    18,
+    75,
+    316,
+    1334,
+    5623,
+    23714,
+    100000
+  ],
+  "loss_points_per_stage": [
+    0,
+    1,
+    4,
+    18,
+    75,
+    316,
+    600,
+    600,
+    600,
+    600
+  ],
+  "paired_data": "artifacts/paired-runs.npz",
+  "paired_paths_per_panel": 20
+}

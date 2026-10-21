@@ -1,0 +1,607 @@
+{
+  "checked_against": "local original Week 7 16-page PDF, DO / VERIFY / final instructions",
+  "submission_ready": true,
+  "failed_requirements": [],
+  "checks": [
+    {
+      "requirement": "P1 final sample counts and moments",
+      "passed": true,
+      "detail": {
+        "fractions": [
+          0.2425,
+          0.2675,
+          0.2375,
+          0.2525
+        ],
+        "centres": [
+          [
+            3.0069515705108643,
+            0.021358869969844818
+          ],
+          [
+            0.01089535467326641,
+            3.012319326400757
+          ],
+          [
+            -3.012619972229004,
+            -0.03449214994907379
+          ],
+          [
+            0.012928828597068787,
+            -3.020470142364502
+          ]
+        ],
+        "widths": [
+          [
+            0.3184933066368103,
+            0.2968697249889374
+          ],
+          [
+            0.31212684512138367,
+            0.30074742436408997
+          ],
+          [
+            0.29415175318717957,
+            0.3103499412536621
+          ],
+          [
+            0.3068190813064575,
+            0.30466926097869873
+          ]
+        ],
+        "fraction_error": 0.017500000000000016,
+        "centre_error": 0.03672835562845444,
+        "width_error": 0.018493306636810314
+      },
+      "pdf_pages": [
+        6,
+        7
+      ]
+    },
+    {
+      "requirement": "noise ten actual checkpoints and loss history",
+      "passed": true,
+      "detail": {
+        "stages": [
+          0,
+          1,
+          4,
+          18,
+          75,
+          316,
+          1334,
+          5623,
+          23714,
+          100000
+        ],
+        "loss_updates": 100000
+      },
+      "pdf_pages": [
+        2,
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "requirement": "flow ten actual checkpoints and loss history",
+      "passed": true,
+      "detail": {
+        "stages": [
+          0,
+          1,
+          4,
+          18,
+          75,
+          316,
+          1334,
+          5623,
+          23714,
+          100000
+        ],
+        "loss_updates": 100000
+      },
+      "pdf_pages": [
+        2,
+        4,
+        6,
+        8
+      ]
+    },
+    {
+      "requirement": "P1_3 same architecture, separate regression training",
+      "passed": true,
+      "detail": {
+        "noise": {
+          "kind": "noise",
+          "updates": 100000,
+          "batch": 512,
+          "seed": 7101,
+          "lr": 0.001,
+          "architecture": "scalar_basis",
+          "width": 64
+        },
+        "flow": {
+          "kind": "flow",
+          "updates": 100000,
+          "batch": 512,
+          "seed": 7101,
+          "lr": 0.001,
+          "architecture": "scalar_basis",
+          "width": 64
+        }
+      },
+      "pdf_pages": [
+        2,
+        8
+      ]
+    },
+    {
+      "requirement": "forward.gif decodes",
+      "passed": true,
+      "detail": {
+        "frames": 41
+      },
+      "pdf_pages": [
+        6
+      ]
+    },
+    {
+      "requirement": "reverse.gif decodes",
+      "passed": true,
+      "detail": {
+        "frames": 41
+      },
+      "pdf_pages": [
+        6
+      ]
+    },
+    {
+      "requirement": "training.gif decodes",
+      "passed": true,
+      "detail": {
+        "frames": 10
+      },
+      "pdf_pages": [
+        6
+      ]
+    },
+    {
+      "requirement": "P1 training animation includes loss history at every trained stage",
+      "passed": true,
+      "detail": {
+        "stages": [
+          0,
+          1,
+          4,
+          18,
+          75,
+          316,
+          1334,
+          5623,
+          23714,
+          100000
+        ],
+        "coverage": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "producer_binding": true
+      },
+      "pdf_pages": [
+        6
+      ]
+    },
+    {
+      "requirement": "P2 independent replay: DDIM equality and two DDPM runs",
+      "passed": true,
+      "detail": {
+        "ddim_max_difference": 0.0,
+        "ddpm_same_cluster_fraction": 0.2385,
+        "ddim_metrics_match": true
+      },
+      "pdf_pages": [
+        8
+      ]
+    },
+    {
+      "requirement": "P2 trajectories plot includes both stochastic repeats",
+      "passed": true,
+      "detail": {
+        "lines_per_panel": [
+          20,
+          20
+        ],
+        "second_ddpm_paths_match": true,
+        "producer_binding": true
+      },
+      "pdf_pages": [
+        8
+      ]
+    },
+    {
+      "requirement": "P3 velocity RMS <0.1 at all three s",
+      "passed": true,
+      "detail": {
+        "domain": "original full 21x21 [-4,4]^2 grid",
+        "s": [
+          0.1,
+          0.5,
+          0.9
+        ],
+        "relative_rms": [
+          0.0017951519694179296,
+          0.0017643781611695886,
+          0.047728586941957474
+        ],
+        "stored_values_match": true,
+        "density_mask_applied": false
+      },
+      "pdf_pages": [
+        11
+      ]
+    },
+    {
+      "requirement": "P3 every prescribed step, raw N=4000, moments and energy",
+      "passed": true,
+      "detail": {
+        "runs": 23,
+        "mismatches": []
+      },
+      "pdf_pages": [
+        8,
+        11
+      ]
+    },
+    {
+      "requirement": "P3 null scale and 20-step flow targets",
+      "passed": true,
+      "detail": {
+        "null_pairs": 20,
+        "null_q95": 0.004682604894541821,
+        "flow20": {
+          "method": "flow",
+          "steps": 20,
+          "fractions": [
+            0.24925,
+            0.2535,
+            0.25,
+            0.24725
+          ],
+          "centres": [
+            [
+              2.9342188835144043,
+              0.004916652571409941
+            ],
+            [
+              0.01253246609121561,
+              2.949881076812744
+            ],
+            [
+              -2.947723627090454,
+              0.005745026282966137
+            ],
+            [
+              0.006181997247040272,
+              -2.941824436187744
+            ]
+          ],
+          "widths": [
+            [
+              0.3063925802707672,
+              0.3054742217063904
+            ],
+            [
+              0.29153862595558167,
+              0.29454314708709717
+            ],
+            [
+              0.3097747564315796,
+              0.28701427578926086
+            ],
+            [
+              0.2908627986907959,
+              0.30280038714408875
+            ]
+          ],
+          "fraction_error": 0.003500000000000003,
+          "centre_error": 0.06596460231517706,
+          "width_error": 0.012985724210739125,
+          "energy": 0.0022510315498225353
+        }
+      },
+      "pdf_pages": [
+        8,
+        11
+      ]
+    },
+    {
+      "requirement": "P4 four photographs and six reverse stages",
+      "passed": true,
+      "detail": {
+        "visual_evidence": [
+          "photographs.png",
+          "real-vs-generated.png"
+        ],
+        "stage_levels": [
+          1000,
+          500,
+          200,
+          100,
+          50,
+          0
+        ],
+        "source_review": "JAX float32; t-1 indexing; no sampling clipping; frozen weights"
+      },
+      "pdf_pages": [
+        12,
+        13
+      ]
+    },
+    {
+      "requirement": "P5 all 16 MSEs, exact observed pixels, inside-only variation",
+      "passed": true,
+      "detail": {
+        "completions": [
+          {
+            "image": 0,
+            "seed": 7201,
+            "mse": 0.1644526720046997,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 1,
+            "seed": 7201,
+            "mse": 0.17011494934558868,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 2,
+            "seed": 7201,
+            "mse": 0.20803025364875793,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 3,
+            "seed": 7201,
+            "mse": 0.36449626088142395,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 0,
+            "seed": 7202,
+            "mse": 0.10333665460348129,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 1,
+            "seed": 7202,
+            "mse": 0.24367167055606842,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 2,
+            "seed": 7202,
+            "mse": 0.11604298651218414,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 3,
+            "seed": 7202,
+            "mse": 0.36129075288772583,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 0,
+            "seed": 7203,
+            "mse": 0.15911254286766052,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 1,
+            "seed": 7203,
+            "mse": 0.18369877338409424,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 2,
+            "seed": 7203,
+            "mse": 0.2508907616138458,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 3,
+            "seed": 7203,
+            "mse": 0.250274658203125,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 0,
+            "seed": 7204,
+            "mse": 0.20006141066551208,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 1,
+            "seed": 7204,
+            "mse": 0.2122681885957718,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 2,
+            "seed": 7204,
+            "mse": 0.10810711979866028,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          },
+          {
+            "image": 3,
+            "seed": 7204,
+            "mse": 0.253903865814209,
+            "observed_max_change": 0.0,
+            "matches_saved": true
+          }
+        ],
+        "outside_variance": 0.0,
+        "mean_inside_variance": 0.06526727229356766
+      },
+      "pdf_pages": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "requirement": "P5 actual 99 runtime calls and requested jump sequence",
+      "passed": true,
+      "detail": {
+        "calls": 99,
+        "levels": [
+          1000,
+          1000,
+          980,
+          980,
+          960,
+          960,
+          940,
+          940,
+          920,
+          920,
+          900,
+          900,
+          880,
+          880,
+          860,
+          860,
+          840,
+          840,
+          820,
+          820,
+          800,
+          800,
+          780,
+          780,
+          760,
+          760,
+          740,
+          740,
+          720,
+          720,
+          700,
+          700,
+          680,
+          680,
+          660,
+          660,
+          640,
+          640,
+          620,
+          620,
+          600,
+          600,
+          580,
+          580,
+          560,
+          560,
+          540,
+          540,
+          520,
+          520,
+          500,
+          500,
+          480,
+          480,
+          460,
+          460,
+          440,
+          440,
+          420,
+          420,
+          400,
+          400,
+          380,
+          380,
+          360,
+          360,
+          340,
+          340,
+          320,
+          320,
+          300,
+          300,
+          280,
+          280,
+          260,
+          260,
+          240,
+          240,
+          220,
+          220,
+          200,
+          200,
+          180,
+          180,
+          160,
+          160,
+          140,
+          140,
+          120,
+          120,
+          100,
+          100,
+          80,
+          80,
+          60,
+          60,
+          40,
+          40,
+          20
+        ]
+      },
+      "pdf_pages": [
+        15
+      ]
+    },
+    {
+      "requirement": "P4_5 pinned model identity",
+      "passed": true,
+      "detail": {
+        "sha256": "1558dbe3fb093b0857d473e376b711eeda1b186c557be5e85b3a56300cd49f0f",
+        "revision": "267b167dc01f0e4e61923ea244e8b988f84deb80"
+      },
+      "pdf_pages": [
+        12
+      ]
+    }
+  ],
+  "authorization": "User authorizes completion, strict recheck, and course-required push once all checks pass",
+  "submission_semantics": "PDF says push source, environment, evidence; Nothing is submitted; no LMS submission prescribed",
+  "publication_scope": "This audit performs no git operations; delivery is recorded separately",
+  "manual_plot_review_source": {
+    "file": "run_toy.py",
+    "sha256": "69f94ac8a0bfbfbbf15a0aa72fbcae9c5dc4e4900bc36373f6940bb2ad50d78f",
+    "scope": "Actual plotting artists and artifact producer hashes checked for current version"
+  }
+}

@@ -1,0 +1,29 @@
+[
+  {
+    "s": 0.1,
+    "grid": "41x41 on [-4,4]^2",
+    "support_definition": "p_s(x)>0.01 max_grid p_s",
+    "support_points": 240,
+    "full_grid_relative_rms": 0.022492463297852275,
+    "density_weighted_relative_rms": 0.0008886004216037691,
+    "supported_grid_relative_rms": 0.0009828504407778382
+  },
+  {
+    "s": 0.5,
+    "grid": "41x41 on [-4,4]^2",
+    "support_definition": "p_s(x)>0.01 max_grid p_s",
+    "support_points": 629,
+    "full_grid_relative_rms": 0.0018426941614499027,
+    "density_weighted_relative_rms": 0.0022633408661931753,
+    "supported_grid_relative_rms": 0.002388975117355585
+  },
+  {
+    "s": 0.9,
+    "grid": "41x41 on [-4,4]^2",
+    "support_definition": "p_s(x)>0.01 max_grid p_s",
+    "support_points": 621,
+    "full_grid_relative_rms": 0.04549808177703833,
+    "density_weighted_relative_rms": 0.005377692636102438,
+    "supported_grid_relative_rms": 0.00589861860498786
+  }
+]

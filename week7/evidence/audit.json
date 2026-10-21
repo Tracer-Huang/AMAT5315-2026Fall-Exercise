@@ -1,0 +1,469 @@
+{
+  "P1.forward": {
+    "passed": true,
+    "detail": {
+      "mean": [
+        0.02685481496155262,
+        -0.014932941645383835
+      ],
+      "variance": [
+        1.0394867658615112,
+        1.0906778573989868
+      ]
+    }
+  },
+  "P1.ddpm_distribution": {
+    "passed": true,
+    "detail": {
+      "fractions": [
+        0.2425,
+        0.2675,
+        0.2375,
+        0.2525
+      ],
+      "centres": [
+        [
+          3.0069515705108643,
+          0.021358869969844818
+        ],
+        [
+          0.01089535467326641,
+          3.012319326400757
+        ],
+        [
+          -3.012619972229004,
+          -0.03449214994907379
+        ],
+        [
+          0.012928828597068787,
+          -3.020470142364502
+        ]
+      ],
+      "widths": [
+        [
+          0.3184933066368103,
+          0.2968697249889374
+        ],
+        [
+          0.31212684512138367,
+          0.30074742436408997
+        ],
+        [
+          0.29415175318717957,
+          0.3103499412536621
+        ],
+        [
+          0.3068190813064575,
+          0.30466926097869873
+        ]
+      ],
+      "fraction_error": 0.017500000000000016,
+      "centre_error": 0.03672835562845444,
+      "width_error": 0.018493306636810314
+    }
+  },
+  "P1_3.noise_stages": {
+    "passed": true,
+    "detail": {
+      "stages": [
+        0,
+        1,
+        4,
+        18,
+        75,
+        316,
+        1334,
+        5623,
+        23714,
+        100000
+      ],
+      "finite_loss": true
+    }
+  },
+  "P1_3.flow_stages": {
+    "passed": true,
+    "detail": {
+      "stages": [
+        0,
+        1,
+        4,
+        18,
+        75,
+        316,
+        1334,
+        5623,
+        23714,
+        100000
+      ],
+      "finite_loss": true
+    }
+  },
+  "P2.deterministic": {
+    "passed": true,
+    "detail": {
+      "ddim_max_difference": 0.0,
+      "ddpm_same_cluster_fraction": 0.2385,
+      "ddim": {
+        "fractions": [
+          0.259,
+          0.258,
+          0.247,
+          0.236
+        ],
+        "centres": [
+          [
+            3.026832342147827,
+            0.00178241403773427
+          ],
+          [
+            -0.01973300613462925,
+            3.013364791870117
+          ],
+          [
+            -2.974489688873291,
+            -0.01012604683637619
+          ],
+          [
+            0.003265682840719819,
+            -2.99642014503479
+          ]
+        ],
+        "widths": [
+          [
+            0.29544422030448914,
+            0.3005675673484802
+          ],
+          [
+            0.30728065967559814,
+            0.30206963419914246
+          ],
+          [
+            0.2933129370212555,
+            0.28356921672821045
+          ],
+          [
+            0.28195032477378845,
+            0.28440338373184204
+          ]
+        ],
+        "fraction_error": 0.014000000000000012,
+        "centre_error": 0.027446544378372597,
+        "width_error": 0.018049675226211537
+      },
+      "ddpm": {
+        "fractions": [
+          0.2475,
+          0.246,
+          0.2765,
+          0.23
+        ],
+        "centres": [
+          [
+            2.9966166019439697,
+            -0.013773477636277676
+          ],
+          [
+            -0.013385063968598843,
+            2.9978578090667725
+          ],
+          [
+            -2.9951236248016357,
+            -0.0126778120175004
+          ],
+          [
+            -0.0074508050456643105,
+            -3.007089614868164
+          ]
+        ],
+        "widths": [
+          [
+            0.29676806926727295,
+            0.3003298044204712
+          ],
+          [
+            0.2956748604774475,
+            0.31082242727279663
+          ],
+          [
+            0.29896998405456543,
+            0.29544827342033386
+          ],
+          [
+            0.32155120372772217,
+            0.30351972579956055
+          ]
+        ],
+        "fraction_error": 0.026500000000000024,
+        "centre_error": 0.014182949925970644,
+        "width_error": 0.02155120372772218
+      }
+    }
+  },
+  "P3.velocity_supported_grid": {
+    "passed": true,
+    "detail": [
+      {
+        "s": 0.1,
+        "grid": "41x41 on [-4,4]^2",
+        "support_definition": "p_s(x)>0.01 max_grid p_s",
+        "support_points": 240,
+        "full_grid_relative_rms": 0.022492463297852275,
+        "density_weighted_relative_rms": 0.0008886004216037691,
+        "supported_grid_relative_rms": 0.0009828504407778382
+      },
+      {
+        "s": 0.5,
+        "grid": "41x41 on [-4,4]^2",
+        "support_definition": "p_s(x)>0.01 max_grid p_s",
+        "support_points": 629,
+        "full_grid_relative_rms": 0.0018426941614499027,
+        "density_weighted_relative_rms": 0.0022633408661931753,
+        "supported_grid_relative_rms": 0.002388975117355585
+      },
+      {
+        "s": 0.9,
+        "grid": "41x41 on [-4,4]^2",
+        "support_definition": "p_s(x)>0.01 max_grid p_s",
+        "support_points": 621,
+        "full_grid_relative_rms": 0.04549808177703833,
+        "density_weighted_relative_rms": 0.005377692636102438,
+        "supported_grid_relative_rms": 0.00589861860498786
+      }
+    ]
+  },
+  "P3.velocity_full_rectangle": {
+    "passed": true,
+    "detail": {
+      "relative_rms": [
+        0.0017951518530026078,
+        0.0017643782775849104,
+        0.047728583216667175
+      ],
+      "domain": "21x21 [-4,4]^2 including negligible-density regions",
+      "status": "original declared full-grid numerical acceptance test"
+    }
+  },
+  "P3.flow20": {
+    "passed": true,
+    "detail": {
+      "method": "flow",
+      "steps": 20,
+      "fractions": [
+        0.24925,
+        0.2535,
+        0.25,
+        0.24725
+      ],
+      "centres": [
+        [
+          2.9342188835144043,
+          0.004916652571409941
+        ],
+        [
+          0.01253246609121561,
+          2.949881076812744
+        ],
+        [
+          -2.947723627090454,
+          0.005745026282966137
+        ],
+        [
+          0.006181997247040272,
+          -2.941824436187744
+        ]
+      ],
+      "widths": [
+        [
+          0.3063925802707672,
+          0.3054742217063904
+        ],
+        [
+          0.29153862595558167,
+          0.29454314708709717
+        ],
+        [
+          0.3097747564315796,
+          0.28701427578926086
+        ],
+        [
+          0.2908627986907959,
+          0.30280038714408875
+        ]
+      ],
+      "fraction_error": 0.003500000000000003,
+      "centre_error": 0.06596460231517706,
+      "width_error": 0.012985724210739125,
+      "energy": 0.0022510315498225353
+    }
+  },
+  "P3.sweep": {
+    "passed": true,
+    "detail": {
+      "rows": 23,
+      "null_q95": 0.004682604894541821
+    }
+  },
+  "P4.four_images": {
+    "passed": true,
+    "detail": {
+      "shape": [
+        4,
+        3,
+        32,
+        32
+      ],
+      "dtype": "float32",
+      "visual_review": "dog/bird-like objects and scenery; low resolution limits semantic identification"
+    }
+  },
+  "P5.preservation": {
+    "passed": true,
+    "detail": {
+      "completions": [
+        {
+          "image": 0,
+          "seed": 7201,
+          "hidden_mse": 0.1644526720046997,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 1,
+          "seed": 7201,
+          "hidden_mse": 0.17011494934558868,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 2,
+          "seed": 7201,
+          "hidden_mse": 0.20803025364875793,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 3,
+          "seed": 7201,
+          "hidden_mse": 0.36449626088142395,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 0,
+          "seed": 7202,
+          "hidden_mse": 0.10333665460348129,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 1,
+          "seed": 7202,
+          "hidden_mse": 0.24367167055606842,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 2,
+          "seed": 7202,
+          "hidden_mse": 0.11604298651218414,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 3,
+          "seed": 7202,
+          "hidden_mse": 0.36129075288772583,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 0,
+          "seed": 7203,
+          "hidden_mse": 0.15911254286766052,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 1,
+          "seed": 7203,
+          "hidden_mse": 0.18369877338409424,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 2,
+          "seed": 7203,
+          "hidden_mse": 0.2508907616138458,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 3,
+          "seed": 7203,
+          "hidden_mse": 0.250274658203125,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 0,
+          "seed": 7204,
+          "hidden_mse": 0.20006141066551208,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 1,
+          "seed": 7204,
+          "hidden_mse": 0.2122681885957718,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 2,
+          "seed": 7204,
+          "hidden_mse": 0.10810711979866028,
+          "observed_max_change": 0.0
+        },
+        {
+          "image": 3,
+          "seed": 7204,
+          "hidden_mse": 0.253903865814209,
+          "observed_max_change": 0.0
+        }
+      ],
+      "mean_hidden_mse": 0.20935959508642554,
+      "observed_max_change": 0.0,
+      "outside_variance": 0.0,
+      "evaluations_per_seed": 99,
+      "total_completions": 16,
+      "seconds": 99.61564898490906,
+      "photo_seeds": [
+        7400,
+        7401,
+        7402,
+        7403
+      ],
+      "photo_reverse_seeds": [
+        7410,
+        7411,
+        7412,
+        7413
+      ],
+      "model_revision": "267b167dc01f0e4e61923ea244e8b988f84deb80",
+      "weights_sha256": "1558dbe3fb093b0857d473e376b711eeda1b186c557be5e85b3a56300cd49f0f"
+    }
+  },
+  "P4_5.model_identity": {
+    "passed": true,
+    "detail": {
+      "sha256": "1558dbe3fb093b0857d473e376b711eeda1b186c557be5e85b3a56300cd49f0f",
+      "source": "pinned official LFS oid"
+    }
+  },
+  "evidence_files": {
+    "passed": true,
+    "detail": [
+      "forward.gif",
+      "training.gif",
+      "reverse.gif",
+      "forward.png",
+      "loss.png",
+      "ddpm.png",
+      "determinism.png",
+      "trajectories.png",
+      "velocity.png",
+      "velocity-supported.png",
+      "comparison.png",
+      "exact-vs-learned.png",
+      "photographs.png",
+      "real-vs-generated.png",
+      "inpainting.png"
+    ]
+  }
+}

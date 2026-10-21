@@ -21,3 +21,7 @@ The screenshot shows the Week 1 test completing with `1 passed`.
 ## Week 6: Energy-based models
 
 [Exercises, measured figures and reproduction commands](week6/README.md) · [Strict PDF audit](week6/AUDIT.md) · [Chinese study notes](week6/STUDY_NOTES.zh.md).
+
+## Week 7: Diffusion and flow matching
+
+[Exercises, measured figures and reproduction commands](week7/README.md) · [Strict PDF audit](week7/STRICT_AUDIT.zh.md) · [Chinese study notes](week7/STUDY_NOTES.zh.md) · [Offline review page](week7/review.html).
