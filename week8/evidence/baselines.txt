@@ -1,0 +1,5 @@
+training=1003854 validation=111540 scored=111539
+uniform            loss=4.174387 PPL=65.000000 BPC=6.0224 tokens=111539
+unigram            loss=3.347305 PPL=28.426032 BPC=4.8291 tokens=111539
+bigram             loss=2.481889 PPL=11.963848 BPC=3.5806 tokens=111539
+two_target_example loss=1.039721 PPL=2.828427 BPC=1.5000 tokens=2
