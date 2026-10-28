@@ -1,0 +1,113 @@
+{
+  "replay": {
+    "seed": 531508,
+    "generated": 250000,
+    "chi_square": 1242.131705124324,
+    "dof": 1210,
+    "p_value": 0.25430654556084786,
+    "groups": [
+      {
+        "context": 276,
+        "draws": 2977,
+        "bins": 74
+      },
+      {
+        "context": 280,
+        "draws": 2941,
+        "bins": 27
+      },
+      {
+        "context": 416,
+        "draws": 3046,
+        "bins": 58
+      },
+      {
+        "context": 425,
+        "draws": 3380,
+        "bins": 36
+      },
+      {
+        "context": 262,
+        "draws": 3652,
+        "bins": 32
+      },
+      {
+        "context": 422,
+        "draws": 4068,
+        "bins": 75
+      },
+      {
+        "context": 266,
+        "draws": 4020,
+        "bins": 58
+      },
+      {
+        "context": 413,
+        "draws": 4051,
+        "bins": 87
+      },
+      {
+        "context": 410,
+        "draws": 4330,
+        "bins": 40
+      },
+      {
+        "context": 421,
+        "draws": 4173,
+        "bins": 87
+      },
+      {
+        "context": 269,
+        "draws": 4565,
+        "bins": 63
+      },
+      {
+        "context": 414,
+        "draws": 4708,
+        "bins": 83
+      },
+      {
+        "context": 267,
+        "draws": 4901,
+        "bins": 54
+      },
+      {
+        "context": 419,
+        "draws": 5257,
+        "bins": 94
+      },
+      {
+        "context": 412,
+        "draws": 5476,
+        "bins": 58
+      },
+      {
+        "context": 265,
+        "draws": 5518,
+        "bins": 48
+      },
+      {
+        "context": 432,
+        "draws": 5655,
+        "bins": 66
+      },
+      {
+        "context": 261,
+        "draws": 6570,
+        "bins": 61
+      },
+      {
+        "context": 411,
+        "draws": 7050,
+        "bins": 105
+      },
+      {
+        "context": 426,
+        "draws": 10340,
+        "bins": 24
+      }
+    ]
+  },
+  "artifact_sha256": "194aa27f3082e0551aab05b32a9517d05533c1d0fe0af0fe544f4d4010609683",
+  "note": "Exact seeded replay of the original 250000-token sample."
+}

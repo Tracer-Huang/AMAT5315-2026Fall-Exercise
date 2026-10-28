@@ -1,5 +1,8 @@
 # Week 8 学习单逐项复核
 
+> 本复核针对 2026-10-27 的旧版 12 页 PDF。2026-10-28 新版的核验见
+> [新版逐项复核](revised-20261028/AUDIT.zh.md)。
+
 依据 2026-10-27 发布的 12 页课程 PDF；以下数据来自本次保存的权重、原始运行和
 [`verification.json`](evidence/verification.json)，不是课程资源包的参考结果。
 

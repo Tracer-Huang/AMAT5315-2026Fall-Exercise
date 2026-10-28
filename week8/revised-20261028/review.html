@@ -1,0 +1,49 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Week 8 新版 · 本地审核</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f3f6f8;color:#233247;font:16px/1.7 system-ui,-apple-system,sans-serif}
+main{max-width:1100px;margin:auto;padding:40px 24px}h1{font-size:36px;line-height:1.25}h2{font-size:25px;margin-top:45px}
+p{max-width:950px}a{color:#245e9a}.status{display:inline-block;padding:4px 12px;border:1px solid #b4cbd3;background:#e5f2f2;border-radius:6px}
+nav{display:flex;gap:10px;flex-wrap:wrap}nav a{background:white;border:1px solid #dce3ec;padding:8px 12px;text-decoration:none}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}article{background:white;border:1px solid #dce3ec;padding:18px}
+article strong,article span{display:block}article strong{font-size:24px}article span{font-size:14px;color:#586679}
+figure{margin:24px 0;background:white;border:1px solid #dce3ec;padding:14px}img{display:block;width:100%;height:auto}
+figcaption{color:#586679;font-size:14px;text-align:center;margin-top:8px}.note{padding:16px;background:#fff3df;border-left:4px solid #d3a04e}
+details{background:white;border:1px solid #dce3ec;padding:12px;margin:10px 0}summary{cursor:pointer}pre{white-space:pre-wrap;overflow:auto}
+@media(max-width:760px){.cards{grid-template-columns:repeat(2,1fr)}h1{font-size:29px}main{padding:24px 16px}}
+@media(max-width:420px){.cards{grid-template-columns:1fr}}</style><main>
+<span class="status">2026-10-28 新版 · 课程任务与计算证据</span><h1>语言模型与 Transformer</h1>
+<p>课程 PDF 已从旧版 12 页更新为新版 24 页。以下图表来自按新版要求进行的本机计算；旧版提交保留，不能作为新版作业的证明。</p>
+<nav><a href="https://giggleliu.github.io/AMAT5315-2026Fall/pdfs/week8-learning-sheet.pdf">课程 PDF（在线）</a><a href="README.md">结果与复现</a><a href="STUDY_NOTES.zh.md">中文学习笔记</a><a href="AUDIT.zh.md">逐项复核</a><a href="../review.html">旧版审核页</a></nav>
+<p>数值检查：115/115 项通过。课程视频和 Week 9 的课堂展示仍需本人完成。</p>
+<div class="cards"><article><strong>0.466 / 0.549 / 0.433</strong><span>三组词关系的平均余弦</span></article><article><strong>1.230</strong><span>Transformer 验证 bits/字符</span></article><article><strong>0.0565</strong><span>4,096 条记忆时 softmax 的 R</span></article><article><strong>17.9</strong><span>指定预算下最优 token / 参数</span></article></div>
+<p class="note">容量曲线在 M&gt;256 时每次查询固定的 256 个存储键；MLP 单元扩展的集中度方向与课程参考示例不同。完整边界见逐项复核。</p>
+<h2>你指出的回忆图</h2><figure><a href="evidence/part4-picture-recall.png"><img loading="lazy" src="evidence/part4-picture-recall.png" alt="M=64、256、1024、4096；四列分别为外积、ReLU、ReLU²、softmax。"></a><figcaption>M=64、256、1024、4096；四列分别为外积、ReLU、ReLU²、softmax。</figcaption></figure>
+<section><h2>1 · 词向量里的关系</h2><p>训练好的表把 token 映射为向量。留一关系方向在真表中一致，打乱表后趋近零。</p>
+<figure><a href="evidence/part1-relations.png"><img loading="lazy" src="evidence/part1-relations.png" alt="三组词对：真表与打乱行对照"></a><figcaption>三组词对：真表与打乱行对照</figcaption></figure>
+</section>
+<section><h2>2 · 计数模型与上下文</h2><p>训练故事内选平滑参数，验证故事独立评分。更长上下文降低损失，但稀疏计数最终使 5/6-gram 变差。</p>
+<figure><a href="evidence/part2-ngram-ladder.png"><img loading="lazy" src="evidence/part2-ngram-ladder.png" alt="1–6 gram 验证损失与未见 n-gram 比例"></a><figcaption>1–6 gram 验证损失与未见 n-gram 比例</figcaption></figure>
+</section>
+<section><h2>3 · 权重里的记忆</h2><p>五种存储的容量随维度增长。1-token MLP 验证损失 3.0437，距 bigram 0.0055 nats/token。</p>
+<figure><a href="evidence/part3-interference.png"><img loading="lazy" src="evidence/part3-interference.png" alt="d=64 的干扰比及理论线"></a><figcaption>d=64 的干扰比及理论线</figcaption></figure>
+<figure><a href="evidence/part3-capacity.png"><img loading="lazy" src="evidence/part3-capacity.png" alt="容量与维度：三次独立样本的中位数"></a><figcaption>容量与维度：三次独立样本的中位数</figcaption></figure>
+<figure><a href="evidence/part3-mlp-loss.png"><img loading="lazy" src="evidence/part3-mlp-loss.png" alt="MLP 训练与完整验证比较"></a><figcaption>MLP 训练与完整验证比较</figcaption></figure>
+<figure><a href="evidence/part3-mlp-units.png"><img loading="lazy" src="evidence/part3-mlp-units.png" alt="Extension：四个高集中度隐藏单元"></a><figcaption>Extension：四个高集中度隐藏单元</figcaption></figure>
+<p>Extension：训练后前五激活占比的中位数 0.209，初始化 0.137；与 PDF 示例的方向不同，保留实测值。</p>
+</section>
+<section><h2>4 · 从当前文本构建记忆</h2><p>四种存储分别回忆 32×32“算”字。每行是独立随机样本；红色表示干扰比 R&lt;1，灰色表示 R≥1。</p>
+</section>
+<section><h2>5 · Transformer 训练与生成</h2><p>两层、宽 96 的因果模型达到 1.230 bits/字符，优于 4-gram 的 1.310。</p>
+<figure><a href="evidence/part5-model-comparison.png"><img loading="lazy" src="evidence/part5-model-comparison.png" alt="相同验证文本上的 bits/字符"></a><figcaption>相同验证文本上的 bits/字符</figcaption></figure>
+<figure><a href="evidence/part5-context-loss.png"><img loading="lazy" src="evidence/part5-context-loss.png" alt="位置损失与上下文长度"></a><figcaption>位置损失与上下文长度</figcaption></figure>
+<figure><a href="evidence/part5-attention-heads.png"><img loading="lazy" src="evidence/part5-attention-heads.png" alt="Extension：两层共八个注意力头"></a><figcaption>Extension：两层共八个注意力头</figcaption></figure>
+<h3>五种模型的 60-token 样例</h3><details><summary>uniform · seed 1848 · 60 token</summary><pre>\x19R for&gt;Ḩ�\x06\x074 d	�/5myithBgch�b� bev�fd� On&gt; so(�P�� saidrE�d&quot;&quot;Z”\x1c�nts play mޕ7\x19 namedy</pre></details><details><summary>ngram_1 · seed 1848 · 60 token</summary><pre>spd to.etingonheheedent a g theedae.wr playumye he Heoureked  cAd the epingotey b grendndcc s go ca had oided ss p</pre></details><details><summary>ngram_2 · seed 1848 · 60 token</summary><pre>Lily, there was very mad she a som we worited with it. Mick. She said. She flealan&#x27;s the pris plag wat bared. re with elewing unt and anor</pre></details><details><summary>ngram_3 · seed 1848 · 60 token</summary><pre>Lily liked to do you thin b�4 d	�/5myithBgch�b� bev�fd� On&gt; so(�P�� saidrE�d&quot;&quot;Z”\x1c�nts play more to shar</pre></details><details><summary>transformer · seed 1848 · 60 token</summary><pre>ily loved to eat and dream a new pretty next day, care for the bage, in a lawn. One day, where for stay carefully to ask</pre></details><h3>Transformer 的四种采样设置</h3><details><summary>temperature_0.8 · seed 1848</summary><pre>One day, a little boy named Tim went to the box. He saw a big dog on the held it. Tim was very happy and said, &quot;Hi, my toy box. Jane, I bounced</pre></details><details><summary>top_k_20 · seed 1848</summary><pre>One day, a little boy named Tim went to the box. He saw a big dog on the cat. Tim wanted to play too. Tim was very happy and catried. He shook his mom and dad arou</pre></details><details><summary>top_p_0.9 · seed 1848</summary><pre>One day, a little boy named Tim went to the box. He saw a big dog on the cat. Tim wanted to play too. Tim was very happy and did not know what to do.
+Tim&#x27;s</pre></details><details><summary>min_p_0.1 · seed 1848</summary><pre>One day, a little boy named Tim went to the park. He saw a big red ball on the slide. Tim was very happy. He wanted to catch the ball to his friends. The ball bird c</pre></details>
+<p>卡方检验的上下文在抽样前按预测熵选择；第一版分布过于集中，失败记录保留在本机 artifacts。</p>
+</section>
+<section><h2>6 · 算力如何分配</h2><p>240 条训练记录的稳健拟合 α=0.347、β=0.367；指定预算 D*/N*=17.9。</p>
+<figure><a href="evidence/part6-chinchilla-fit.png"><img loading="lazy" src="evidence/part6-chinchilla-fit.png" alt="拟合曲线与实测比较"></a><figcaption>拟合曲线与实测比较</figcaption></figure>
+<figure><a href="evidence/part6-residuals.png"><img loading="lazy" src="evidence/part6-residuals.png" alt="拟合与论文打印参数的残差"></a><figcaption>拟合与论文打印参数的残差</figcaption></figure>
+<figure><a href="evidence/part6-optimal.png"><img loading="lazy" src="evidence/part6-optimal.png" alt="模型大小和训练 token 的计算最优分配"></a><figcaption>模型大小和训练 token 的计算最优分配</figcaption></figure>
+</section>
+<p><a href="evidence/audit.json">机器可读核验</a> · <a href="README.md">全部产生命令与数据版本</a></p></main></html>

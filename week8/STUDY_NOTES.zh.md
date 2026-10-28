@@ -1,5 +1,8 @@
 # Week 8 学习笔记：自回归、尺度规律与顿悟
 
+> 本笔记对应已替换的 12 页旧版。当前 24 页学习单请看
+> [新版学习笔记](revised-20261028/STUDY_NOTES.zh.md)。
+
 课程原始资料：本机 `../../../week8/` 下的学习单 PDF、资源包及参考阅读；
 线上 [Week 8 学习单](https://giggleliu.github.io/AMAT5315-2026Fall/week8-learning-sheet.html)。
 下文区分课程提出的验证目标、本次测得的数据和文献中的结论。

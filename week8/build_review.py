@@ -52,10 +52,11 @@ details{{background:white;border:1px solid #dce3ec;padding:12px;margin:10px 0}}s
 @media(max-width:760px){{.cards{{grid-template-columns:repeat(2,1fr)}}h1{{font-size:29px}}main{{padding:24px 16px}}}}
 @media(max-width:420px){{.cards{{grid-template-columns:1fr}}}}
 </style><main>
-<span class="status">Week 8 · 课程要求与计算证据</span>
+<span class="status">Week 8 · 2026-10-27 旧版计算证据</span>
 <h1>字符预测、尺度规律与顿悟</h1>
+<p class="note">课程已更新为 24 页新版。当前页面仅对应旧版，<a href="revised-20261028/review.html">请查看新版审核页</a>。</p>
 <p>Week 8 的四个核心部分已按课程要求运行。下图使用本次本机训练和验证数据；教师资源包中的参考结果不作为本次输出。</p>
-<nav><a href="https://giggleliu.github.io/AMAT5315-2026Fall/pdfs/week8-learning-sheet.pdf">课程学习单 PDF（在线）</a><a href="STUDY_NOTES.zh.md">中文学习笔记</a>
+<nav><a href="../../../week8/week8-learning-sheet.pdf">旧版学习单 PDF（本地）</a><a href="STUDY_NOTES.zh.md">中文学习笔记</a>
 <a href="README.md">设置与复现</a><a href="STRICT_AUDIT.zh.md">逐项复核</a><a href="CLOUD_CHALLENGE.zh.md">云端挑战说明</a></nav>
 <p>自动核验：{v['passed']}/{v['total']} 项通过；图中的区间失准如实保留。课程要求下周课堂展示。</p>
 <div class="cards">{card_html}</div>

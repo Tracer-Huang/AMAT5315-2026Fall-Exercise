@@ -1,0 +1,700 @@
+{
+  "pdf_sha256": "4e33bea929459c01511efc0298308a93d08d99ee7df38372bbf52e89be69cc35",
+  "checked_at": "2026-10-28T12:02:00.818868+00:00",
+  "passed": 115,
+  "total": 115,
+  "failed": [],
+  "checks": [
+    {
+      "name": "input SHA256: TinyStoriesV2-GPT4-valid.txt",
+      "passed": true,
+      "detail": "6874bae9a4c1a4e7edcf0e53b86c17817e9cf881fc75ff2368da457b80c0585d"
+    },
+    {
+      "name": "input SHA256: chinchilla-runs.csv",
+      "passed": true,
+      "detail": "193478df4e90f040016431996c45682659306840ecdadf83cfb9cd5ca0aa1b30"
+    },
+    {
+      "name": "input SHA256: potion-model.safetensors",
+      "passed": true,
+      "detail": "f65d0f325faadc1e121c319e2faa41170d3fa07d8c89abd48ca5358d9a223de2"
+    },
+    {
+      "name": "input SHA256: potion-tokenizer.json",
+      "passed": true,
+      "detail": "e67e803f624fb4d67dea1c730d06e1067e1b14d830e2c2202569e3ef0f70bb50"
+    },
+    {
+      "name": "input SHA256: tok512.model",
+      "passed": true,
+      "detail": "dfff07d929db979913f166ec94a6f5ecad4c70cfed8eb5c9cbe7e464455e46f5"
+    },
+    {
+      "name": "story split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "tokenizer vocabulary and characters per token",
+      "passed": true,
+      "detail": 2.051826835477763
+    },
+    {
+      "name": "validation decode mismatches",
+      "passed": true,
+      "detail": [
+        50,
+        819,
+        2017
+      ]
+    },
+    {
+      "name": "embedding relation Country \u2192 capital",
+      "passed": true,
+      "detail": [
+        0.46587416114341973,
+        0.02946645101970605
+      ]
+    },
+    {
+      "name": "embedding relation Male \u2192 female",
+      "passed": true,
+      "detail": [
+        0.5485180657376586,
+        -0.014804302363247486
+      ]
+    },
+    {
+      "name": "embedding relation Adjective \u2192 comparative",
+      "passed": true,
+      "detail": [
+        0.43300393216145866,
+        0.008767527653090215
+      ]
+    },
+    {
+      "name": "embedding cosine replay Country \u2192 capital real",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embedding cosine replay Country \u2192 capital shuffled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embedding cosine replay Male \u2192 female real",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embedding cosine replay Male \u2192 female shuffled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embedding cosine replay Adjective \u2192 comparative real",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "embedding cosine replay Adjective \u2192 comparative shuffled",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bigram normalization through explicit length 1,2,3 enumeration",
+      "passed": true,
+      "detail": [
+        1.0,
+        1.0000000000000007,
+        0.9999999999999968
+      ]
+    },
+    {
+      "name": "bigram sample goodness of fit",
+      "passed": true,
+      "detail": 0.25430654556084786
+    },
+    {
+      "name": "bigram sample raw transitions",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "bigram sample independently recalculated p-value",
+      "passed": true,
+      "detail": 0.25430654556084786
+    },
+    {
+      "name": "uniform probability baseline",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1-gram reference tolerance",
+      "passed": true,
+      "detail": [
+        4.839400072776124,
+        126.39350207743668,
+        3.4027101578614047
+      ]
+    },
+    {
+      "name": "2-gram reference tolerance",
+      "passed": true,
+      "detail": [
+        3.0381915920784572,
+        20.867472190646303,
+        2.1362328463089915
+      ]
+    },
+    {
+      "name": "3-gram reference tolerance",
+      "passed": true,
+      "detail": [
+        2.0943403683578588,
+        8.12008293959987,
+        1.4725860929580885
+      ]
+    },
+    {
+      "name": "n-gram minimum and 5/6-gram scores",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1-gram smoothing selected on training holdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "2-gram smoothing selected on training holdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "3-gram smoothing selected on training holdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "4-gram smoothing selected on training holdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "5-gram smoothing selected on training holdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "6-gram smoothing selected on training holdout",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "3-gram unseen fraction",
+      "passed": true,
+      "detail": 0.00632903180363968
+    },
+    {
+      "name": "4-gram unseen fraction",
+      "passed": true,
+      "detail": 0.04151081190291716
+    },
+    {
+      "name": "5-gram unseen fraction",
+      "passed": true,
+      "detail": 0.12224605095848362
+    },
+    {
+      "name": "6-gram unseen fraction",
+      "passed": true,
+      "detail": 0.23499438366778005
+    },
+    {
+      "name": "outer and least-squares capacities at d=64",
+      "passed": true,
+      "detail": [
+        66.8956057854166,
+        128.47016167489124
+      ]
+    },
+    {
+      "name": "least-squares exact interpolation through d=64",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity scaling slopes",
+      "passed": true,
+      "detail": {
+        "outer": 0.9880061016298972,
+        "least_squares": 1.0027068696725725,
+        "relu": 1.04227288477964,
+        "relu2": 1.9055320439836212,
+        "relu3": 2.767135616898221
+      }
+    },
+    {
+      "name": "capacity raw curve d=16 outer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=16 least_squares",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=16 relu",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=16 relu2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=16 relu3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=32 outer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=32 least_squares",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=32 relu",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=32 relu2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=32 relu3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=64 outer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=64 least_squares",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=64 relu",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=64 relu2",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "capacity raw curve d=64 relu3",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "MLP architecture and training budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "MLP matches held-out bigram",
+      "passed": true,
+      "detail": 0.0055195933768650285
+    },
+    {
+      "name": "MLP saved weights",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "MLP independent NumPy held-out loss",
+      "passed": true,
+      "detail": 3.0437111220578954
+    },
+    {
+      "name": "MLP extension all 1024 sides and concentration",
+      "passed": true,
+      "detail": 0.20856296181160908
+    },
+    {
+      "name": "picture experiment thresholds",
+      "passed": true,
+      "detail": [
+        [
+          0.8675081150433305,
+          0.6971488355958206,
+          0.11160098980771897,
+          0.005650335728159009
+        ],
+        [
+          1.8334378458882372,
+          1.3077583319687176,
+          0.2545739222598694,
+          0.012182592964460072
+        ],
+        [
+          3.985466714177811,
+          2.8413662107305937,
+          0.6082534690015781,
+          0.02846555748279343
+        ],
+        [
+          8.136659724338545,
+          5.713242886404703,
+          1.2088772292961536,
+          0.05653642939772846
+        ]
+      ]
+    },
+    {
+      "name": "picture asset and artifact checksums",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "picture M=64 outer independently recomputed",
+      "passed": true,
+      "detail": 0.8675081150433305
+    },
+    {
+      "name": "picture M=64 relu independently recomputed",
+      "passed": true,
+      "detail": 0.6971488355958206
+    },
+    {
+      "name": "picture M=64 relu2 independently recomputed",
+      "passed": true,
+      "detail": 0.11160098980771894
+    },
+    {
+      "name": "picture M=64 softmax independently recomputed",
+      "passed": true,
+      "detail": 0.00565033572815903
+    },
+    {
+      "name": "picture M=256 outer independently recomputed",
+      "passed": true,
+      "detail": 1.8334378458882372
+    },
+    {
+      "name": "picture M=256 relu independently recomputed",
+      "passed": true,
+      "detail": 1.3077583319687178
+    },
+    {
+      "name": "picture M=256 relu2 independently recomputed",
+      "passed": true,
+      "detail": 0.2545739222598694
+    },
+    {
+      "name": "picture M=256 softmax independently recomputed",
+      "passed": true,
+      "detail": 0.012182592964460054
+    },
+    {
+      "name": "picture M=1024 outer independently recomputed",
+      "passed": true,
+      "detail": 3.9854667141778113
+    },
+    {
+      "name": "picture M=1024 relu independently recomputed",
+      "passed": true,
+      "detail": 2.841366210730594
+    },
+    {
+      "name": "picture M=1024 relu2 independently recomputed",
+      "passed": true,
+      "detail": 0.6082534690015781
+    },
+    {
+      "name": "picture M=1024 softmax independently recomputed",
+      "passed": true,
+      "detail": 0.02846555748279341
+    },
+    {
+      "name": "picture M=4096 outer independently recomputed",
+      "passed": true,
+      "detail": 8.136659724338543
+    },
+    {
+      "name": "picture M=4096 relu independently recomputed",
+      "passed": true,
+      "detail": 5.713242886404701
+    },
+    {
+      "name": "picture M=4096 relu2 independently recomputed",
+      "passed": true,
+      "detail": 1.2088772292961534
+    },
+    {
+      "name": "picture M=4096 softmax independently recomputed",
+      "passed": true,
+      "detail": 0.05653642939772837
+    },
+    {
+      "name": "transformer architecture and training budget",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transformer saved weights",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transformer training history",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transformer better than 4-gram in bits/character",
+      "passed": true,
+      "detail": 1.230415312058377
+    },
+    {
+      "name": "transformer uses long context",
+      "passed": true,
+      "detail": 1.7056594974367165
+    },
+    {
+      "name": "transformer independent NumPy / JAX forward",
+      "passed": true,
+      "detail": 1.725420587916915e-05
+    },
+    {
+      "name": "transformer causal prefix",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sampler temperature_1",
+      "passed": true,
+      "detail": 0.42225557157315635
+    },
+    {
+      "name": "sampler temperature_0.8",
+      "passed": true,
+      "detail": 0.10884628366446106
+    },
+    {
+      "name": "sampler top_k_20",
+      "passed": true,
+      "detail": 0.8201273619977689
+    },
+    {
+      "name": "sampler top_p_0.9",
+      "passed": true,
+      "detail": 0.7282942150531678
+    },
+    {
+      "name": "sampler min_p_0.1",
+      "passed": true,
+      "detail": 0.2922790762713814
+    },
+    {
+      "name": "near-zero temperature is greedy",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "sample surprise / entropy z-scores",
+      "passed": true,
+      "detail": [
+        0.18555923463709342,
+        -78.02600671794144
+      ]
+    },
+    {
+      "name": "entropy z-score replay 1",
+      "passed": true,
+      "detail": 0.18555923463709342
+    },
+    {
+      "name": "entropy z-score replay 07",
+      "passed": true,
+      "detail": -78.02600671794144
+    },
+    {
+      "name": "60-token comparison samples",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "four requested generation settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "all eight attention-head extension maps",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Chinchilla exponents and floor",
+      "passed": true,
+      "detail": {
+        "E": 1.8172181890797166,
+        "A": 477.8264085263063,
+        "B": 2143.417919692643,
+        "alpha": 0.34731056519333203,
+        "beta": 0.36717244430341944
+      }
+    },
+    {
+      "name": "Chinchilla bootstrap 400 draws",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Chinchilla bootstrap standard errors",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Chinchilla bootstrap optimal-ratio interval",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Chinchilla residual comparison",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "compute-optimal tokens per parameter",
+      "passed": true,
+      "detail": 17.921027196888286
+    },
+    {
+      "name": "figure part1-relations.png",
+      "passed": true,
+      "detail": [
+        2010,
+        740
+      ]
+    },
+    {
+      "name": "figure part2-ngram-ladder.png",
+      "passed": true,
+      "detail": [
+        1800,
+        720
+      ]
+    },
+    {
+      "name": "figure part3-interference.png",
+      "passed": true,
+      "detail": [
+        1260,
+        810
+      ]
+    },
+    {
+      "name": "figure part3-capacity.png",
+      "passed": true,
+      "detail": [
+        1260,
+        810
+      ]
+    },
+    {
+      "name": "figure part3-mlp-loss.png",
+      "passed": true,
+      "detail": [
+        1260,
+        720
+      ]
+    },
+    {
+      "name": "figure part3-mlp-units.png",
+      "passed": true,
+      "detail": [
+        1980,
+        630
+      ]
+    },
+    {
+      "name": "figure part4-picture-recall.png",
+      "passed": true,
+      "detail": [
+        1710,
+        1748
+      ]
+    },
+    {
+      "name": "figure part5-model-comparison.png",
+      "passed": true,
+      "detail": [
+        1260,
+        720
+      ]
+    },
+    {
+      "name": "figure part5-context-loss.png",
+      "passed": true,
+      "detail": [
+        1260,
+        720
+      ]
+    },
+    {
+      "name": "figure part5-attention-heads.png",
+      "passed": true,
+      "detail": [
+        2700,
+        1260
+      ]
+    },
+    {
+      "name": "figure part6-chinchilla-fit.png",
+      "passed": true,
+      "detail": [
+        1800,
+        720
+      ]
+    },
+    {
+      "name": "figure part6-residuals.png",
+      "passed": true,
+      "detail": [
+        1800,
+        720
+      ]
+    },
+    {
+      "name": "figure part6-optimal.png",
+      "passed": true,
+      "detail": [
+        1260,
+        792
+      ]
+    }
+  ],
+  "limitations": [
+    "Capacity uses all stored keys through M=256, and a fixed 256 stored-key sample per draw beyond that.",
+    "NumPy decoder forward is independently compared on two held-out windows, not the entire validation set.",
+    "Sampler v1 was too concentrated for two chi-squared tests and is preserved; v3 uses a context selected by entropy before sampling."
+  ]
+}
