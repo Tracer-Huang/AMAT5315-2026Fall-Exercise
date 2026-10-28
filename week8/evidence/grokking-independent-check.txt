@@ -1,0 +1,21 @@
+ok  memorized: train accuracy                    numpy 1.000000  answer key 1.000000
+ok  memorized: test accuracy                     numpy 0.174309  answer key 0.174309
+ok  final: train accuracy                        numpy 1.000000  answer key 1.000000
+ok  final: test accuracy                         numpy 1.000000  answer key 1.000000
+ok  init: top-5 power fraction                   numpy 0.126574  answer key 0.126574
+ok  memorized: top-5 power fraction              numpy 0.295533  answer key 0.295533
+ok  final: top-5 power fraction                  numpy 0.892997  answer key 0.892997
+key frequencies numpy [2, 18, 32, 33, 38]  answer key [2, 18, 32, 33, 38]
+ok  keep only key frequencies: test acc          numpy 0.999544  answer key 0.999545
+ok  remove key frequencies: test acc             numpy 0.009262  answer key 0.009262
+ok  remove non-key set 0: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 1: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 2: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 3: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 4: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 5: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 6: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 7: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 8: test acc               numpy 1.000000  answer key 1.000000
+ok  remove non-key set 9: test acc               numpy 1.000000  answer key 1.000000
+PASS: NumPy recomputation agrees with the answer key

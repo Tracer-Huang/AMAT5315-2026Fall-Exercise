@@ -1,0 +1,1588 @@
+{
+  "checked_at": "2026-10-28T04:37:35.731202+00:00",
+  "passed": 306,
+  "failed": [],
+  "checks": [
+    {
+      "name": "published measurements match the original run or identify a later reproduction",
+      "passed": true,
+      "detail": "original run"
+    },
+    {
+      "name": "pinned corpus bytes",
+      "passed": true,
+      "detail": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed"
+    },
+    {
+      "name": "65 sorted characters and specified split",
+      "passed": true,
+      "detail": [
+        1003854,
+        111540
+      ]
+    },
+    {
+      "name": "uniform: independently recomputed loss and PPL",
+      "passed": true,
+      "detail": 4.174387269895637
+    },
+    {
+      "name": "unigram: independently recomputed loss and PPL",
+      "passed": true,
+      "detail": 3.3473053353689304
+    },
+    {
+      "name": "bigram: independently recomputed loss and PPL",
+      "passed": true,
+      "detail": 2.4818894321158234
+    },
+    {
+      "name": "two-target example",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transformer training settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "transformer saved checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "fresh independent full-validation score",
+      "passed": true,
+      "detail": {
+        "loss": 1.7719412404336534,
+        "ppl": 5.882261168373417
+      }
+    },
+    {
+      "name": "training curve matches retained original log",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "eight actual prefix-causality pairs",
+      "passed": true,
+      "detail": {
+        "numpy": 0.0,
+        "jax": 0.0
+      }
+    },
+    {
+      "name": "trained JAX / independent NumPy logits",
+      "passed": true,
+      "detail": 3.2724123058436305e-05
+    },
+    {
+      "name": "four causal attention heads and normalized rows",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "saved sample temperature 0.5",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "saved sample temperature 1.0",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "two requested sample temperatures",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "additional experiments complete",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "eight fit widths, width 8 excluded",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 8 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 8 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 8 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 8 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 12 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 12 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 12 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 12 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 16 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 16 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 16 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 16 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 24 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 24 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 24 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 24 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 32 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 32 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 32 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 32 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 48 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 48 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 48 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 48 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 64 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 64 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 64 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 64 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 96 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 96 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 96 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 96 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 128 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 128 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 128 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 128 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 192 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 192 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 192 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 192 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 256 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 256 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 256 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 256 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 384 seed 1 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 384 seed 1 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 384 seed 2 settings",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 384 seed 2 scoring and checkpoint",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 192 fresh independent full-validation score",
+      "passed": true,
+      "detail": 1.6553373518290535
+    },
+    {
+      "name": "width 384 fresh independent full-validation score",
+      "passed": true,
+      "detail": 1.6936362918398
+    },
+    {
+      "name": "192 prediction snapshot before both starts",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "held-out parameter ratio",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "192 held-out result and interval",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "both additional predictions before either extra training",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 256 extra result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "width 384 extra result",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "retrospective raw-loss WLS minimizes the displayed chi-square",
+      "passed": true,
+      "detail": {
+        "prospective_log_space": 1.6351582423379483,
+        "retrospective_raw_loss": 1.6346663542120616,
+        "difference": -0.0004918881258866303,
+        "log_chi2": 58.64591582809852,
+        "exact_chi2": 58.630405329893044
+      }
+    },
+    {
+      "name": "main seed set",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 delayed grokking",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 init FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 memorized FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 final FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 key frequencies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s0 independent keep-key ablation",
+      "passed": true,
+      "detail": 0.9995444883085333
+    },
+    {
+      "name": "main_s0 independent remove-key ablation",
+      "passed": true,
+      "detail": 0.009262071059823868
+    },
+    {
+      "name": "main_s1 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 delayed grokking",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 init FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 memorized FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 final FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 key frequencies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s1 independent keep-key ablation",
+      "passed": true,
+      "detail": 0.9996963255390222
+    },
+    {
+      "name": "main_s1 independent remove-key ablation",
+      "passed": true,
+      "detail": 0.009717582751290617
+    },
+    {
+      "name": "main_s2 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 delayed grokking",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 init FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 memorized FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 final FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 key frequencies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s2 independent keep-key ablation",
+      "passed": true,
+      "detail": 1.0
+    },
+    {
+      "name": "main_s2 independent remove-key ablation",
+      "passed": true,
+      "detail": 0.013513513513513514
+    },
+    {
+      "name": "main_s3 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 delayed grokking",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 init FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 memorized FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 final FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 key frequencies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s3 independent keep-key ablation",
+      "passed": true,
+      "detail": 1.0
+    },
+    {
+      "name": "main_s3 independent remove-key ablation",
+      "passed": true,
+      "detail": 0.011539629517157608
+    },
+    {
+      "name": "main_s4 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 delayed grokking",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 init FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 memorized FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 final FFT power",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 key frequencies",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "main_s4 independent keep-key ablation",
+      "passed": true,
+      "detail": 0.9989371393865776
+    },
+    {
+      "name": "main_s4 independent remove-key ablation",
+      "passed": true,
+      "detail": 0.011235955056179775
+    },
+    {
+      "name": "wd0 seed set",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s0 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s1 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "wd0_s2 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05 seed set",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s0 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s1 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 correct labels",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "frac05_s2 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random seed set",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 settings and split",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 labels are permuted",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 step figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 train_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 train_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 test_loss figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 test_acc figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 norm figure data",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 logged steps and stop",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 memorized parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 memorized train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 memorized test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 final parameter norm",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 final train independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "random_s0 final test independent score",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "ten random non-key removals and one non-key keep",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "figure cpu-part1-probabilities.png",
+      "passed": true,
+      "detail": [
+        1160,
+        619
+      ]
+    },
+    {
+      "name": "figure cpu-part1-baselines.png",
+      "passed": true,
+      "detail": [
+        1489,
+        538
+      ]
+    },
+    {
+      "name": "figure cpu-part2-loss.png",
+      "passed": true,
+      "detail": [
+        799,
+        512
+      ]
+    },
+    {
+      "name": "figure cpu-part2-attention.png",
+      "passed": true,
+      "detail": [
+        1153,
+        1098
+      ]
+    },
+    {
+      "name": "figure cpu-part3-scaling.png",
+      "passed": true,
+      "detail": [
+        885,
+        652
+      ]
+    },
+    {
+      "name": "figure cpu-part3-scaling-extra.png",
+      "passed": true,
+      "detail": [
+        955,
+        652
+      ]
+    },
+    {
+      "name": "figure grokking-curves.png",
+      "passed": true,
+      "detail": [
+        2375,
+        684
+      ]
+    },
+    {
+      "name": "figure grokking-controls.png",
+      "passed": true,
+      "detail": [
+        1710,
+        722
+      ]
+    },
+    {
+      "name": "figure grokking-fourier.png",
+      "passed": true,
+      "detail": [
+        1710,
+        1102
+      ]
+    },
+    {
+      "name": "figure grokking-ablation.png",
+      "passed": true,
+      "detail": [
+        1368,
+        646
+      ]
+    }
+  ],
+  "caveats": [
+    "Reference outcomes were visible before this work.",
+    "Part 2 training curve is recovered from a four-decimal log.",
+    "The raw-loss WLS comparison is retrospective and does not replace the saved prediction.",
+    "Scaling runs used four concurrent processes; macOS did not enforce a one-core affinity."
+  ]
+}

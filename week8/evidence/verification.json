@@ -1,0 +1,622 @@
+{
+  "passed": 59,
+  "total": 59,
+  "failed": [],
+  "checks": [
+    {
+      "name": "corpus fingerprint",
+      "pass": true,
+      "detail": "86c4e6aa9db7c042ec79f339dcb96d42b0075e16b8fc2e86bf0ca57e2dc565ed"
+    },
+    {
+      "name": "training, validation and scored counts",
+      "pass": true,
+      "detail": [
+        1003854,
+        111540,
+        111539
+      ]
+    },
+    {
+      "name": "uniform loss and PPL",
+      "pass": true,
+      "detail": [
+        4.174387269895637,
+        64.99999999999999
+      ]
+    },
+    {
+      "name": "unigram loss and PPL",
+      "pass": true,
+      "detail": [
+        3.3473053353689304,
+        28.426031724914992
+      ]
+    },
+    {
+      "name": "bigram loss and PPL",
+      "pass": true,
+      "detail": [
+        2.4818894321158234,
+        11.963847954655076
+      ]
+    },
+    {
+      "name": "two-target perplexity",
+      "pass": true,
+      "detail": 2.82842712474619
+    },
+    {
+      "name": "part 2 held-out and independent score",
+      "pass": true,
+      "detail": [
+        1.7719412471002298,
+        1.7719412404336534,
+        6.666576402025726e-09
+      ]
+    },
+    {
+      "name": "causal prefix and attention mask",
+      "pass": true,
+      "detail": {
+        "prefix_length": 64,
+        "pairs": 8,
+        "max_prefix_logit_change": 0.0
+      }
+    },
+    {
+      "name": "two 500-character continuations",
+      "pass": true,
+      "detail": [
+        500,
+        500
+      ]
+    },
+    {
+      "name": "scaling fit and excluded widths",
+      "pass": true,
+      "detail": [
+        12,
+        16,
+        24,
+        32,
+        48,
+        64,
+        96,
+        128
+      ]
+    },
+    {
+      "name": "held-out model twice as large",
+      "pass": true,
+      "detail": [
+        889728,
+        396544
+      ]
+    },
+    {
+      "name": "scaling alpha and interval width",
+      "pass": true,
+      "detail": [
+        0.07169784338808627,
+        1.58077562890861,
+        1.6921538054275445
+      ]
+    },
+    {
+      "name": "prediction snapshot preserved",
+      "pass": true,
+      "detail": "2026-10-28T03:59:32.130385+00:00"
+    },
+    {
+      "name": "scaling width 8 seed 1",
+      "pass": true,
+      "detail": [
+        2.501581929101854,
+        2.5015819281057174,
+        "2026-10-28T03:57:21.370518+00:00",
+        "2026-10-28T03:57:45.473028+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 8 seed 2",
+      "pass": true,
+      "detail": [
+        2.47171864342309,
+        2.4717186408645757,
+        "2026-10-28T03:57:21.422460+00:00",
+        "2026-10-28T03:57:45.327237+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 12 seed 1",
+      "pass": true,
+      "detail": [
+        2.4023823302438005,
+        2.4023823253879653,
+        "2026-10-28T03:57:00.582820+00:00",
+        "2026-10-28T03:57:26.211045+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 12 seed 2",
+      "pass": true,
+      "detail": [
+        2.4100364969260446,
+        2.410036491489251,
+        "2026-10-28T03:57:02.104927+00:00",
+        "2026-10-28T03:57:28.326887+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 16 seed 1",
+      "pass": true,
+      "detail": [
+        2.322987644797514,
+        2.3229876403997687,
+        "2026-10-28T03:56:55.917915+00:00",
+        "2026-10-28T03:57:19.562032+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 16 seed 2",
+      "pass": true,
+      "detail": [
+        2.3276132883655816,
+        2.3276132839790233,
+        "2026-10-28T03:56:56.005189+00:00",
+        "2026-10-28T03:57:19.685995+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 24 seed 1",
+      "pass": true,
+      "detail": [
+        2.1878952525357422,
+        2.187895247949091,
+        "2026-10-28T03:56:35.009219+00:00",
+        "2026-10-28T03:56:59.232628+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 24 seed 2",
+      "pass": true,
+      "detail": [
+        2.1672147772258015,
+        2.1672147715054026,
+        "2026-10-28T03:56:36.336175+00:00",
+        "2026-10-28T03:57:01.072919+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 32 seed 1",
+      "pass": true,
+      "detail": [
+        2.147274096694693,
+        2.1472740981591425,
+        "2026-10-28T03:56:25.927614+00:00",
+        "2026-10-28T03:56:54.807754+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 32 seed 2",
+      "pass": true,
+      "detail": [
+        2.1344043443981535,
+        2.134404342737689,
+        "2026-10-28T03:56:25.927902+00:00",
+        "2026-10-28T03:56:54.881146+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 48 seed 1",
+      "pass": true,
+      "detail": [
+        1.996704489719833,
+        1.9967044835741232,
+        "2026-10-28T03:56:00.742469+00:00",
+        "2026-10-28T03:56:33.884704+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 48 seed 2",
+      "pass": true,
+      "detail": [
+        2.015999918155052,
+        2.015999911026364,
+        "2026-10-28T03:56:01.440898+00:00",
+        "2026-10-28T03:56:35.141502+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 64 seed 1",
+      "pass": true,
+      "detail": [
+        1.9308365782593777,
+        1.9308365777379124,
+        "2026-10-28T03:55:43.754428+00:00",
+        "2026-10-28T03:56:24.650708+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 64 seed 2",
+      "pass": true,
+      "detail": [
+        1.9470069535742935,
+        1.9470069620435282,
+        "2026-10-28T03:55:43.867810+00:00",
+        "2026-10-28T03:56:24.696161+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 96 seed 1",
+      "pass": true,
+      "detail": [
+        1.77476347150954,
+        1.7747634683838323,
+        "2026-10-28T03:55:06.653054+00:00",
+        "2026-10-28T03:55:42.997275+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 96 seed 2",
+      "pass": true,
+      "detail": [
+        1.7928235052977977,
+        1.792823511900412,
+        "2026-10-28T03:55:06.654114+00:00",
+        "2026-10-28T03:55:42.876280+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 128 seed 1",
+      "pass": true,
+      "detail": [
+        1.7187091171804882,
+        1.7187091160320072,
+        "2026-10-28T03:55:06.654479+00:00",
+        "2026-10-28T03:55:59.424828+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 128 seed 2",
+      "pass": true,
+      "detail": [
+        1.7066414247819732,
+        1.706641425687343,
+        "2026-10-28T03:55:06.653757+00:00",
+        "2026-10-28T03:55:59.822806+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 192 seed 1",
+      "pass": true,
+      "detail": [
+        1.6553373540547325,
+        1.6553373518290535,
+        "2026-10-28T03:59:39.804154+00:00",
+        "2026-10-28T04:00:35.676049+00:00"
+      ]
+    },
+    {
+      "name": "scaling width 192 seed 2",
+      "pass": true,
+      "detail": [
+        1.6559157565311458,
+        1.6559157587807234,
+        "2026-10-28T03:59:39.804042+00:00",
+        "2026-10-28T04:00:35.548675+00:00"
+      ]
+    },
+    {
+      "name": "prediction predates both held-out starts",
+      "pass": true,
+      "detail": [
+        "2026-10-28T03:59:32.130385+00:00",
+        "2026-10-28T03:59:39.804154+00:00",
+        "2026-10-28T03:59:39.804042+00:00"
+      ]
+    },
+    {
+      "name": "held-out mean agrees with raw runs",
+      "pass": true,
+      "detail": {
+        "predicted": 1.6351582423379483,
+        "interval": [
+          1.58077562890861,
+          1.6921538054275445
+        ],
+        "actual": 1.655626555292939,
+        "within_interval": true
+      }
+    },
+    {
+      "name": "five main grokking seeds",
+      "pass": true,
+      "detail": [
+        [
+          0,
+          200,
+          6000
+        ],
+        [
+          1,
+          200,
+          5800
+        ],
+        [
+          2,
+          200,
+          7600
+        ],
+        [
+          3,
+          200,
+          4500
+        ],
+        [
+          4,
+          200,
+          3400
+        ]
+      ]
+    },
+    {
+      "name": "grokking main run count",
+      "pass": true,
+      "detail": 5
+    },
+    {
+      "name": "raw curve main_s0",
+      "pass": true,
+      "detail": [
+        200,
+        6000
+      ]
+    },
+    {
+      "name": "raw curve main_s1",
+      "pass": true,
+      "detail": [
+        200,
+        5800
+      ]
+    },
+    {
+      "name": "raw curve main_s2",
+      "pass": true,
+      "detail": [
+        200,
+        7600
+      ]
+    },
+    {
+      "name": "raw curve main_s3",
+      "pass": true,
+      "detail": [
+        200,
+        4500
+      ]
+    },
+    {
+      "name": "raw curve main_s4",
+      "pass": true,
+      "detail": [
+        200,
+        3400
+      ]
+    },
+    {
+      "name": "grokking wd0 run count",
+      "pass": true,
+      "detail": 3
+    },
+    {
+      "name": "raw curve wd0_s0",
+      "pass": true,
+      "detail": [
+        100,
+        null
+      ]
+    },
+    {
+      "name": "raw curve wd0_s1",
+      "pass": true,
+      "detail": [
+        200,
+        null
+      ]
+    },
+    {
+      "name": "raw curve wd0_s2",
+      "pass": true,
+      "detail": [
+        200,
+        null
+      ]
+    },
+    {
+      "name": "grokking frac05 run count",
+      "pass": true,
+      "detail": 3
+    },
+    {
+      "name": "raw curve frac05_s0",
+      "pass": true,
+      "detail": [
+        200,
+        300
+      ]
+    },
+    {
+      "name": "raw curve frac05_s1",
+      "pass": true,
+      "detail": [
+        200,
+        400
+      ]
+    },
+    {
+      "name": "raw curve frac05_s2",
+      "pass": true,
+      "detail": [
+        200,
+        300
+      ]
+    },
+    {
+      "name": "grokking random run count",
+      "pass": true,
+      "detail": 1
+    },
+    {
+      "name": "raw curve random_s0",
+      "pass": true,
+      "detail": [
+        200,
+        null
+      ]
+    },
+    {
+      "name": "five key-frequency tests",
+      "pass": true,
+      "detail": {
+        "main_s0": {
+          "key_frequencies": [
+            2,
+            18,
+            32,
+            33,
+            38
+          ],
+          "top_k_fraction_init": 0.12657355788436875,
+          "top_k_fraction_memorized": 0.2955327236505289,
+          "top_k_fraction_final": 0.8929965071814743,
+          "keep_key_test_acc": 0.9995445013046265,
+          "remove_key_test_acc": 0.00926207099109888
+        },
+        "main_s1": {
+          "key_frequencies": [
+            15,
+            20,
+            28,
+            32,
+            33
+          ],
+          "top_k_fraction_init": 0.12189204359899136,
+          "top_k_fraction_memorized": 0.18105770339311167,
+          "top_k_fraction_final": 0.8861951295102404,
+          "keep_key_test_acc": 0.9996963143348694,
+          "remove_key_test_acc": 0.00971758272498846
+        },
+        "main_s2": {
+          "key_frequencies": [
+            1,
+            2,
+            19,
+            25,
+            38
+          ],
+          "top_k_fraction_init": 0.12762598661506952,
+          "top_k_fraction_memorized": 0.16384529476628382,
+          "top_k_fraction_final": 0.9206559706403402,
+          "keep_key_test_acc": 1.0,
+          "remove_key_test_acc": 0.013513513840734959
+        },
+        "main_s3": {
+          "key_frequencies": [
+            1,
+            6,
+            23,
+            32,
+            46
+          ],
+          "top_k_fraction_init": 0.1295335651513397,
+          "top_k_fraction_memorized": 0.17989705241539403,
+          "top_k_fraction_final": 0.9248667956225851,
+          "keep_key_test_acc": 1.0,
+          "remove_key_test_acc": 0.01153962966054678
+        },
+        "main_s4": {
+          "key_frequencies": [
+            4,
+            8,
+            15,
+            16,
+            32
+          ],
+          "top_k_fraction_init": 0.12794638109299583,
+          "top_k_fraction_memorized": 0.20376664664089497,
+          "top_k_fraction_final": 0.9552017787236502,
+          "keep_key_test_acc": 0.9989371299743652,
+          "remove_key_test_acc": 0.01123595517128706
+        }
+      }
+    },
+    {
+      "name": "non-key controls",
+      "pass": true,
+      "detail": [
+        {
+          "min": 1.0,
+          "max": 1.0,
+          "mean": 1.0
+        },
+        0.00926207099109888
+      ]
+    },
+    {
+      "name": "optional width 256 prediction snapshot preserved",
+      "pass": true,
+      "detail": "2026-10-28T04:02:42.462286+00:00"
+    },
+    {
+      "name": "optional width 256 prediction before starts",
+      "pass": true,
+      "detail": {
+        "prediction": 1.5692343967681806,
+        "interval": [
+          1.5132458255399548,
+          1.6278467407025077
+        ],
+        "actual": 1.630722765320279,
+        "within_interval": false
+      }
+    },
+    {
+      "name": "optional width 384 prediction snapshot preserved",
+      "pass": true,
+      "detail": "2026-10-28T04:03:15.752969+00:00"
+    },
+    {
+      "name": "optional width 384 prediction before starts",
+      "pass": true,
+      "detail": {
+        "prediction": 1.480746997237754,
+        "interval": [
+          1.4226983012431282,
+          1.5410424491397732
+        ],
+        "actual": 1.685609077859182,
+        "within_interval": false
+      }
+    },
+    {
+      "name": "both optional predictions precede all optional runs",
+      "pass": true,
+      "detail": [
+        "2026-10-28T04:02:42.462286+00:00",
+        "2026-10-28T04:03:15.752969+00:00",
+        "2026-10-28T04:03:40.260767+00:00",
+        "2026-10-28T04:03:40.261705+00:00",
+        "2026-10-28T04:03:40.141663+00:00",
+        "2026-10-28T04:03:40.141687+00:00"
+      ]
+    }
+  ],
+  "caveats": [
+    "Part 2 curve recovered from the original four-decimal console log.",
+    "Course reference outcomes were already public; timing establishes procedural order only.",
+    "The course package checker targets an additional speedrun contract; the independent NumPy evaluator was used."
+  ]
+}
