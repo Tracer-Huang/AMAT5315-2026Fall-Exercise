@@ -1,0 +1,163 @@
+{
+  "work": 104,
+  "largest_tensor": 16,
+  "steps": [
+    {
+      "inputs": [
+        "f6",
+        "e0"
+      ],
+      "retained": [
+        0,
+        5
+      ],
+      "union": [
+        0,
+        5,
+        6
+      ],
+      "work": 8,
+      "entries": 4
+    },
+    {
+      "inputs": [
+        "f0",
+        "i0"
+      ],
+      "retained": [
+        0,
+        5
+      ],
+      "union": [
+        0,
+        5
+      ],
+      "work": 4,
+      "entries": 4
+    },
+    {
+      "inputs": [
+        "f1",
+        "f2"
+      ],
+      "retained": [
+        0,
+        1,
+        2
+      ],
+      "union": [
+        0,
+        1,
+        2
+      ],
+      "work": 8,
+      "entries": 8
+    },
+    {
+      "inputs": [
+        "f4",
+        "e7"
+      ],
+      "retained": [
+        2,
+        4,
+        7
+      ],
+      "union": [
+        2,
+        4,
+        7
+      ],
+      "work": 8,
+      "entries": 8
+    },
+    {
+      "inputs": [
+        "f3",
+        "i2"
+      ],
+      "retained": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "union": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "work": 16,
+      "entries": 16
+    },
+    {
+      "inputs": [
+        "f5",
+        "i4"
+      ],
+      "retained": [
+        0,
+        2,
+        5
+      ],
+      "union": [
+        0,
+        1,
+        2,
+        3,
+        5
+      ],
+      "work": 32,
+      "entries": 8
+    },
+    {
+      "inputs": [
+        "f7",
+        "i3"
+      ],
+      "retained": [
+        2,
+        5
+      ],
+      "union": [
+        2,
+        4,
+        5,
+        7
+      ],
+      "work": 16,
+      "entries": 4
+    },
+    {
+      "inputs": [
+        "i5",
+        "i6"
+      ],
+      "retained": [
+        0,
+        5
+      ],
+      "union": [
+        0,
+        2,
+        5
+      ],
+      "work": 8,
+      "entries": 4
+    },
+    {
+      "inputs": [
+        "i1",
+        "i7"
+      ],
+      "retained": [],
+      "union": [
+        0,
+        5
+      ],
+      "work": 4,
+      "entries": 1
+    }
+  ]
+}

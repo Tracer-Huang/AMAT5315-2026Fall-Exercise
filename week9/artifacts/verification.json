@@ -1,0 +1,15 @@
+{
+  "greedy_log10_z": -7.806746304582435,
+  "treesa_log10_z": -7.8067463045824335,
+  "published_pr": -7.80675,
+  "selected_query_state1": {
+    "59": 0.19758825818897438,
+    "102": 0.1497534323191906,
+    "139": 0.6175220183808906
+  },
+  "bp_residual": 2.1162649410655376e-10,
+  "bp_selected_max_error_vs_published_mar": 0.38235293581654745,
+  "bp_sweeps": 1000,
+  "bp_converged": false,
+  "bp_cumulative_work": 22473000
+}

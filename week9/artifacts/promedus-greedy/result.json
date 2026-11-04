@@ -1,0 +1,61 @@
+{
+  "elapsed_seconds": 0.779822042,
+  "log10_z": -7.806746304582435,
+  "method": "greedy",
+  "queries": [
+    {
+      "execution_seconds": 0.010074084,
+      "log10_z": -7.806746304582435,
+      "planning_seconds": 0.006055708,
+      "probabilities": [
+        1.0
+      ],
+      "query": [],
+      "space_log2": 19.0,
+      "work_log2": 25.795041858925266
+    },
+    {
+      "execution_seconds": 0.610788959,
+      "log10_z": -7.806746304582435,
+      "planning_seconds": 0.006070667,
+      "probabilities": [
+        0.8024117418110257,
+        0.19758825818897438
+      ],
+      "query": [
+        59
+      ],
+      "space_log2": 24.0,
+      "work_log2": 33.22062138228021
+    },
+    {
+      "execution_seconds": 0.102296166,
+      "log10_z": -7.8067463045824335,
+      "planning_seconds": 0.006237,
+      "probabilities": [
+        0.8502465676808093,
+        0.1497534323191906
+      ],
+      "query": [
+        102
+      ],
+      "space_log2": 22.0,
+      "work_log2": 30.67487150242709
+    },
+    {
+      "execution_seconds": 0.029780583,
+      "log10_z": -7.8067463045824335,
+      "planning_seconds": 0.006253666,
+      "probabilities": [
+        0.38247798161910945,
+        0.6175220183808906
+      ],
+      "query": [
+        139
+      ],
+      "space_log2": 21.0,
+      "work_log2": 28.398636823311435
+    }
+  ],
+  "treesa": "fast, 1 trial, seed 42, time-only"
+}

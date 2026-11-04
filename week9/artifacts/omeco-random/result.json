@@ -1,0 +1,19 @@
+{
+  "elapsed_seconds": 0.001938375,
+  "log10_z": -2.346654805402612,
+  "method": "random:42",
+  "queries": [
+    {
+      "execution_seconds": 0.001436834,
+      "log10_z": -2.346654805402612,
+      "planning_seconds": 0.000057,
+      "probabilities": [
+        1.0
+      ],
+      "query": [],
+      "space_log2": 4.0,
+      "work_log2": 6.584962500721156
+    }
+  ],
+  "treesa": "fast, 1 trial, seed 42, time-only"
+}

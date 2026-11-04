@@ -1,0 +1,143 @@
+{
+  "largest_tensor": 8,
+  "steps": [
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          1
+        ],
+        [
+          5,
+          3,
+          1
+        ]
+      ],
+      "retained": [
+        5,
+        3
+      ],
+      "union": [
+        1,
+        3,
+        5
+      ],
+      "work": 8
+    },
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          3,
+          2
+        ],
+        [
+          5,
+          3
+        ]
+      ],
+      "retained": [
+        2,
+        5
+      ],
+      "union": [
+        2,
+        3,
+        5
+      ],
+      "work": 8
+    },
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          2
+        ],
+        [
+          4,
+          2
+        ]
+      ],
+      "retained": [
+        2,
+        4
+      ],
+      "union": [
+        2,
+        4
+      ],
+      "work": 4
+    },
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          5,
+          4
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "retained": [
+        5,
+        2
+      ],
+      "union": [
+        2,
+        4,
+        5
+      ],
+      "work": 8
+    },
+    {
+      "entries": 2,
+      "inputs": [
+        [
+          2,
+          5
+        ],
+        [
+          5,
+          2
+        ]
+      ],
+      "retained": [
+        5
+      ],
+      "union": [
+        2,
+        5
+      ],
+      "work": 4
+    },
+    {
+      "entries": 1,
+      "inputs": [
+        [
+          5
+        ],
+        [
+          5
+        ]
+      ],
+      "retained": [],
+      "union": [
+        5
+      ],
+      "work": 2
+    },
+    {
+      "entries": 1,
+      "inputs": [
+        [],
+        []
+      ],
+      "retained": [],
+      "union": [],
+      "work": 1
+    }
+  ],
+  "work": 35
+}

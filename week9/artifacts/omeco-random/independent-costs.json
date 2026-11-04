@@ -1,0 +1,146 @@
+[
+  {
+    "query": [],
+    "work": 96,
+    "largest_generated": 16,
+    "steps": [
+      {
+        "inputs": [
+          [
+            5,
+            4
+          ],
+          [
+            6,
+            5
+          ]
+        ],
+        "retained": [
+          4,
+          5
+        ],
+        "work": 8,
+        "entries": 4
+      },
+      {
+        "inputs": [
+          [
+            4,
+            5
+          ],
+          [
+            5,
+            3,
+            1
+          ]
+        ],
+        "retained": [
+          1,
+          3,
+          4
+        ],
+        "work": 16,
+        "entries": 8
+      },
+      {
+        "inputs": [
+          [
+            2
+          ],
+          [
+            1,
+            3,
+            4
+          ]
+        ],
+        "retained": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "work": 16,
+        "entries": 16
+      },
+      {
+        "inputs": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          []
+        ],
+        "retained": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "work": 16,
+        "entries": 16
+      },
+      {
+        "inputs": [
+          [
+            1
+          ],
+          [
+            3,
+            2
+          ]
+        ],
+        "retained": [
+          1,
+          2,
+          3
+        ],
+        "work": 8,
+        "entries": 8
+      },
+      {
+        "inputs": [
+          [
+            4,
+            2
+          ],
+          [
+            1,
+            2,
+            3
+          ]
+        ],
+        "retained": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "work": 16,
+        "entries": 16
+      },
+      {
+        "inputs": [
+          [
+            1,
+            2,
+            3,
+            4
+          ],
+          [
+            1,
+            2,
+            3,
+            4
+          ]
+        ],
+        "retained": [],
+        "work": 16,
+        "entries": 1
+      }
+    ],
+    "reported_work": 96.0,
+    "reported_space": 16.0
+  }
+]

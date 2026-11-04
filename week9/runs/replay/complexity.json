@@ -1,0 +1,160 @@
+{
+  "largest_tensor": 8,
+  "steps": [
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          1
+        ],
+        [
+          5,
+          3,
+          1
+        ]
+      ],
+      "retained": [
+        5,
+        3
+      ],
+      "union": [
+        1,
+        3,
+        5
+      ],
+      "work": 8
+    },
+    {
+      "entries": 8,
+      "inputs": [
+        [
+          6,
+          5
+        ],
+        [
+          5,
+          4
+        ]
+      ],
+      "retained": [
+        6,
+        5,
+        4
+      ],
+      "union": [
+        4,
+        5,
+        6
+      ],
+      "work": 8
+    },
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          2
+        ],
+        [
+          3,
+          2
+        ]
+      ],
+      "retained": [
+        2,
+        3
+      ],
+      "union": [
+        2,
+        3
+      ],
+      "work": 4
+    },
+    {
+      "entries": 4,
+      "inputs": [
+        [
+          4,
+          2
+        ],
+        [
+          2,
+          3
+        ]
+      ],
+      "retained": [
+        4,
+        3
+      ],
+      "union": [
+        2,
+        3,
+        4
+      ],
+      "work": 8
+    },
+    {
+      "entries": 8,
+      "inputs": [
+        [
+          6,
+          5,
+          4
+        ],
+        [
+          4,
+          3
+        ]
+      ],
+      "retained": [
+        6,
+        5,
+        3
+      ],
+      "union": [
+        3,
+        4,
+        5,
+        6
+      ],
+      "work": 16
+    },
+    {
+      "entries": 2,
+      "inputs": [
+        [
+          5,
+          3
+        ],
+        [
+          6,
+          5,
+          3
+        ]
+      ],
+      "retained": [
+        6
+      ],
+      "union": [
+        3,
+        5,
+        6
+      ],
+      "work": 8
+    },
+    {
+      "entries": 1,
+      "inputs": [
+        [],
+        [
+          6
+        ]
+      ],
+      "retained": [],
+      "union": [
+        6
+      ],
+      "work": 2
+    }
+  ],
+  "work": 54
+}

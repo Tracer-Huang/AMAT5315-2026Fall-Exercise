@@ -1,0 +1,19 @@
+{
+  "elapsed_seconds": 0.001690167,
+  "log10_z": -2.346654805402612,
+  "method": "replay:artifacts/omeco-AD/plan-z.json",
+  "queries": [
+    {
+      "execution_seconds": 0.001336625,
+      "log10_z": -2.346654805402612,
+      "planning_seconds": 0.000048167,
+      "probabilities": [
+        1.0
+      ],
+      "query": [],
+      "space_log2": 3.0,
+      "work_log2": 5.754887502163469
+    }
+  ],
+  "treesa": "fast, 1 trial, seed 42, time-only"
+}

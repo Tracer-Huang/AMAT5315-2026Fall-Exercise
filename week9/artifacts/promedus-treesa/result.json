@@ -1,0 +1,61 @@
+{
+  "elapsed_seconds": 0.516144708,
+  "log10_z": -7.8067463045824335,
+  "method": "treesa",
+  "queries": [
+    {
+      "execution_seconds": 0.016946292,
+      "log10_z": -7.8067463045824335,
+      "planning_seconds": 0.119861917,
+      "probabilities": [
+        1.0
+      ],
+      "query": [],
+      "space_log2": 18.0,
+      "work_log2": 23.46642901229591
+    },
+    {
+      "execution_seconds": 0.0056565,
+      "log10_z": -7.806746304582432,
+      "planning_seconds": 0.119574417,
+      "probabilities": [
+        0.8024117418110253,
+        0.19758825818897469
+      ],
+      "query": [
+        59
+      ],
+      "space_log2": 18.0,
+      "work_log2": 23.472925055516917
+    },
+    {
+      "execution_seconds": 0.006336917,
+      "log10_z": -7.806746304582435,
+      "planning_seconds": 0.11938375,
+      "probabilities": [
+        0.8502465676808093,
+        0.14975343231919064
+      ],
+      "query": [
+        102
+      ],
+      "space_log2": 17.0,
+      "work_log2": 23.329660041344784
+    },
+    {
+      "execution_seconds": 0.00715275,
+      "log10_z": -7.806746304582435,
+      "planning_seconds": 0.118402584,
+      "probabilities": [
+        0.3824779816191093,
+        0.6175220183808907
+      ],
+      "query": [
+        139
+      ],
+      "space_log2": 19.0,
+      "work_log2": 23.44526850315958
+    }
+  ],
+  "treesa": "fast, 1 trial, seed 42, time-only"
+}

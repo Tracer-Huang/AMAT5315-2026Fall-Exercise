@@ -1,0 +1,29 @@
+{
+  "tenferro": {
+    "ising": 12.602562098951932,
+    "matrix_col_major": [
+      4.0,
+      10.0,
+      4.0,
+      8.0
+    ],
+    "trace": 12.0
+  },
+  "numpy_matrix": [
+    [
+      4.0,
+      4.0
+    ],
+    [
+      10.0,
+      8.0
+    ]
+  ],
+  "numpy_trace": 12.0,
+  "ising_enumeration": 12.602562098951928,
+  "absolute_errors": {
+    "matrix": 0.0,
+    "trace": 0.0,
+    "ising": 3.552713678800501e-15
+  }
+}

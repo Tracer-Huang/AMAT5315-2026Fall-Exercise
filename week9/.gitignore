@@ -1,0 +1,9 @@
+/target/
+/__pycache__/
+
+/.install/
+/promedus/
+/artifacts/promedus-bp-timed/
+/artifacts/promedus-bp-timed.log
+/artifacts/promedus-bp/run.json
+/asia.uai

@@ -1,0 +1,25 @@
+usage = "infer --model asia.uai --evidence AD --out artifacts/AD"
+description = "infer probabilities from local factors; no unstated defaults"
+[args]
+model = "path to the ASIA UAI model data"
+evidence = "prior: no observations; AD: A=0,D=0; ADX: A=0,D=0,X=0"
+out = "directory for this run's evidence"
+[args.ordering]
+order = "scalar evidence order: random or greedy; default greedy"
+seed = "random-order seed; required with random, absent otherwise"
+plan = "replay a saved scalar-query plan; default absent"
+analyze = "analyse a saved plan without contraction; default absent"
+[args.bp]
+method = "inference method: exact or bp; default exact"
+damping = "fraction of the proposed message used; required with bp only"
+tolerance = "maximum undamped residual for stopping; required with bp only"
+max-sweeps = "iteration limit, not a convergence claim; required with bp only"
+[writes]
+"<out>/run.json" = "observations, evidence mass, node marginals and T,L joint"
+stdout = "evidence probability, disease probabilities and discrepancies"
+[writes.ordering]
+"<out>/order.json" = "contraction plan, planning method, random seed, and model/evidence binding"
+"<out>/complexity.json" = "sum of pair costs; largest input or intermediate; per-step retained labels and costs"
+[writes.bp]
+"<out>/run.json" = "observations, settings, final marginals, and beliefs, undamped residual, cumulative update work per sweep"
+stdout = "BP sweep, undamped residual and cumulative update work"
