@@ -1,4 +1,4 @@
-import json,math
+import argparse,json,math
 import numpy as np
 from pathlib import Path
 
@@ -16,4 +16,8 @@ def check(path):
   q=d['steps'][-1]['new_dim'];a=np.array(d['final_tensor']).reshape(q,q,q,q);z=np.einsum('ijij->',a);reconstructed=(logz+math.log(z))/(l*l)
  err=abs(reconstructed-d['g']);assert err<1e-12,(path,err);return {'path':path,'g':d['g'],'reconstructed_g':reconstructed,'absolute_error':err}
 if __name__=='__main__':
- out=[check('runs/boundary64-v2/evidence.json'),check('runs/trg1024-v2/evidence.json')];Path('artifacts/evidence-audit.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
+ parser=argparse.ArgumentParser(description='Recompute g from the saved sample tensors and scales')
+ parser.add_argument('--boundary', default='runs/my-boundary64/evidence.json')
+ parser.add_argument('--trg', default='runs/my-trg1024/evidence.json')
+ args=parser.parse_args()
+ out=[check(args.boundary),check(args.trg)];Path('artifacts/evidence-audit.json').write_text(json.dumps(out,indent=2)+'\n');print(json.dumps(out,indent=2))
