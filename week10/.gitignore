@@ -1,0 +1,8 @@
+/target/
+/artifacts/
+/runs/
+
+/.venv/
+/.install/
+
+__pycache__/
